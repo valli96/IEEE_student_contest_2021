@@ -67,7 +67,7 @@ The created netlist can be printed with is commend
 
     print("the circuit netlist: \n\n", circuit)
 
-After the netlist is ready the simulator instance can be created. Many values like can temperate can be initialized 
+After the netlist is ready the simulator instance can be created. Many values like temperature can be initialized 
 
     simulator = circuit.simulator()
 
@@ -75,9 +75,9 @@ After that analysis can be run with the following command
 
     analysis = simulator.operating_point()
 
-This will created a vector `analysis.nodes` which contain the names and simulated voltages.
+This will creat a vector `analysis.nodes` which contains the names and simulated voltages.
 
-With is the name and voltage of every node can be extracted. For example of the node `out`
+With this the name and voltage of every node can be extracted. For example of the node `out`
 
     print(str(analysis.nodes['out']))
     print(float(analysis.nodes['out'])) # if the variable is forced in to a float is will give the voltage

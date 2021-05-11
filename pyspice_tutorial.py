@@ -40,3 +40,6 @@ print(analysis.nodes['out']) # this vector contain all voltages of every node
 print(float(analysis.nodes['out'])) # if the variable is forced in to a float is will give the voltage
 
 print(analysis)
+
+
+#test comment to check commit permission

@@ -2,15 +2,14 @@
 # import matplotliv.pyplot as plt
 # import sys
 
+import os
 import PySpice
 import PySpice.Logging.Logging as Logging
 from PySpice.Spice.Netlist import Circuit
 from PySpice.Unit import * # nessasary if Volt, Ohm, And Amere should be used (10@u_V)
 
-WIN_ENVIRONMENT = True      # Flag indicating usage in windows environment  
-
-
-if not WIN_ENVIRONMENT:
+#Do not run this if in windows environment
+if not os.name == 'nt':
     PySpice.Spice.Simulation.CircuitSimulator.DEFAULT_SIMULATOR = 'ngspice-subprocess'  # to fix the error OSError: cannot load library 'libngspice.so'
 
 

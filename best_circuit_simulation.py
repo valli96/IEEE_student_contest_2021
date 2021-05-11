@@ -1,3 +1,4 @@
+import os
 import matplotlib.pyplot as plt
 import PySpice
 import PySpice.Logging.Logging as Logging
@@ -5,7 +6,10 @@ logger = Logging.setup_logging()
 from PySpice.Probe.Plot import plot
 from PySpice.Spice.Netlist import Circuit
 from PySpice.Unit import *
-PySpice.Spice.Simulation.CircuitSimulator.DEFAULT_SIMULATOR = 'ngspice-subprocess'  # to fix the error OSError: cannot load library 'libngspice.so'
+
+#Do not run this if in windows environment
+if not os.name == 'nt':
+    PySpice.Spice.Simulation.CircuitSimulator.DEFAULT_SIMULATOR = 'ngspice-subprocess'  # to fix the error OSError: cannot load library 'libngspice.so'
 
 
 circuit = Circuit('Transmission Line')

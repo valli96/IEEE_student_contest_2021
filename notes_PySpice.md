@@ -8,9 +8,12 @@
 
 [PySpice Overview](https://pyspice.fabrice-salvaire.fr/releases/v1.4/)
 
+[Netlist components](https://pyspice.fabrice-salvaire.fr/releases/v1.4/api/PySpice/Spice/Netlist.html)
+
 [A greart short introduction to PySpice](https://www.slideshare.net/PoleSystematicParisRegion/pyparis2017-circuit-simulation-using-python-by-fabrice-salvaire)
 
 [A example of a transmission line simulation](https://pyspice.fabrice-salvaire.fr/releases/v1.4/examples/transmission-lines/time-delay.html)
+
 
 
 ### installation of PySpice

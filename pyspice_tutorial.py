@@ -18,7 +18,7 @@ circuit = Circuit('Voltage Divider')
 # add components 
 circuit.V('input', 'in', circuit.gnd, 10@u_V)
 circuit.R('1', 'in', 'out', 9@u_kOhm)
-circuit.R('2', 'out', circuit.gnd, 1@u_kOhm)
+circuit.R('2', 'out', circuit.gnd, 6@u_kOhm)
 
 # print circuit 
 print("the circuit netlist: \n\n", circuit)
@@ -36,7 +36,7 @@ analysis = simulator.operating_point()
 
 # get the voltage at node out
 print(analysis.nodes['out']) # this vector contain all voltages of every node
-print(str(analysis.nodes['out']))
+# print(str(analysis.nodes['out']))
 print(float(analysis.nodes['out'])) # if the variable is forced in to a float is will give the voltage
 
 print(analysis)

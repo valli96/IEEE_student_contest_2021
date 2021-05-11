@@ -32,3 +32,49 @@ For extra examples:
 
 - it is possible to generate a **netlist** in **Spice** or even **KiCad** and import this
 
+## PySpice Basics
+
+##### needed libraries
+
+    import PySpice
+    import PySpice.Logging.Logging as Logging # to enabel data acquisition
+    from PySpice.Spice.Netlist import Circuit
+    from PySpice.Unit import * # nessasary if Volt, Ohm, And Amere should be used (10@u_V)
+
+To use PySpice on Linux the line below is needed
+
+    PySpice.Spice.Simulation.CircuitSimulator.DEFAULT_SIMULATOR = 'ngspice-subprocess'  # to fix the error OSError: cannot load library 'libngspice.so'
+
+To start the data logging
+
+    logger = Logging.setup_logging()
+
+Create the circuit with the name: "Voltage Divider"
+
+    circuit = Circuit('Voltage Divider')
+   
+To add components to the circuit first nodes must be determined. Than the syntax looks like that. 
+**circuit.R('Name_component','Node_1', 'Node_2', value)**
+
+    circuit.V('input', 'in', circuit.gnd, 10@u_V)
+    circuit.R('1', 'in', 'out', 9@u_kOhm)
+    circuit.R('2', 'out', circuit.gnd, 6@u_kOhm)
+
+The created netlist can be printed with is commend
+
+    print("the circuit netlist: \n\n", circuit)
+
+After the netlist is ready the simulator instance can be created. Many values like can temperate can be initialized 
+
+    simulator = circuit.simulator()
+
+After that analysis can be run with the following command
+
+    analysis = simulator.operating_point()
+
+This will created a vector `analysis.nodes` which contain the names and simulated voltages.
+
+With is the name and voltage of every node can be extracted. For example of the node `out`
+
+    print(str(analysis.nodes['out']))
+    print(float(analysis.nodes['out'])) # if the variable is forced in to a float is will give the voltage

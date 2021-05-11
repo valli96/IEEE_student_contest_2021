@@ -7,12 +7,16 @@ import PySpice.Logging.Logging as Logging
 from PySpice.Spice.Netlist import Circuit
 from PySpice.Unit import * # nessasary if Volt, Ohm, And Amere should be used (10@u_V)
 
-PySpice.Spice.Simulation.CircuitSimulator.DEFAULT_SIMULATOR = 'ngspice-subprocess'  # to fix the error OSError: cannot load library 'libngspice.so'
+WIN_ENVIRONMENT = True      # Flag indicating usage in windows environment  
+
+
+if not WIN_ENVIRONMENT:
+    PySpice.Spice.Simulation.CircuitSimulator.DEFAULT_SIMULATOR = 'ngspice-subprocess'  # to fix the error OSError: cannot load library 'libngspice.so'
 
 
 logger = Logging.setup_logging()
 
-# creat the circuit 
+# create the circuit 
 circuit = Circuit('Voltage Divider')
 
 # add components 
@@ -24,7 +28,7 @@ circuit.R('2', 'out', circuit.gnd, 6@u_kOhm)
 print("the circuit netlist: \n\n", circuit)
 # exit()
 
-# creat a simulator instace
+# create a simulator instance
 # simulator = circuit.simulator(temperature=25, norminal_temperatur=25)
 simulator = circuit.simulator()
 
@@ -35,12 +39,9 @@ print("The simulator \n", simulator)
 analysis = simulator.operating_point()
 
 # get the voltage at node out
-print(analysis.nodes['out']) # this vector contain all voltages of every node
+print(analysis.nodes['out']) # this vector contains all voltages of every node
 # print(str(analysis.nodes['out']))
-print(float(analysis.nodes['out'])) # if the variable is forced in to a float is will give the voltage
+print(float(analysis.nodes['out'])) # if the variable is forced in to a float this will give the voltage
 
 print(analysis)
 
-
-#test comment to check commit permission
-#Another test comment to check if appropriate account has been selected

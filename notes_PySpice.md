@@ -28,6 +28,9 @@ For extra examples:
 <!-- > not yet found out -->
     sudo apt install Ngspice
 
+    for win installation use command (Important: Update version accordingly) : 
+    pyspice-post-installation --install-ngspice-dll --ngspice-version 34
+
 ### nice to know
 
 - it is possible to generate a **netlist** in **Spice** or even **KiCad** and import this

@@ -7,7 +7,7 @@ from PySpice.Probe.Plot import plot
 from PySpice.Spice.Netlist import Circuit
 from PySpice.Unit import *
 
-#Do not run this if in windows environment
+# Do not run this if in windows environment
 if not os.name == 'nt':
     PySpice.Spice.Simulation.CircuitSimulator.DEFAULT_SIMULATOR = 'ngspice-subprocess'  # to fix the error OSError: cannot load library 'libngspice.so'
 

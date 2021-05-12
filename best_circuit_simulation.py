@@ -14,6 +14,7 @@ if not os.name == 'nt':
 
 circuit = Circuit('Transmission Line')
 
+# TODO: Not sure if this is correct. A "Step Voltage Source" seems more appropriate
 circuit.PulseVoltageSource('pulse', 'input', circuit.gnd, 0@u_V, 1@u_V, 1@u_ns, 1@u_us)
 
 circuit.LosslessTransmissionLine('tl_1', '2', circuit.gnd, '1', circuit.gnd,

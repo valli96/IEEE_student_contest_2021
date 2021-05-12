@@ -9,7 +9,8 @@ from PySpice.Unit import *
 
 # Do not run this if in windows environment
 if not os.name == 'nt':
-    PySpice.Spice.Simulation.CircuitSimulator.DEFAULT_SIMULATOR = 'ngspice-subprocess'  # to fix the error OSError: cannot load library 'libngspice.so'
+    # To fix the error OSError: cannot load library 'libngspice.so'
+    PySpice.Spice.Simulation.CircuitSimulator.DEFAULT_SIMULATOR = 'ngspice-subprocess'  
 
 
 circuit = Circuit('Transmission Line')
@@ -17,6 +18,7 @@ circuit = Circuit('Transmission Line')
 # TODO: Not sure if this is correct. A "Step Voltage Source" seems more appropriate
 circuit.PulseVoltageSource('pulse', 'input', circuit.gnd, 0@u_V, 1@u_V, 1@u_ns, 1@u_us)
 
+# TODO: Naming convention seems wrong
 circuit.LosslessTransmissionLine('tl_1', '2', circuit.gnd, '1', circuit.gnd,
                                  impedance=120, time_delay=2.5e-9)
 
@@ -30,6 +32,8 @@ circuit.LosslessTransmissionLine('tl_4', '7', circuit.gnd, '6', circuit.gnd,
                                  impedance=120, time_delay=8.25e-9)
 
 
+# TODO: Are those Omegas legal??
+# TODO: Values seem wrong
 circuit.R('R_1', 'input', '1', 120@u_Ω)
 circuit.R('R_2', '3', '2', 120@u_Ω)
 circuit.R('R_3', '5', '4', 120@u_Ω)

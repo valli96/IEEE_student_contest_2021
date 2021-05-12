@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 
 import PySpice
-
+import sys
 import PySpice.Logging.Logging as Logging
 logger = Logging.setup_logging()
 

@@ -18,26 +18,25 @@ circuit = Circuit('Transmission Line')
 # TODO: Not sure if this is correct. A "Step Voltage Source" seems more appropriate
 circuit.PulseVoltageSource('pulse', 'input', circuit.gnd, 0@u_V, 1@u_V, 1@u_ns, 1@u_us)
 
-# TODO: Naming convention seems wrong
-circuit.LosslessTransmissionLine('tl_1', '2', circuit.gnd, '1', circuit.gnd,
+# TODO: Check if ground is correct
+circuit.LosslessTransmissionLine('1', '2', circuit.gnd, '1', circuit.gnd,
                                  impedance=120, time_delay=2.5e-9)
 
-circuit.LosslessTransmissionLine('tl_2', '4', circuit.gnd, '3', circuit.gnd,
+circuit.LosslessTransmissionLine('2', '4', circuit.gnd, '3', circuit.gnd,
                                  impedance=120, time_delay=3.75e-9)
 
-circuit.LosslessTransmissionLine('tl_3', '6', circuit.gnd, '5', circuit.gnd,
+circuit.LosslessTransmissionLine('3', '6', circuit.gnd, '5', circuit.gnd,
                                  impedance=120, time_delay=6.25e-9)
 
-circuit.LosslessTransmissionLine('tl_4', '7', circuit.gnd, '6', circuit.gnd,
+circuit.LosslessTransmissionLine('4', '7', circuit.gnd, '6', circuit.gnd,
                                  impedance=120, time_delay=8.25e-9)
 
 
-# TODO: Are those Omegas legal??
 # TODO: Values seem wrong
-circuit.R('R_1', 'input', '1', 120@u_Ω)
-circuit.R('R_2', '3', '2', 120@u_Ω)
-circuit.R('R_3', '5', '4', 120@u_Ω)
-circuit.R('R_4', '7', circuit.gnd, 120@u_Ω)
+circuit.R('1', 'input', '1', 120@u_Ohm)
+circuit.R('2', '3', '2', 120@u_Ohm)
+circuit.R('3', '5', '4', 120@u_Ohm)
+circuit.R('4', '7', circuit.gnd, 120@u_Ohm)
 
 simulator = circuit.simulator(temperature=25, nominal_temperature=25)
 analysis = simulator.transient(step_time=1e-11, end_time=100e-9)

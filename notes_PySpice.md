@@ -10,6 +10,8 @@
 
 [Netlist components](https://pyspice.fabrice-salvaire.fr/releases/v1.4/api/PySpice/Spice/Netlist.html)
 
+[Spice doc](https://psim.powersimtech.com/hubfs/PDF%20Tutorials/Level-2%20and%20SPICE%20Model%20Simulation,%20Loss%20Calculation/SPICE-User-Manual.pdf)
+
 [A greart short introduction to PySpice](https://www.slideshare.net/PoleSystematicParisRegion/pyparis2017-circuit-simulation-using-python-by-fabrice-salvaire)
 
 [A example of a transmission line simulation](https://pyspice.fabrice-salvaire.fr/releases/v1.4/examples/transmission-lines/time-delay.html)

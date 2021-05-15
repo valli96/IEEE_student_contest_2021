@@ -1,3 +1,5 @@
+
+
 import os
 import matplotlib.pyplot as plt
 import PySpice
@@ -10,6 +12,7 @@ from PySpice.Unit import *
 # Do not run this if in windows environment
 if not os.name == 'nt':
     # To fix the error OSError: cannot load library 'libngspice.so'
+    # import ipdb
     PySpice.Spice.Simulation.CircuitSimulator.DEFAULT_SIMULATOR = 'ngspice-subprocess'  
 
 
@@ -18,7 +21,9 @@ circuit = Circuit('Transmission Line')
 # TODO: Not sure if this is correct. A "Step Voltage Source" seems more appropriate
 circuit.PulseVoltageSource('pulse', 'input', circuit.gnd, 0@u_V, 1@u_V, 1@u_ns, 1@u_us)
 
-# TODO: Check if ground is correct
+# TODO: Check if ground is correct 
+#  
+
 circuit.LosslessTransmissionLine('1', '2', circuit.gnd, '1', circuit.gnd,
                                  impedance=120, time_delay=2.5e-9)
 
@@ -34,8 +39,8 @@ circuit.LosslessTransmissionLine('4', '7', circuit.gnd, '6', circuit.gnd,
 
 # TODO: Values seem wrong
 circuit.R('1', 'input', '1', 120@u_Ohm)
-circuit.R('2', '3', '2', 120@u_Ohm)
-circuit.R('3', '5', '4', 120@u_Ohm)
+circuit.R('2', '3', '2', 1@u_MOhm)
+circuit.R('3', '5', '4', 1@u_MOhm)
 circuit.R('4', '7', circuit.gnd, 120@u_Ohm)
 
 simulator = circuit.simulator(temperature=25, nominal_temperature=25)

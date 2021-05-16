@@ -86,3 +86,19 @@ With this the name and voltage of every node can be extracted. For example of th
 
     print(str(analysis.nodes['out']))
     print(float(analysis.nodes['out'])) # if the variable is forced in to a float is will give the voltage
+
+
+### definition voltage source
+
+
+> to find in ipdb PySpiceOpject.V_Name
+
+circuit.PulseVoltageSource('Name','Node_1','Node_2'
+                   1: initial_value
+                   2: pules_value 
+                   3: pulse_with
+                   4: period
+                   5: delay_time
+                   6: rise_time
+                   7: fall_time)
+

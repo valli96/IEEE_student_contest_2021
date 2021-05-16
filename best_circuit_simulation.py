@@ -18,8 +18,8 @@ if not os.name == 'nt':
 
 circuit = Circuit('Transmission Line')
 
-# TODO: Not sure if this is correct. A "Step Voltage Source" seems more appropriate
-circuit.PulseVoltageSource('pulse', 'input', circuit.gnd, 0@u_V, 1@u_V, 1@u_ns, 1@u_us)
+circuit.PulseVoltageSource('pulse', 'input', circuit.gnd, 0@u_V, 4@u_V, 30@u_us, 60@u_us, 0@u_us, 2@u_ns, 2@u_us)
+# circuit.PulseVoltageSource('pulse', 'input', circuit.gnd, 0@u_V, 1@u_V, 1@u_ns, 1@u_us)
 
 # TODO: Check if ground is correct 
 #  

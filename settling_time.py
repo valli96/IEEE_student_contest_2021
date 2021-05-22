@@ -19,10 +19,10 @@ if not os.name == 'nt':
 circuit = Circuit('Transmission Line')
 
 # syntax pulse(name, v_inital, v_pulsed, pulse_width, period, delay_time, rise_time, fall_time)
-circuit.PulseVoltageSource('pulse', 'N_1', 'N_5', 0@u_V, 4@u_V, 30@u_us, 60@u_us, 0@u_us, 2@u_ns, 2@u_us)
+circuit.PulseVoltageSource('pulse', 'N_1', 'N_4', 0@u_V, 4@u_V, 300@u_us, 60@u_us, 0@u_us, 2@u_ns, 2@u_us)
 circuit.R('1', 'N_2', 'N_1', 25@u_Ω)
 circuit.R('2', 'N_4', 'N_3', 50@u_Ω)
-circuit.LosslessTransmissionLine('delay', 'N_3','N_2' , 'N_4', 'N_5', impedance=120, time_delay=40e-9)
+circuit.LosslessTransmissionLine('delay', 'N_3','N_4' , 'N_2', 'N_4', impedance=120, time_delay=40e-9)
 
 simulator = circuit.simulator(temperature=25, nominal_temperature=25)
 analysis = simulator.transient(step_time=1e-10, end_time=1e-6)
@@ -33,9 +33,9 @@ dc_circuit.PulseVoltageSource('pulse', 'N_1', dc_circuit.gnd, 0@u_V, 4@u_V, 30@u
 dc_circuit.R('1', 'N_1', 'N_2', 25@u_Ω)
 dc_circuit.R('2', 'N_2', dc_circuit.gnd, 50@u_Ω)
 
-# import ipdb
-# ipdb.set_trace()
-# ipdb.set_trace(context=3)
+import ipdb
+ipdb.set_trace()
+ipdb.set_trace(context=3)
 
 dc_simulator = dc_circuit.simulator(temperature=25, nominal_temperature=25)
 # dc_analysis = dc_simulator.transient(step_time=1e-10, end_time=1e-6)

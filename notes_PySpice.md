@@ -102,3 +102,10 @@ circuit.PulseVoltageSource('Name','Node_1','Node_2'
                    6: rise_time
                    7: fall_time)
 
+### DC simulation
+
+- it is not possible to initialized a transmission line with a delay
+- the simulation will take for ever if the time is between 1e10 1e21
+- spice will thrown a error if the time_delay is smaller as 1e21
+
+

@@ -10,3 +10,8 @@ pd_graphInfo, list_graphEdges   = testCase.loadGraphs('data/graphs.csv')
 testCase.generateTopologies(pd_graphInfo.loc[2], list_graphEdges[2])
 
 a = 1
+
+
+import nodeLink
+
+linkA   = nodeLink()

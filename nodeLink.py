@@ -6,13 +6,11 @@ class nodeLink :
         Links have permission for different connection types
         - p_short:      Nodes can be connected electrically
         - p_open:       Nodes can be unconnected
-        - p_device:     Nodes can be connected by an ECU
-
-        Links can have a default electric connectiosn
-        - solid:        Nodes are connected electrically by default
     '''
 
-    def __init__(self, name, nodeA : node, nodeB : node, p_short, p_open, p_device, solid) :
+    allNodeLinks   = []
+
+    def __init__(self, name, nodeA : node, nodeB : node, p_short, p_open) :
         ''' Initializes nodeLink object
 
             name (str):         name of link
@@ -24,19 +22,21 @@ class nodeLink :
             solid (bool):       sets connection to electric short by default
         '''
 
-        self.name       = name      
+        self.name       = name    
 
         self.nodeA      = nodeA     
         self.nodeB      = nodeB    
 
         self.p_short    = p_short   
         self.p_open     = p_open    
-        self.p_device   = p_device  
-        self.solid      = solid
+
 
         # Associate nodeLink with node
         nodeA.addLink(name)
         nodeB.addLink(name)
+
+        # Add this instance to allNodeLinks
+        self.allNodeLinks.append(self)
 
 
 class nodeLink_solid(nodeLink) :
@@ -48,7 +48,8 @@ class nodeLink_solid(nodeLink) :
 
     def __init__(self, name, nodeA : node, nodeB : node,):
 
-        super().__init__(name, nodeA, nodeB, True, False, True, True)
+        newName = name + '_nls_' + nodeA.nodeID + '_' + nodeB.nodeID  
+        super().__init__(newName, nodeA, nodeB, True, False)
 
 class nodeLink_potential(nodeLink) :
     ''' nodeLink child class for potential links. Potential links are 
@@ -59,7 +60,8 @@ class nodeLink_potential(nodeLink) :
 
     def __init__(self, name, nodeA : node, nodeB : node,):
 
-        super().__init__(name, nodeA, nodeB, False, True, True, False)
+        newName = name + '_nlp_' + nodeA.nodeID + '_' + nodeB.nodeID
+        super().__init__(newName, nodeA, nodeB, False, True)
 
 class nodeLink_terminal(nodeLink) :
     ''' nodeLink child class for terminal links. Terminal links are 
@@ -70,4 +72,5 @@ class nodeLink_terminal(nodeLink) :
 
     def __init__(self, name, nodeA : node, nodeB : node,):
 
-        super().__init__(name, nodeA, nodeB, True, True, True, False)
+        newName = name + '_nlt_' + nodeA.nodeID + '_' + nodeB.nodeID
+        super().__init__(newName, nodeA, nodeB, True, True)

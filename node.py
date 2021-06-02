@@ -5,11 +5,16 @@ class node :
         generation. Nodes may be merged after all nodeLinks have been established.
     '''
 
+    allNodes    = []
+
     def __init__(self, nodeID) :
         ''' Initialize node object '''
 
         self.nodeID = nodeID
         self.links  = list()
+
+        # Add this instance to allNodes
+        self.allNodes.append(self)
 
 
     def addLink(self, linkName) :

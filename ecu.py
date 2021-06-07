@@ -17,13 +17,3 @@ class ecu :
         '''
 
         self.type = type
-        
-
-    def checkNodes(self) :
-        ''' Checks if all nodes are assigned to an ID. Returns list of node IDs if all
-            nodes are assigned. Returns False if not.
-        '''
-
-        if all(not [self.nodeA, self.nodeB] == None) :
-            
-            return True

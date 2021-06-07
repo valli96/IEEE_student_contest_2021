@@ -16,13 +16,19 @@ class node :
         # Add this instance to allNodes
         self.allNodes.append(self)
 
+    def checkNodes(cls) :
+        ''' Checks if all nodes are linked '''
+
+        for n in cls.allNodes :
+            assert n.hasLink(), 'Node ' + n.nodeID + ' is not linked'
+        
+        print("All nodes are linked")
 
     def addLink(self, linkName) :
         ''' Add a linkName to node connections '''
 
         self.links.append(linkName)
 
-    
     def hasLink(self) :
         ''' Returns if node is associated with a nodeLink '''
 

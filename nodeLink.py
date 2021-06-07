@@ -30,6 +30,8 @@ class nodeLink :
         self.p_short    = p_short   
         self.p_open     = p_open    
 
+        self.config     = None      # Node configuration (Device, Open, Short)
+        
 
         # Associate nodeLink with node
         nodeA.addLink(name)

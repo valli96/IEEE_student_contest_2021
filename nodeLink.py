@@ -4,8 +4,10 @@ class nodeLink :
     ''' Link between nodes within a vertex.
 
         Links have permission for different connection types
-        - p_short:      Nodes can be connected electrically
-        - p_open:       Nodes can be unconnected
+        p_short:    Nodes can be connected electrically
+        p_open:     Nodes can be unconnected
+
+        config:     Configuration of node link (D, O, S)
     '''
 
     allNodeLinks   = []

@@ -23,12 +23,6 @@ class vertex :
             print(nl.name)
 
 
-    def getPossibleLinkConfigs(self) :
-        ''' Returns a list of possible nodeLink configurations '''
-
-        a = 1
-
-
 class vertex_type1(vertex) :
     ''' TODO docstring
     '''
@@ -44,7 +38,6 @@ class vertex_type1(vertex) :
         nodeLinks   = [self.nodeLink_t1]
 
         super().__init__(name, nodeLinks)
-
 
 class vertex_type2(vertex) :
     ''' TODO docstring

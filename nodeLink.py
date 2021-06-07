@@ -42,6 +42,13 @@ class nodeLink :
         # Add this instance to allNodeLinks
         self.allNodeLinks.append(self)
 
+    def checkNodeLinks(cls) :
+        ''' Checks if all nodeLinks are configured '''
+
+        for nl in cls.allNodeLinks :
+            assert not nl.config == None, 'nodeLink ' + nl.name + ' is not configured'
+        
+        print("All nodeLinks are configured")
 
 class nodeLink_solid(nodeLink) :
     ''' nodeLink child class for solid links. Solid links are 

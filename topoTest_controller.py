@@ -1,3 +1,5 @@
+import pdb
+pdb.set_trace()
 from nodeLink import nodeLink
 from vertex import vertex, vertex_type1, vertex_type2
 from transLine import transLine

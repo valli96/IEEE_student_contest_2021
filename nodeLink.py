@@ -4,8 +4,10 @@ class nodeLink :
     ''' Link between nodes within a vertex.
 
         Links have permission for different connection types
-        - p_short:      Nodes can be connected electrically
-        - p_open:       Nodes can be unconnected
+        p_short:    Nodes can be connected electrically
+        p_open:     Nodes can be unconnected
+
+        config:     Configuration of node link (D, O, S)
     '''
 
     allNodeLinks   = []
@@ -30,6 +32,8 @@ class nodeLink :
         self.p_short    = p_short   
         self.p_open     = p_open    
 
+        self.config     = None      # Node configuration (Device, Open, Short)
+        
 
         # Associate nodeLink with node
         nodeA.addLink(name)
@@ -38,6 +42,13 @@ class nodeLink :
         # Add this instance to allNodeLinks
         self.allNodeLinks.append(self)
 
+    def checkNodeLinks(cls) :
+        ''' Checks if all nodeLinks are configured '''
+
+        for nl in cls.allNodeLinks :
+            assert not nl.config == None, 'nodeLink ' + nl.name + ' is not configured'
+        
+        print("All nodeLinks are configured")
 
 class nodeLink_solid(nodeLink) :
     ''' nodeLink child class for solid links. Solid links are 

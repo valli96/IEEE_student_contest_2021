@@ -10,7 +10,6 @@ from PySpice.Unit import *
 # Do not run this if in windows environment
 if not os.name == 'nt':
     # To fix the error OSError: cannot load library 'libngspice.so'
-    # import ipdb
     PySpice.Spice.Simulation.CircuitSimulator.DEFAULT_SIMULATOR = 'ngspice-subprocess'  
 
 
@@ -31,7 +30,6 @@ circuit.LosslessTransmissionLine('3', 'T3e', circuit.gnd, 'T2e', circuit.gnd,
 
 circuit.LosslessTransmissionLine('4', 'T4e', circuit.gnd, 'T3e', circuit.gnd,
                                  impedance=120, time_delay=8.25e-9)
-
 
 circuit.R('1M', 'T1b', circuit.gnd, 1@u_MOhm)
 circuit.R('2M', 'T3e', circuit.gnd, 1@u_MOhm)
@@ -55,7 +53,24 @@ ax.set_ylabel('Voltage (V)')
 ax.grid()
 ax.legend(['input', 'T1b','T1e','T2e','T3e','T4e'], loc='upper right')
 
+scale_factor = 1e-11
+end_time=100e-9
+
+xmin, xmax = plt.xlim()
+ymin, ymax = plt.ylim()
+# xmin = xmin*scale_factor; xmax= xmax*scale_factor; 
+# ax.set(xlim=(xmin, end_time), ylim=(ymin, ymax))
+
+plt.xlim(xmin * scale_factor, end_time)
+plt.ylim(ymin, ymax)
+
+print('ymax = '+ str(ymax))
+print('ymin = '+ str(ymin))
+print('xmax = '+ str(xmax))
+print('xmin = '+ str(xmin))
+print('xend = '+ str(end_time))
+
+ax.ticklabel_format(axis='x', style='sci', scilimits=(0,0))
+
 plt.show()
-
-
 

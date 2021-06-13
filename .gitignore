@@ -3,3 +3,4 @@
 .vscode/launch.json
 __pycache__/TestCase.cpython-37.pyc
 *.pyc
+test_csv/*

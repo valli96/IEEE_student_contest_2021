@@ -5,20 +5,13 @@ class transLine :
     ''' TODO Docstring
     '''
 
-    def __init__(self, name, length=None, delay=None, impedance=120) :
+    def __init__(self, name) :
         ''' Initializes transLine object
 
-            length (float):     Length of transmission line in meters
-            delay (float):      Delay of transmission line in ns
-            impedance (float):  Impedance of transmission line
-
-            Either length or delay must be given. In case both are given, delay takes
-            priority. In case only length is given, c = 2 * 10e8 is assumed.
-
+            name (str):         name of transmission line (choose from T0..T3)
         '''
         
         self.name       = name
-        self.impedance  = impedance
         
         self.nodeA1     = node(name + '_nA1')
         self.nodeA2     = node(name + '_nA2')
@@ -26,18 +19,5 @@ class transLine :
         self.nodeB2     = node(name + '_nB2')
 
         self.portA      = port(self.nodeA1, self.nodeA2)
-        self.portB      = port(self.nodeB1, self.nodeB2)
-        
-        # Get delay parameter
-        if not delay == None :
-            self.delay  = delay
-
-        elif not length == None :
-            self.delay  = length / (2 * 10e8) * 10e9
-
-        else :
-            assert 0, 'transLine needs length and/or delay parameter'
-        
-
-        
+        self.portB      = port(self.nodeB1, self.nodeB2)    
 

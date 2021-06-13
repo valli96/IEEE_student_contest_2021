@@ -1,5 +1,4 @@
 import pdb
-pdb.set_trace()
 from nodeLink import nodeLink
 from vertex import vertex_type1, vertex_type2
 from transLine import transLine
@@ -10,9 +9,9 @@ import itertools
 import pandas as pd
 
 
-T0  = transLine('T0', length=2)
-T1  = transLine('T1', length=3)
-T2  = transLine('T2', length=5)
+T0  = transLine('T0')
+T1  = transLine('T1')
+T2  = transLine('T2')
 
 D0  = device('D0')
 D1  = device('D1')
@@ -135,6 +134,10 @@ synthesizeNodes(allNodeLinks, allDevices)
 
 
 device.checkDevices(device)
+
+
+
+
 
 
 # TODO: investigate and fix possible problems for type 3 and 4 vertices in synthesizeNodes

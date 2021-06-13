@@ -1,5 +1,6 @@
 
 
+
 class node :
     ''' The node is the basic connection unit. All nodes are unique during topology
         generation. Nodes may be merged after all nodeLinks have been established.
@@ -17,20 +18,25 @@ class node :
         # Add this instance to allNodes
         self.allNodes.append(self)
 
-    def checkNodes(cls) :
+    def check(cls) :
         ''' Checks if all nodes are linked '''
 
         for n in cls.allNodes :
             assert len(n.links) > 0, 'Node >' + n.nodeID + '< is not linked'
-        
-        print("All nodes are linked")
 
-    def addLink(self, linkName) :
+    def addLink(self, link) :
         ''' Add a linkName to node connections '''
 
-        self.links.append(linkName)
+        self.links.append(link)
 
+    def purge(cls) :
+        ''' Purges changing parameters (cID) '''
 
+        n   = ... # type: node
+
+        for n in cls.allNodes :
+            n.cID   = None
+        
 
 class port :
     ''' Groups two nodes together. Ports are passed to vertex '''

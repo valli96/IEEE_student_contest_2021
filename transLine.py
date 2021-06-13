@@ -5,6 +5,8 @@ class transLine :
     ''' TODO Docstring
     '''
 
+    allTransLines   = []
+
     def __init__(self, name) :
         ''' Initializes transLine object
 
@@ -21,3 +23,5 @@ class transLine :
         self.portA      = port(self.nodeA1, self.nodeA2)
         self.portB      = port(self.nodeB1, self.nodeB2)    
 
+        # Add this instance to allTransLines
+        self.allTransLines.append(self)

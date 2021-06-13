@@ -36,19 +36,36 @@ class nodeLink :
         
 
         # Associate nodeLink with node
-        nodeA.addLink(name)
-        nodeB.addLink(name)
+        nodeA.addLink(self)
+        nodeB.addLink(self)
 
         # Add this instance to allNodeLinks
         self.allNodeLinks.append(self)
 
-    def checkNodeLinks(cls) :
+    def check(cls) :
         ''' Checks if all nodeLinks are configured '''
 
         for nl in cls.allNodeLinks :
             assert not nl.config == None, 'nodeLink ' + nl.name + ' is not configured'
-        
-        print("All nodeLinks are configured")
+
+    def configure(cls, nlConfig) :
+        ''' Configure nodeLinks according to nlConfig '''
+
+        nl  = ...   # type: nodeLink
+
+        for nl, nlConf in zip (cls.allNodeLinks, nlConfig) :
+            nl.config   = nlConf
+
+        nodeLink.check(nodeLink)
+    
+    def purge(cls) :
+        ''' Purges changing parameters (config) '''
+
+        nl  = ...   # type: nodeLink
+
+        for nl in cls.allNodeLinks :
+            nl.config   = None
+
 
 class nodeLink_solid(nodeLink) :
     ''' nodeLink child class for solid links. Solid links are 

@@ -27,8 +27,32 @@ v3  = vertex_type1('v3', T2.portB)
 def getNodeLinkConfigs(allNodeLinks : List[nodeLink]) :
     ''' Returns a list of possible nodeLink configurations '''  
 
+    def checkNodeLinkConfig(allNodes : List[node]) :
+        ''' Checks if two devices are connected to each other. Returns bolean. '''
+
+        n   = ...   # type: node
+        nl  = ...   # type: nodeLink
+
+        for n in allNodes :
+            
+            # Check if node has more than one link
+            if len(n.links) == 1 :
+                continue
+
+            # Check if more than 1 nodeLink has device configuration
+            devicesFound    = 0
+
+            for nl in n.links :
+                if (nl.config[0] == 'D') :
+                    devicesFound    = devicesFound + 1
+
+                if devicesFound > 1 :
+                    return False
+
+        return True
+
     # Get all allowed configurations for each nodeLink
-    allowedConfigsList  = list()
+    configs_01  = list()
 
     for nl in allNodeLinks :
         
@@ -38,41 +62,47 @@ def getNodeLinkConfigs(allNodeLinks : List[nodeLink]) :
         if (nl.p_short) :
             allowed.append('S')
 
-        allowedConfigsList.append(allowed)
+        configs_01.append(allowed)
 
     # Get all permutation of allowed configurations
-    configPermutations  = list(itertools.product(*allowedConfigsList))
+    configs_02  = list(itertools.product(*configs_01))
 
     # Get config permutation with exactly four 'D' - devices
-    validConfigPermutations = list()
+    configs_03  = list()
 
-    for confPerm in configPermutations :
-        if confPerm.count('D') == 4 :
-            validConfigPermutations.append(list(confPerm))
+    for conf in configs_02 :
+        if conf.count('D') == 4 :
+            configs_03.append(list(conf))
 
     # Assign names D0 .. D3 to device placeholders
     deviceNames = ['D0', 'D1', 'D2', 'D3']
 
-    for vConfPerm in validConfigPermutations :
-        deviceInds  = [index for index, value in enumerate(vConfPerm) if value == 'D']
+    for conf in configs_03 :
+        deviceInds  = [index for index, value in enumerate(conf) if value == 'D']
 
         for deviceIndx, deviceName in zip(deviceInds, deviceNames) :
-            vConfPerm[deviceIndx]   = deviceName
+            conf[deviceIndx]   = deviceName
+
+    # Temporarily configure nodeLinks to check for illegal device connections
+    configs_04  = list()
+
+    for conf in configs_03 :
+        nodeLink.configure(nodeLink, conf) 
+        node.check(node)
+
+        if checkNodeLinkConfig(node.allNodes) :
+            configs_04.append(conf)
+
+        nodeLink.purge(nodeLink)
 
     # Put list into df and return
-    nodeLinkConfigs = pd.DataFrame(validConfigPermutations)
+    nodeLinkConfigs = pd.DataFrame(configs_04)
 
-    print(str(len(validConfigPermutations)) + " nodeLink configurations generated")
+    print(str(len(configs_04)) + " nodeLink configurations generated")
     return nodeLinkConfigs
 
-def configureNodeLinks(allNodeLinks : List[nodeLink], nodeLinkConfiguration) :
-    ''' Configure nodeLinks according to linkConfiguration '''
-
-    for nl, nlConf in zip (allNodeLinks, nodeLinkConfiguration) :
-        nl.config   = nlConf
-
-def synthesizeNodes(allNodeLinks : List[nodeLink], allDevices : List[device]) :
-    ''' Sets node cID for circuit synthesis '''
+def synthesizeTopology(allNodeLinks : List[nodeLink], allDevices : List[device]) :
+    ''' Sets node cID for topology synthesis '''
 
     # Iterate over all nodeLinks and convert nodeIDs
     for nl in allNodeLinks :
@@ -120,19 +150,22 @@ def synthesizeNodes(allNodeLinks : List[nodeLink], allDevices : List[device]) :
             d.nodeA.cID     = nl.nodeA.cID 
             d.nodeB.cID     = nl.nodeB.cID 
 
-node.checkNodes(node)
 
+# Do once
+node.check(node)
+
+allNodes        = node.allNodes
 allNodeLinks    = nodeLink.allNodeLinks
 allDevices      = device.allDevices
 
-nodeLinkConfigs = getNodeLinkConfigs(allNodeLinks)
-
-configureNodeLinks(allNodeLinks, nodeLinkConfigs.loc[0])
-nodeLink.checkNodeLinks(nodeLink)
-
-synthesizeNodes(allNodeLinks, allDevices)
+nlConfigs       = getNodeLinkConfigs(allNodeLinks)
 
 
+
+nodeLink.purge(nodeLink)
+nodeLink.configure(node, nlConfigs.loc[0])
+
+synthesizeTopology(allNodeLinks, allDevices)
 device.checkDevices(device)
 
 
@@ -143,6 +176,7 @@ device.checkDevices(device)
 # TODO: investigate and fix possible problems for type 3 and 4 vertices in synthesizeNodes
 # TODO: implement TL permutations
 # TODO: ->first make combinations -> config -> set values as permutations for TL and Devices
+# TODO: Detect illegal device topologies (adjecent devices)
 
 # DONE: maybe get device combinations instead of permutations
 # DONE: Fix synth process 

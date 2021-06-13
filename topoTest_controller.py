@@ -29,13 +29,12 @@ def getNodeLinkConfigs(allNodeLinks : List[nodeLink]) :
     # Get all allowed configurations for each nodeLink
     allowedConfigsList  = list()
 
-    for i in range(0, len(allNodeLinks)) :
-        link    = allNodeLinks[i]
+    for nl in allNodeLinks :
         
         allowed     = ['D']
-        if (link.p_open) :
+        if (nl.p_open) :
             allowed.append('O')
-        if (link.p_short) :
+        if (nl.p_short) :
             allowed.append('S')
 
         allowedConfigsList.append(allowed)
@@ -46,32 +45,24 @@ def getNodeLinkConfigs(allNodeLinks : List[nodeLink]) :
     # Get config permutation with exactly four 'D' - devices
     validConfigPermutations = list()
 
-    for i in range(0, len(configPermutations)) :
-        if configPermutations[i].count('D') == 4 :
-            validConfigPermutations.append(configPermutations[i])
+    for confPerm in configPermutations :
+        if confPerm.count('D') == 4 :
+            validConfigPermutations.append(list(confPerm))
 
-    # Get different device permutations for each valid config permutation
-    linkConfigList      = list()
-    devicePermutations  = list(itertools.permutations(['D0', 'D1', 'D2', 'D3']))
+    # Assign names D0 .. D3 to device placeholders
+    deviceNames = ['D0', 'D1', 'D2', 'D3']
 
-    for validConfig in validConfigPermutations :
-        for devicePerm in devicePermutations :
+    for vConfPerm in validConfigPermutations :
+        deviceInds  = [index for index, value in enumerate(vConfPerm) if value == 'D']
 
-            detConfig   = list(validConfig)
-            devicePerm  = list(devicePerm)
-            deviceInds  = [index for index, value in enumerate(validConfig) if value == 'D']
-            
-            for deviceIndx, device in zip(deviceInds, devicePerm) :
-                detConfig[deviceIndx] = device
-            
-            linkConfigList.append(detConfig)
+        for deviceIndx, deviceName in zip(deviceInds, deviceNames) :
+            vConfPerm[deviceIndx]   = deviceName
 
-    # Put list into df
-    linkConfigs = pd.DataFrame(linkConfigList)
+    # Put list into df and return
+    nodeLinkConfigs = pd.DataFrame(validConfigPermutations)
 
-    print(str(len(linkConfigList)) + " nodeLink configurations generated")
-
-    return linkConfigs
+    print(str(len(validConfigPermutations)) + " nodeLink configurations generated")
+    return nodeLinkConfigs
 
 def configureNodeLinks(allNodeLinks : List[nodeLink], nodeLinkConfiguration) :
     ''' Configure nodeLinks according to linkConfiguration '''
@@ -135,7 +126,7 @@ allDevices      = device.allDevices
 
 nodeLinkConfigs = getNodeLinkConfigs(allNodeLinks)
 
-configureNodeLinks(allNodeLinks, nodeLinkConfigs.loc[984])
+configureNodeLinks(allNodeLinks, nodeLinkConfigs.loc[0])
 nodeLink.checkNodeLinks(nodeLink)
 
 synthesizeNodes(allNodeLinks, allDevices)
@@ -143,14 +134,15 @@ synthesizeNodes(allNodeLinks, allDevices)
 
 device.checkDevices(device)
 
+
 # TODO: investigate and fix possible problems for type 3 and 4 vertices in synthesizeNodes
 # TODO: implement TL permutations
-# TODO: maybe get device combinations instead of permutations
 # TODO: ->first make combinations -> config -> set values as permutations for TL and Devices
 
-
+# DONE: maybe get device combinations instead of permutations
 # DONE: Fix synth process 
 
+print(nodeLinkConfigs)
 [print(n.nodeID + "\t-> " + n.cID) for n in node.allNodes]
 a = 1
 

@@ -12,6 +12,7 @@ class node :
 
         self.nodeID = nodeID
         self.links  = list()
+        self.cID    = None      # ID used for circuit synth, changes for each config
 
         # Add this instance to allNodes
         self.allNodes.append(self)
@@ -20,7 +21,7 @@ class node :
         ''' Checks if all nodes are linked '''
 
         for n in cls.allNodes :
-            assert n.hasLink(), 'Node ' + n.nodeID + ' is not linked'
+            assert len(n.links) > 0, 'Node >' + n.nodeID + '< is not linked'
         
         print("All nodes are linked")
 
@@ -29,10 +30,6 @@ class node :
 
         self.links.append(linkName)
 
-    def hasLink(self) :
-        ''' Returns if node is associated with a nodeLink '''
-
-        return not (len(self.links) == 0)
 
 
 class port :

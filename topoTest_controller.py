@@ -8,6 +8,12 @@ import itertools
 import pandas as pd
 
 
+TL_dict     = { 'L1' : 2,
+                'L2' : 3,
+                'L3' : 5,
+                'L4' : 7}
+                
+
 TL_VALUES       = [2, 3, 5, 7]
 
 TL_NAMES        = ['T0', 'T1', 'T2','T3']
@@ -163,23 +169,16 @@ def getParameterConfigs(TL_values : List[int], TL_count : int, ecu_names : List[
         TL_values (List[int]):  List of possible transmission line lengths
         TL_count (int):         Number of transmission lines used in current graph
         ecu_names (List[str]):  Names to associate topology devices to ECUs
+        # TODO: Clean up arguments
     '''
 
     tl_perms    = list(itertools.permutations(TL_values, TL_count))
     ecu_perms   = list(itertools.permutations(ecu_names, 4))
 
-    tl_perms    = [pd.Series(elem, index=TL_NAMES[:TL_count]) for elem in tl_perms]
-    ecu_perms   = [pd.Series(elem, index=DEVICE_NAMES) for elem in ecu_perms]
+    paraConfigs = list(itertools.product(tl_perms, ecu_perms))
+    paraConfigs = [list(paraConfigRow[0] + paraConfigRow[1]) for paraConfigRow in paraConfigs] 
+    paraConfigs = pd.DataFrame(paraConfigs, columns=(list(TL_dict.keys())[:TL_count] + DEVICE_NAMES))
 
-    paraConfigs = pd.DataFrame()
-
-    # TODO not happy here, is very slow
-    for tl_perm in tl_perms :
-        for ecu_perm in ecu_perms :
-            params  = tl_perm.append(ecu_perm)
-            paraConfigs = paraConfigs.append(params, ignore_index=True)
-
-    print(str(len(paraConfigs)) + " parameter configurations generated")
     
     return paraConfigs
 

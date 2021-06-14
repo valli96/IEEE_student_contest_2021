@@ -1,4 +1,3 @@
-import pdb
 from nodeLink import nodeLink
 from vertex import vertex_type1, vertex_type2
 from transLine import transLine
@@ -7,6 +6,13 @@ from device import device
 from typing import List
 import itertools
 import pandas as pd
+
+
+TL_VALUES       = [2, 3, 5, 7]
+
+TL_NAMES        = ['T0', 'T1', 'T2','T3']
+DEVICE_NAMES    = ['D0', 'D1', 'D2', 'D3']
+ECU_NAMES       = ['ECU1', 'ECU2', 'ECU3', 'ECU4']
 
 
 T0  = transLine('T0')
@@ -24,7 +30,7 @@ v2  = vertex_type2('v2', T1.portB, T2.portA)
 v3  = vertex_type1('v3', T2.portB)
 
 
-def getNodeLinkConfigs(allNodeLinks : List[nodeLink]) :
+def getNodeLinkConfigs(allNodeLinks : List[nodeLink], allNodes : List[node]) :
     ''' Returns a list of possible nodeLink configurations '''  
 
     def checkNodeLinkConfig(allNodes : List[node]) :
@@ -90,7 +96,7 @@ def getNodeLinkConfigs(allNodeLinks : List[nodeLink]) :
         nodeLink.configure(nodeLink, conf) 
         node.check(node)
 
-        if checkNodeLinkConfig(node.allNodes) :
+        if checkNodeLinkConfig(allNodes) :
             configs_04.append(conf)
 
         nodeLink.purge(nodeLink)
@@ -150,6 +156,33 @@ def synthesizeTopology(allNodeLinks : List[nodeLink], allDevices : List[device])
             d.nodeA.cID     = nl.nodeA.cID 
             d.nodeB.cID     = nl.nodeB.cID 
 
+def getParameterConfigs(TL_values : List[int], TL_count : int, ecu_names : List[str]) :
+    ''' Returns a list of all combinations from possible transmission line values
+        and device names.
+
+        TL_values (List[int]):  List of possible transmission line lengths
+        TL_count (int):         Number of transmission lines used in current graph
+        ecu_names (List[str]):  Names to associate topology devices to ECUs
+    '''
+
+    tl_perms    = list(itertools.permutations(TL_values, TL_count))
+    ecu_perms   = list(itertools.permutations(ecu_names, 4))
+
+    tl_perms    = [pd.Series(elem, index=TL_NAMES[:TL_count]) for elem in tl_perms]
+    ecu_perms   = [pd.Series(elem, index=DEVICE_NAMES) for elem in ecu_perms]
+
+    paraConfigs = pd.DataFrame()
+
+    # TODO not happy here, is very slow
+    for tl_perm in tl_perms :
+        for ecu_perm in ecu_perms :
+            params  = tl_perm.append(ecu_perm)
+            paraConfigs = paraConfigs.append(params, ignore_index=True)
+
+    print(str(len(paraConfigs)) + " parameter configurations generated")
+    
+    return paraConfigs
+
 
 # Do once
 node.check(node)
@@ -158,12 +191,12 @@ allNodes        = node.allNodes
 allNodeLinks    = nodeLink.allNodeLinks
 allDevices      = device.allDevices
 
-nlConfigs       = getNodeLinkConfigs(allNodeLinks)
-
+nlConfigs       = getNodeLinkConfigs(allNodeLinks, allNodes)
+paramConfigs    = getParameterConfigs(TL_VALUES, 3, ECU_NAMES)
 
 
 nodeLink.purge(nodeLink)
-nodeLink.configure(node, nlConfigs.loc[0])
+nodeLink.configure(nodeLink, nlConfigs.loc[0])
 
 synthesizeTopology(allNodeLinks, allDevices)
 device.checkDevices(device)
@@ -176,12 +209,12 @@ device.checkDevices(device)
 # TODO: investigate and fix possible problems for type 3 and 4 vertices in synthesizeNodes
 # TODO: implement TL permutations
 # TODO: ->first make combinations -> config -> set values as permutations for TL and Devices
-# TODO: Detect illegal device topologies (adjecent devices)
 
+# DONE: Detect illegal device topologies (adjecent devices)
 # DONE: maybe get device combinations instead of permutations
 # DONE: Fix synth process 
 
-print(nodeLinkConfigs)
+print(nlConfigs)
 [print(n.nodeID + "\t-> " + n.cID) for n in node.allNodes]
 a = 1
 

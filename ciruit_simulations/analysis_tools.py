@@ -20,7 +20,24 @@ def get_DC_voltage(analysis):
     DC_values = {} 
     for i in nodes:
         # print(i)
-        DC_values[i] = analysis[i][(number_simulations - 1)]
-
+        DC_values[i] = analysis[i][(number_simulations - 1)].value
     return DC_values
+
+
+def get_settlingtime(analysis):
+    number_simulations = get_data_points(analysis)
+    nodes = get_nodes(analysis)
+    DC_values = get_DC_voltage(analysis)
+    settling_time = {}
+    for node in nodes:
+        for i in range(number_simulations):
+            voltage = analysis[node][number_simulations - 1 - i].value
+            if voltage >= DC_values[node]*1.02 or voltage <= DC_values[node]*0.98 :
+                print("the Settlingtime is of "+ node)
+                print(number_simulations-i)
+                DC_values[node] = number_simulations-i
+                break
+    return settling_time
+
+
 

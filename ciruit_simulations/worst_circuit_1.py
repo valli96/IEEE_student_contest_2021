@@ -93,6 +93,8 @@ end_time=100e-9
 # print(get_DC_voltage(analysis).keys())
 DC_values = get_DC_voltage(analysis)
 print(DC_values)
+get_settlingtime(analysis)
+
 # print(*analysis['T4e'])
 
 # print('ymax = '+ str(ymax))
@@ -104,9 +106,9 @@ print(DC_values)
 
 
 
-# ax.ticklabel_format(axis='x', style='sci', scilimits=(0,0))
+ax.ticklabel_format(axis='x', style='sci', scilimits=(0,0))
 
-# writer.writerow(analysis.nodes)
-# f.close()
+writer.writerow(analysis.nodes)
+f.close()
 
-# plt.show()
+plt.show()

@@ -7,6 +7,20 @@ from PySpice.Probe.Plot import plot
 from PySpice.Spice.Netlist import Circuit
 from PySpice.Unit import *
 
+from analysis_tools import *
+
+
+import csv
+
+f = open('./test.csv', 'w')
+writer = csv.writer(f)
+
+
+
+# import timeit
+# start = timeit.default_timer()
+
+
 # Do not run this if in windows environment
 if not os.name == 'nt':
     # To fix the error OSError: cannot load library 'libngspice.so'
@@ -37,7 +51,14 @@ circuit.R('1R', 'T1e', 'input', 120@u_Ohm)
 circuit.R('2R', 'T4e', circuit.gnd, 120@u_Ohm)
 
 simulator = circuit.simulator(temperature=25, nominal_temperature=25)
-analysis = simulator.transient(step_time=1e-11, end_time=100e-9)
+# analysis = simulator.transient(step_time=1e-11, end_time=100e-9)
+analysis = simulator.transient(step_time=1e-10, end_time=50e-9)
+
+
+
+# stop = timeit.default_timer()
+# print('Time: ', stop - start)  
+
 
 
 figure, ax = plt.subplots(figsize=(20, 6))
@@ -47,6 +68,7 @@ ax.plot(analysis['T1e'])
 ax.plot(analysis['T2e'])
 ax.plot(analysis['T3e'])
 ax.plot(analysis['T4e'])
+# ax.plot(analysis['t4#i1'])
 
 ax.set_xlabel('Time [ps]')
 ax.set_ylabel('Voltage (V)')
@@ -56,21 +78,37 @@ ax.legend(['input', 'T1b','T1e','T2e','T3e','T4e'], loc='upper right')
 scale_factor = 1e-11
 end_time=100e-9
 
-xmin, xmax = plt.xlim()
-ymin, ymax = plt.ylim()
+# xmin, xmax = plt.xlim()
+# ymin, ymax = plt.ylim()
 # xmin = xmin*scale_factor; xmax= xmax*scale_factor; 
 # ax.set(xlim=(xmin, end_time), ylim=(ymin, ymax))
 
-plt.xlim(xmin * scale_factor, end_time)
-plt.ylim(ymin, ymax)
+# plt.xlim(xmin * scale_factor, end_time)
+# plt.ylim(ymin, ymax)
 
-print('ymax = '+ str(ymax))
-print('ymin = '+ str(ymin))
-print('xmax = '+ str(xmax))
-print('xmin = '+ str(xmin))
-print('xend = '+ str(end_time))
+
+
+# import ipdb; ipdb.set_trace()
+
+# print(get_DC_voltage(analysis).keys())
+DC_values = get_DC_voltage(analysis)
+print(DC_values)
+get_settlingtime(analysis)
+
+# print(*analysis['T4e'])
+
+# print('ymax = '+ str(ymax))
+# print('ymin = '+ str(ymin))
+# print('xmax = '+ str(xmax))
+# print('xmin = '+ str(xmin))
+# print('xend = '+ str(end_time))
+
+
+
 
 ax.ticklabel_format(axis='x', style='sci', scilimits=(0,0))
 
-plt.show()
+writer.writerow(analysis.nodes)
+f.close()
 
+plt.show()

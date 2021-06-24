@@ -6,6 +6,7 @@ logger = Logging.setup_logging()
 from PySpice.Probe.Plot import plot
 from PySpice.Spice.Netlist import Circuit
 from PySpice.Unit import *
+from analysis_tools import *
 
 # Do not run this if in windows environment
 if not os.name == 'nt':
@@ -44,6 +45,10 @@ circuit.R('4', '7', circuit.gnd, 120@u_Ohm)
 simulator = circuit.simulator(temperature=25, nominal_temperature=25)
 analysis = simulator.transient(step_time=1e-11, end_time=100e-9)
 
+
+DC_values = get_DC_voltage(analysis)
+print(DC_values)
+get_settlingtime(analysis)
 
 figure, ax = plt.subplots(figsize=(20, 6))
 ax.plot(analysis['input'])

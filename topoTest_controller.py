@@ -6,6 +6,9 @@ from device import device
 from typing import List
 import itertools
 import pandas as pd
+from tqdm import tqdm
+
+import time
 
 
 TL_dict     = { 'L1' : 2,
@@ -13,13 +16,11 @@ TL_dict     = { 'L1' : 2,
                 'L3' : 5,
                 'L4' : 7}
                 
-
-TL_VALUES       = [2, 3, 5, 7]
-
 TL_NAMES        = ['T0', 'T1', 'T2','T3']
 DEVICE_NAMES    = ['D0', 'D1', 'D2', 'D3']
 ECU_NAMES       = ['ECU1', 'ECU2', 'ECU3', 'ECU4']
 
+DEBUG           = False
 
 T0  = transLine('T0')
 T1  = transLine('T1')
@@ -120,7 +121,10 @@ def synthesizeTopology(allNodeLinks : List[nodeLink], allDevices : List[device])
     for nl in allNodeLinks :
 
         config  = nl.config
-        
+
+        if DEBUG :
+            print('\n' + nl.name + ' with config ' + config)
+                
         # Short circuit - directly connect nodes
         if (config == "S") :
 
@@ -162,26 +166,29 @@ def synthesizeTopology(allNodeLinks : List[nodeLink], allDevices : List[device])
             d.nodeA.cID     = nl.nodeA.cID 
             d.nodeB.cID     = nl.nodeB.cID 
 
-def getParameterConfigs(TL_values : List[int], TL_count : int, ecu_names : List[str]) :
+        if DEBUG :
+            [print(n.nodeID + "\t-> " + str(n.cID)) for n in node.allNodes]
+
+def getParameterConfigs(TL_count : int) :
     ''' Returns a list of all combinations from possible transmission line values
         and device names.
 
-        TL_values (List[int]):  List of possible transmission line lengths
         TL_count (int):         Number of transmission lines used in current graph
-        ecu_names (List[str]):  Names to associate topology devices to ECUs
-        # TODO: Clean up arguments
     '''
 
-    tl_perms    = list(itertools.permutations(TL_values, TL_count))
-    ecu_perms   = list(itertools.permutations(ecu_names, 4))
+    tl_perms    = list(itertools.permutations(list(TL_dict.keys()), TL_count))
+    ecu_perms   = list(itertools.permutations(ECU_NAMES, 4))
 
     paraConfigs = list(itertools.product(tl_perms, ecu_perms))
     paraConfigs = [list(paraConfigRow[0] + paraConfigRow[1]) for paraConfigRow in paraConfigs] 
-    paraConfigs = pd.DataFrame(paraConfigs, columns=(list(TL_dict.keys())[:TL_count] + DEVICE_NAMES))
+    paraConfigs = pd.DataFrame(paraConfigs, columns=(TL_NAMES[:TL_count] + DEVICE_NAMES))
 
-    
+    print(str(len(paraConfigs)) + " parameter configurations generated")
     return paraConfigs
 
+
+# Settings
+nlConfigOffset  = 0
 
 # Do once
 node.check(node)
@@ -191,30 +198,41 @@ allNodeLinks    = nodeLink.allNodeLinks
 allDevices      = device.allDevices
 
 nlConfigs       = getNodeLinkConfigs(allNodeLinks, allNodes)
-paramConfigs    = getParameterConfigs(TL_VALUES, 3, ECU_NAMES)
+paramConfigs    = getParameterConfigs(3)
+
+print(nlConfigs)
+
+# Iterate over nlConfigs and paramConfigs
+for indx, nlConfig in tqdm( nlConfigs[nlConfigOffset:].iterrows(), position=0, ncols=80, 
+                            total=nlConfigs.shape[0] - 1, desc='nlConfig    ') :
+   
+    node.purge(node)
+    nodeLink.purge(nodeLink)
+    nodeLink.configure(nodeLink, nlConfig)
+    nodeLink.check(nodeLink)
+        
+    synthesizeTopology(allNodeLinks, allDevices)
+    device.checkDevices(device)
+
+    for jndx, paramConfig in tqdm(paramConfigs.iterrows(), position=1, ncols=80,
+                                  total=paramConfigs.shape[0] - 1, leave=False, desc='paramConfig ') :
+
+        time.sleep(0.01)
+        a = 1
 
 
-nodeLink.purge(nodeLink)
-nodeLink.configure(nodeLink, nlConfigs.loc[0])
 
-synthesizeTopology(allNodeLinks, allDevices)
-device.checkDevices(device)
-
-
-
-
-
-
+# TODO: Synthesize circuit
 # TODO: investigate and fix possible problems for type 3 and 4 vertices in synthesizeNodes
-# TODO: implement TL permutations
-# TODO: ->first make combinations -> config -> set values as permutations for TL and Devices
 
+# DONE: implement TL permutations
+# DONE: ->first make combinations -> config -> set values as permutations for TL and Devices
 # DONE: Detect illegal device topologies (adjecent devices)
 # DONE: maybe get device combinations instead of permutations
 # DONE: Fix synth process 
 
-print(nlConfigs)
-[print(n.nodeID + "\t-> " + n.cID) for n in node.allNodes]
+
+
 a = 1
 
 

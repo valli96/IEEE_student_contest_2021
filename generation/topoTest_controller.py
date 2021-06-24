@@ -10,6 +10,8 @@ from device import device
 from node import node
 from nodeLink import nodeLink
 
+
+# Static constants-----------------------------------------------------------------------
 TL_dict     = { 'L1' : 2,
                 'L2' : 3,
                 'L3' : 5,
@@ -19,10 +21,7 @@ TL_NAMES    = ['T0', 'T1', 'T2','T3']
 DEVICE_NAMES= ['D0', 'D1', 'D2', 'D3']
 ECU_NAMES   = ['ECU1', 'ECU2', 'ECU3', 'ECU4']
 
-DEBUG       = False
-
-G           = graph.graph_P4()
-
+# Main functions-------------------------------------------------------------------------
 def getNodeLinkConfigs(allNodeLinks : List[nodeLink], allNodes : List[node]) :
     ''' Returns a list of possible nodeLink configurations '''  
 
@@ -173,10 +172,14 @@ def getParameterConfigs(TL_count : int) :
     return paraConfigs
 
 
-# Settings
+# Settings-------------------------------------------------------------------------------
+DEBUG       = False
+G           = graph.graph_P4()
+
 nlConfigOffset  = 0
 
-# Do once
+
+# Initialize-----------------------------------------------------------------------------
 node.check(node)
 
 allNodes        = node.allNodes
@@ -188,7 +191,7 @@ paramConfigs    = getParameterConfigs(G.TL_count)
 
 print(nlConfigs)
 
-# Iterate over nlConfigs and paramConfigs
+# Iterate over nlConfigs and paramConfigs------------------------------------------------
 for indx, nlConfig in tqdm( nlConfigs[nlConfigOffset:].iterrows(), position=0, ncols=70, 
                             total=nlConfigs.shape[0] - 1 - nlConfigOffset, desc='nlConfig    ') :
    

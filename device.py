@@ -29,8 +29,6 @@ class device :
 
         for d in cls.allDevices :
             assert (not d.nodeA == None) and (not d.nodeB == None), 'device ' + d.name + ' is not connected'
-        
-        print("All devices are connected")
 
     def connect(self, nodeA : node, nodeB : node) :
         ''' Connects device nodes to transmission line nodes

@@ -49,14 +49,16 @@ class nodeLink :
             assert not nl.config == None, 'nodeLink ' + nl.name + ' is not configured'
 
     def configure(cls, nlConfig) :
-        ''' Configure nodeLinks according to nlConfig '''
+        ''' Purge and configure nodeLinks according to nlConfig. Check afterwards'''
+        
+        cls.purge(cls)
 
         nl  = ...   # type: nodeLink
 
         for nl, nlConf in zip (cls.allNodeLinks, nlConfig) :
             nl.config   = nlConf
 
-        nodeLink.check(nodeLink)
+        cls.check(cls)
     
     def purge(cls) :
         ''' Purges changing parameters (config) '''

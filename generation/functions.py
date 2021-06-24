@@ -1,18 +1,10 @@
-# TODO: This is broken due to relative imports
-
-
 import itertools
-import time
 from typing import List
-
 import pandas as pd
-from tqdm import tqdm
 
-from .graph import *
 from .device import device
 from .node import node
 from .nodeLink import nodeLink
-
 
 # Static constants-----------------------------------------------------------------------
 TL_dict     = { 'L1' : 2,
@@ -24,7 +16,9 @@ TL_NAMES    = ['T0', 'T1', 'T2','T3']
 DEVICE_NAMES= ['D0', 'D1', 'D2', 'D3']
 ECU_NAMES   = ['ECU1', 'ECU2', 'ECU3', 'ECU4']
 
-# Main functions-------------------------------------------------------------------------
+DEBUG       = False
+
+
 def getNodeLinkConfigs(allNodeLinks : List[nodeLink], allNodes : List[node]) :
     ''' Returns a list of possible nodeLink configurations '''  
 
@@ -173,56 +167,3 @@ def getParameterConfigs(TL_count : int) :
 
     print(str(len(paraConfigs)) + " parameter configurations generated")
     return paraConfigs
-
-
-# Settings-------------------------------------------------------------------------------
-DEBUG       = False
-G           = graph.graph_P4()
-
-nlConfigOffset  = 0
-
-
-# Initialize-----------------------------------------------------------------------------
-node.check(node)
-
-allNodes        = node.allNodes
-allNodeLinks    = nodeLink.allNodeLinks
-allDevices      = device.allDevices
-
-nlConfigs       = getNodeLinkConfigs(allNodeLinks, allNodes)
-paramConfigs    = getParameterConfigs(G.TL_count)
-
-print(nlConfigs)
-
-# Iterate over nlConfigs and paramConfigs------------------------------------------------
-for indx, nlConfig in tqdm( nlConfigs[nlConfigOffset:].iterrows(), position=0, ncols=70, 
-                            total=nlConfigs.shape[0] - 1 - nlConfigOffset, desc='nlConfig    ') :
-   
-    node.purge(node)
-    nodeLink.configure(nodeLink, nlConfig)
-        
-    synthesizeTopology(allNodeLinks, allDevices)
-    device.checkDevices(device)
-
-    for jndx, paramConfig in tqdm(paramConfigs.iterrows(), position=1, ncols=70,
-                                  total=paramConfigs.shape[0] - 1, leave=False, desc='paramConfig ') :
-
-        time.sleep(0.01)
-        a = 1
-
-
-
-# TODO: Synthesize circuit
-# TODO: investigate and fix possible problems for type 3 and 4 vertices in synthesizeNodes
-
-# DONE: implement TL permutations
-# DONE: ->first make combinations -> config -> set values as permutations for TL and Devices
-# DONE: Detect illegal device topologies (adjecent devices)
-# DONE: maybe get device combinations instead of permutations
-# DONE: Fix synth process 
-
-
-
-a = 1
-
-

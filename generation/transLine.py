@@ -1,4 +1,4 @@
-from node import node, port
+from .node import node, port
 
 
 class transLine :

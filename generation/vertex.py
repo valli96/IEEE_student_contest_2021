@@ -1,5 +1,5 @@
-from node import port
-from nodeLink import nodeLink_solid, nodeLink_potential, nodeLink_terminal
+from .node import port
+from .nodeLink import nodeLink_solid, nodeLink_potential, nodeLink_terminal
 
 
 # Only type 2 vertex implemented for testing and development

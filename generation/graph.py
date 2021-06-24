@@ -1,6 +1,6 @@
-from vertex import vertex, vertex_type1, vertex_type2
-from transLine import transLine
-from device import device
+from .vertex import vertex, vertex_type1, vertex_type2
+from .transLine import transLine
+from .device import device
 
 from typing import List
 

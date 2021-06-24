@@ -1,4 +1,4 @@
-from node import node
+from .node import node
 
 class device :
     ''' The device object is a placeholder object for an ECU. 

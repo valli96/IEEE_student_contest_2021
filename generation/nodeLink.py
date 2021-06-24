@@ -1,4 +1,4 @@
-from node import node
+from .node import node
 
 class nodeLink :
     ''' Link between nodes within a vertex.

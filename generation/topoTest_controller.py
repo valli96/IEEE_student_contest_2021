@@ -5,10 +5,10 @@ from typing import List
 import pandas as pd
 from tqdm import tqdm
 
-import graph
-from device import device
-from node import node
-from nodeLink import nodeLink
+from .graph import *
+from .device import device
+from .node import node
+from .nodeLink import nodeLink
 
 
 # Static constants-----------------------------------------------------------------------

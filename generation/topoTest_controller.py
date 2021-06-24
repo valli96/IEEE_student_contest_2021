@@ -1,17 +1,14 @@
-from nodeLink import nodeLink
-from vertex import vertex_type1, vertex_type2
-from transLine import transLine
-from node import node
-from device import device
-import graph
-
-from typing import List
 import itertools
+import time
+from typing import List
+
 import pandas as pd
 from tqdm import tqdm
 
-import time
-
+import graph
+from device import device
+from node import node
+from nodeLink import nodeLink
 
 TL_dict     = { 'L1' : 2,
                 'L2' : 3,
@@ -25,7 +22,6 @@ ECU_NAMES   = ['ECU1', 'ECU2', 'ECU3', 'ECU4']
 DEBUG       = False
 
 G           = graph.graph_P4()
-
 
 def getNodeLinkConfigs(allNodeLinks : List[nodeLink], allNodes : List[node]) :
     ''' Returns a list of possible nodeLink configurations '''  

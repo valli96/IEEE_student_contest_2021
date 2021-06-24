@@ -17,9 +17,9 @@ class graph :
 
     def __init__(self, name, transLines : List[transLine], vertices : List[vertex]) :
         
-        self.initCount  = self.initCount + 1
+        graph.initCount  = graph.initCount + 1
 
-        assert self.initCount <= 1, 'One graph has already been initialised, please restart run' 
+        assert graph.initCount <= 1, 'One graph has already been initialised. Only one graph init is permissible.' 
 
         self.name   = name
 
@@ -34,6 +34,21 @@ class graph :
 
         self.TL_count   = len(transLines)
 
+
+
+class graph_P3(graph) : 
+    ''' P3 graph '''
+
+    def __init__(self) :
+
+        T0  = transLine('T0')
+        T1  = transLine('T1')
+
+        v0  = vertex_type1('v0', T0.portA)
+        v1  = vertex_type2('v1', T0.portB, T1.portA)
+        v2  = vertex_type1('v2', T1.portB)
+
+        super().__init__('P4', [T0, T1], [v0, v1, v2])
 
 class graph_P4(graph) :
     ''' P4 graph '''

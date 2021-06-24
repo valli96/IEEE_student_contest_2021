@@ -3,6 +3,8 @@ from vertex import vertex_type1, vertex_type2
 from transLine import transLine
 from node import node
 from device import device
+import graph
+
 from typing import List
 import itertools
 import pandas as pd
@@ -16,25 +18,13 @@ TL_dict     = { 'L1' : 2,
                 'L3' : 5,
                 'L4' : 7}
                 
-TL_NAMES        = ['T0', 'T1', 'T2','T3']
-DEVICE_NAMES    = ['D0', 'D1', 'D2', 'D3']
-ECU_NAMES       = ['ECU1', 'ECU2', 'ECU3', 'ECU4']
+TL_NAMES    = ['T0', 'T1', 'T2','T3']
+DEVICE_NAMES= ['D0', 'D1', 'D2', 'D3']
+ECU_NAMES   = ['ECU1', 'ECU2', 'ECU3', 'ECU4']
 
-DEBUG           = False
+DEBUG       = False
 
-T0  = transLine('T0')
-T1  = transLine('T1')
-T2  = transLine('T2')
-
-D0  = device('D0')
-D1  = device('D1')
-D2  = device('D2')
-D3  = device('D3')
-
-v0  = vertex_type1('v0', T0.portA)
-v1  = vertex_type2('v1', T0.portB, T1.portA)
-v2  = vertex_type2('v2', T1.portB, T2.portA)
-v3  = vertex_type1('v3', T2.portB)
+G           = graph.graph_P4()
 
 
 def getNodeLinkConfigs(allNodeLinks : List[nodeLink], allNodes : List[node]) :
@@ -198,23 +188,21 @@ allNodeLinks    = nodeLink.allNodeLinks
 allDevices      = device.allDevices
 
 nlConfigs       = getNodeLinkConfigs(allNodeLinks, allNodes)
-paramConfigs    = getParameterConfigs(3)
+paramConfigs    = getParameterConfigs(G.TL_count)
 
 print(nlConfigs)
 
 # Iterate over nlConfigs and paramConfigs
-for indx, nlConfig in tqdm( nlConfigs[nlConfigOffset:].iterrows(), position=0, ncols=80, 
-                            total=nlConfigs.shape[0] - 1, desc='nlConfig    ') :
+for indx, nlConfig in tqdm( nlConfigs[nlConfigOffset:].iterrows(), position=0, ncols=70, 
+                            total=nlConfigs.shape[0] - 1 - nlConfigOffset, desc='nlConfig    ') :
    
     node.purge(node)
-    nodeLink.purge(nodeLink)
     nodeLink.configure(nodeLink, nlConfig)
-    nodeLink.check(nodeLink)
         
     synthesizeTopology(allNodeLinks, allDevices)
     device.checkDevices(device)
 
-    for jndx, paramConfig in tqdm(paramConfigs.iterrows(), position=1, ncols=80,
+    for jndx, paramConfig in tqdm(paramConfigs.iterrows(), position=1, ncols=70,
                                   total=paramConfigs.shape[0] - 1, leave=False, desc='paramConfig ') :
 
         time.sleep(0.01)

@@ -4,3 +4,9 @@
 __pycache__/TestCase.cpython-37.pyc
 *.pyc
 test_csv/*
+LTspiceModels/bestCase.log
+LTspiceModels/bestCase.op.raw
+LTspiceModels/bestCase.raw
+LTspiceModels/linearDraft01.log
+LTspiceModels/linearDraft01.op.raw
+LTspiceModels/linearDraft01.raw

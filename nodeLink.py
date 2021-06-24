@@ -46,7 +46,7 @@ class nodeLink :
         ''' Checks if all nodeLinks are configured '''
 
         for nl in cls.allNodeLinks :
-            assert not nl.config == None, 'nodeLink ' + nl.name + ' is not configured'
+            assert not nl.config == None, 'nodeLink >' + nl.name + '< is not configured'
 
     def configure(cls, nlConfig) :
         ''' Purge and configure nodeLinks according to nlConfig. Check afterwards'''

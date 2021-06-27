@@ -9,7 +9,6 @@ from analysis_tools import *
 def getMaxSettlingTime(testCircuit : Circuit, step_time, end_time) :
     ''' TODO: Docstring
     '''
-<<<<<<< HEAD
     # initialize the simulation
      
     # Do not run this if in windows environment
@@ -26,11 +25,6 @@ def getMaxSettlingTime(testCircuit : Circuit, step_time, end_time) :
     print(dc_values)
     settling_time = analysis_tools.get_settlingtime(analysis)
     return settling_time
-=======
     
-    # Do simulation
+   
 
-    # Get and return max settling time
-
-    a = 1
->>>>>>> e584b742a156074bca1d9090faad109504a43247

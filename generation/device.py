@@ -24,7 +24,7 @@ class device :
         # Add this instance to allDevices
         self.allDevices.append(self)
 
-    def checkDevices(cls) :
+    def check(cls) :
         ''' Checks if all devices are connected '''
 
         for d in cls.allDevices :

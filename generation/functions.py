@@ -1,16 +1,25 @@
 import itertools
 from typing import List
+
 import pandas as pd
+from PySpice.Spice.Netlist import Circuit
+from PySpice.Unit import u_V, u_us, u_ns
 
 from .device import device
+from .graph import graph
 from .node import node
 from .nodeLink import nodeLink
 
 # Static constants-----------------------------------------------------------------------
-TL_dict     = { 'L1' : 2,
+TL_dict     = { 'L1' : 2,       # TL length [m]
                 'L2' : 3,
                 'L3' : 5,
                 'L4' : 7}
+
+ECU_dict    = { 'ECU1' : 120,   # ECU impedance [Ohm]
+                'ECU2' : 1e6,
+                'ECU3' : 1e6,
+                'ECU4' : 120}
                 
 TL_NAMES    = ['T0', 'T1', 'T2','T3']
 DEVICE_NAMES= ['D0', 'D1', 'D2', 'D3']
@@ -83,7 +92,7 @@ def getNodeLinkConfigs(allNodeLinks : List[nodeLink], allNodes : List[node]) :
 
     for conf in configs_03 :
         nodeLink.configure(nodeLink, conf) 
-        node.check(node)
+        node.check_link(node)
 
         if checkNodeLinkConfig(allNodes) :
             configs_04.append(conf)
@@ -97,7 +106,7 @@ def getNodeLinkConfigs(allNodeLinks : List[nodeLink], allNodes : List[node]) :
     return nodeLinkConfigs
 
 def synthesizeTopology(allNodeLinks : List[nodeLink], allDevices : List[device]) :
-    ''' Sets node cID for topology synthesis '''
+    ''' Sets all node cIDs for topology synthesis '''
 
     # Iterate over all nodeLinks and convert nodeIDs
     for nl in allNodeLinks :
@@ -151,6 +160,9 @@ def synthesizeTopology(allNodeLinks : List[nodeLink], allDevices : List[device])
         if DEBUG :
             [print(n.nodeID + "\t-> " + str(n.cID)) for n in node.allNodes]
 
+    # Check if all nodes have cID
+    node.check_cID(node)
+
 def getParameterConfigs(TL_count : int) :
     ''' Returns a list of all combinations from possible transmission line values
         and device names.
@@ -167,3 +179,82 @@ def getParameterConfigs(TL_count : int) :
 
     print(str(len(paraConfigs)) + " parameter configurations generated")
     return paraConfigs
+
+def synthesizeCircuit(circName : str, currGraph : graph, paramSet : pd.Series) :
+    ''' Synthesizes a circuit object for pyspice simulation from a given topology (fully
+        configured graph) and a fixed set of parameters.
+
+        - All LosslessTransmissionLine impedances are 120 Ohm
+        - LosslessTransmissionLine length gets converted to a delay with c = 2 * 10e8
+        - ECU values: 
+            ECU1: 4V step source with 120 Ohm (implemented as pulse source)
+            ECU2: 1 MOhm
+            ECU3: 1 MOhm
+            ECU4: 120 Ohm
+    '''
+    
+    c   = 2 * 10e8
+
+    # Check if graph is fully configured
+    nodeLink.check(nodeLink)
+    device.check(device)
+    node.check_link(node)
+    node.check_cID(node)
+
+
+    # Init circuit 
+    circ    = Circuit(circName)
+
+
+    # Find ground nodes and replace cID
+    dvName  = (pd.Series(paramSet.index.values, index=paramSet ))['ECU1']
+    dvECU1  = [device for device in currGraph.devices if device.name == dvName][0]
+    gndCID  = dvECU1.nodeB.cID
+    gndNodes= [n for n in node.allNodes if n.cID == gndCID]
+
+    for n in gndNodes:
+        n.cID   = circ.gnd
+        
+
+    # Init LosslessTransmissionLine objects within circuit
+    for tl in currGraph.transLines :
+        tlName  = '_' + paramSet[tl.name]
+        outHigh = tl.nodeB1.cID
+        outLow  = tl.nodeB2.cID
+        inHigh  = tl.nodeA1.cID
+        inLow   = tl.nodeA2.cID
+        delay   = TL_dict[paramSet[tl.name]] / c
+
+        circ.LosslessTransmissionLine(tlName, outHigh, outLow, inHigh, inLow, impedance=120, time_delay=delay)
+
+        psgnd_in    = '_psgnd' + tlName + '_in'
+        psgnd_out   = '_psgnd' + tlName + '_out'
+
+        circ.R(psgnd_in, inLow, circ.gnd, 10e9)
+        circ.R(psgnd_out, outLow, circ.gnd, 10e9)
+        
+    # Init devices
+    for dv in currGraph.devices :
+        dvConf  = paramSet[dv.name]
+
+        # Special treatment for ECU1 -> source
+        if dvConf == 'ECU1' :
+            dvName  = '_' + dvConf
+            high    = dv.nodeA.cID
+            low     = dv.nodeB.cID
+            imped   = ECU_dict[dvConf]
+
+            circ.PulseVoltageSource('_pulse', 'v_out', low, 0@u_V, 4@u_V, 30@u_us, 60@u_us, 0@u_us, 2@u_ns, 2@u_us)
+            circ.R(dvName, 'v_out', high, imped)
+
+        # Normal ECUs
+        else :
+            dvName  = '_' + dvConf
+            high    = dv.nodeA.cID
+            low     = dv.nodeB.cID
+            imped   = ECU_dict[dvConf]
+
+            circ.R(dvName, high, low, imped)
+
+    
+    return circ

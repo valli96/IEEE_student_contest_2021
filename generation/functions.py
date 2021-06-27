@@ -1,10 +1,9 @@
 import itertools
 from typing import List
-from unicodedata import name
 
 import pandas as pd
 from PySpice.Spice.Netlist import Circuit
-from PySpice.Unit import *
+from PySpice.Unit import u_V, u_us, u_ns
 
 from .device import device
 from .graph import graph
@@ -215,6 +214,7 @@ def synthesizeCircuit(circName : str, currGraph : graph, paramSet : pd.Series) :
 
     for n in gndNodes:
         n.cID   = circ.gnd
+        
 
     # Init LosslessTransmissionLine objects within circuit
     for tl in currGraph.transLines :
@@ -226,6 +226,12 @@ def synthesizeCircuit(circName : str, currGraph : graph, paramSet : pd.Series) :
         delay   = TL_dict[paramSet[tl.name]] / c
 
         circ.LosslessTransmissionLine(tlName, outHigh, outLow, inHigh, inLow, impedance=120, time_delay=delay)
+
+        psgnd_in    = '_psgnd' + tlName + '_in'
+        psgnd_out   = '_psgnd' + tlName + '_out'
+
+        circ.R(psgnd_in, inLow, circ.gnd, 10e9)
+        circ.R(psgnd_out, outLow, circ.gnd, 10e9)
         
     # Init devices
     for dv in currGraph.devices :

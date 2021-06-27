@@ -18,11 +18,17 @@ class node :
         # Add this instance to allNodes
         self.allNodes.append(self)
 
-    def check(cls) :
+    def check_link(cls) :
         ''' Checks if all nodes are linked '''
 
         for n in cls.allNodes :
             assert len(n.links) > 0, 'Node >' + n.nodeID + '< is not linked'
+
+    def check_cID(cls) :
+        ''' Checks if all nodes have cID '''
+
+        for n in cls.allNodes :
+            assert not (n.cID == None), 'Node >' + n.nodeID + '< has no cID'
 
     def addLink(self, link) :
         ''' Add a linkName to node connections '''

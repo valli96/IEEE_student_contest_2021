@@ -10,6 +10,9 @@ from generation.device import device
 from generation.node import node
 from generation.nodeLink import nodeLink
 
+from ciruit_simulations.simulation_entry import getMaxSettlingTime
+
+
 # Settings-------------------------------------------------------------------------------
 G               = graph.graph_P3()  	    # Choose graph type 
 nlConfigOffset  = 0                         # Offset for nlConfig loop
@@ -45,8 +48,8 @@ for indx, nlConfig in tqdm( nlConfigs[nlConfigOffset:].iterrows(), position=0, n
         circName        = f"{G.name}_nlC{indx:03}_pC{jndx:03}"
         currCircuit     = gen_func.synthesizeCircuit(circName, G, paramConfig)
 
+        settlingTime    = getMaxSettlingTime(currCircuit)
 
-        time.sleep(0.01)
         a = 1
 
 

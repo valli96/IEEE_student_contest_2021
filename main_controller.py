@@ -51,15 +51,15 @@ for indx, nlConfig in tqdm( nlConfigs[nlConfigOffset:].iterrows(), position=0, n
 
 
 
-# TODO: Synthesize circuit
+# TODO: Implement more graphs
 # TODO: investigate and fix possible problems for type 3 and 4 vertices in synthesizeNodes
 
+# DONE: Synthesize circuit
 # DONE: implement TL permutations
 # DONE: ->first make combinations -> config -> set values as permutations for TL and Devices
 # DONE: Detect illegal device topologies (adjecent devices)
 # DONE: maybe get device combinations instead of permutations
 # DONE: Fix synth process 
-
 
 
 a = 1

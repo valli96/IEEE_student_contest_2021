@@ -227,11 +227,9 @@ def synthesizeCircuit(circName : str, currGraph : graph, paramSet : pd.Series) :
 
         circ.LosslessTransmissionLine(tlName, outHigh, outLow, inHigh, inLow, impedance=120, time_delay=delay)
 
-        psgnd_in    = '_psgnd' + tlName + '_in'
-        psgnd_out   = '_psgnd' + tlName + '_out'
-
-        circ.R(psgnd_in, inLow, circ.gnd, 10e9)
-        circ.R(psgnd_out, outLow, circ.gnd, 10e9)
+        # Pseudo grounds to avoid singular matrix
+        circ.R('_psgnd' + tlName + '_in', inLow, circ.gnd, 10e9)
+        circ.R('_psgnd' + tlName + '_out', outLow, circ.gnd, 10e9)
         
     # Init devices
     for dv in currGraph.devices :

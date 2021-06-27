@@ -45,8 +45,6 @@ for indx, nlConfig in tqdm( nlConfigs[nlConfigOffset:].iterrows(), position=0, n
         circName        = f"{G.name}_nlC{indx:03}_pC{jndx:03}"
         currCircuit     = gen_func.synthesizeCircuit(circName, G, paramConfig)
 
-        simulator       = currCircuit.simulator(temperature=25, nominal_temperature=25)
-        analysis        = simulator.transient(step_time=1e-11, end_time=100e-9)
 
         time.sleep(0.01)
         a = 1

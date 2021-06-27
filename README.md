@@ -18,10 +18,10 @@ This is a part of the lecture "Electromagnetic compatibility". The task is to re
 ##### propagation time
 $v=s/t$  
 $t=s_i/(2*10^8)$  
->$ts_1 = 2.5ns$  
-$ts_2 =3.75ns$  
-$ts_3 = 6.25ns$  
-$ts_4 = 8.25ns$ 
+$ts_1 (2m) = 1ns$  
+$ts_2 (3m) = 1.5ns$  
+$ts_3 (5m) = 2.5ns$  
+$ts_4 (7m) = 3.5ns$ 
 
 
 ### Literature transmission line

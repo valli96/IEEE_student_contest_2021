@@ -7,16 +7,11 @@ from PySpice.Probe.Plot import plot
 from PySpice.Spice.Netlist import Circuit
 from PySpice.Unit import *
 
-from analysis_tools import *
-
-# Do not run this if in windows environment
-if not os.name == 'nt':
-    # To fix the error OSError: cannot load library 'libngspice.so'
-    # import ipdb
-    PySpice.Spice.Simulation.CircuitSimulator.DEFAULT_SIMULATOR = 'ngspice-subprocess'  
+from simulation_entry import *
 
 
 circuit = Circuit('Transmission Line')
+
 
 circuit.PulseVoltageSource('pulse', 'input', circuit.gnd, 0@u_V, 4@u_V, 30@u_us, 60@u_us, 0@u_us, 2@u_ns, 2@u_us)
 # circuit.PulseVoltageSource('pulse', 'input', circuit.gnd, 0@u_V, 1@u_V, 1@u_ns, 1@u_us)
@@ -36,20 +31,16 @@ circuit.LosslessTransmissionLine('3', '6', circuit.gnd, '5', circuit.gnd,
 circuit.LosslessTransmissionLine('4', '7', circuit.gnd, '6', circuit.gnd,
                                  impedance=120, time_delay=8.25e-9)
 
-
-# TODO: Values seem wrong
 circuit.R('1', 'input', '1', 120@u_Ohm)
 circuit.R('2', '3', '2', 1@u_MOhm)
 circuit.R('3', '5', '4', 1@u_MOhm)
 circuit.R('4', '7', circuit.gnd, 120@u_Ohm)
 
-simulator = circuit.simulator(temperature=25, nominal_temperature=25)
-analysis = simulator.transient(step_time=1e-11, end_time=100e-9)
+
+settling_time = getMaxSettlingTime(circuit)
 
 
-DC_values = get_DC_voltage(analysis)
-print(DC_values)
-get_settlingtime(analysis)
+
 
 figure, ax = plt.subplots(figsize=(20, 6))
 ax.plot(analysis['input'])

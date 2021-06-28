@@ -47,7 +47,8 @@ analysis = simulator.transient(step_time=1e-11, end_time=100e-9)
 
 # DC_values = get_DC_voltage(analysis)
 # print(DC_values)
-# get_settlingtime(analysis)
+settling_time = get_settlingtime(analysis)
+print(settling_time)
 
 figure, ax = plt.subplots(figsize=(20, 6))
 ax.plot(analysis['in_high'])

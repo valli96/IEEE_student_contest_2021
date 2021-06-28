@@ -11,6 +11,7 @@ from generation.node import node
 from generation.nodeLink import nodeLink
 
 from ciruit_simulations.simulation_entry import getMaxSettlingTime
+# from ciruit_simulations.analysis_tools import get_DC_voltage 
 
 
 # Settings-------------------------------------------------------------------------------
@@ -46,10 +47,10 @@ for indx, nlConfig in tqdm( nlConfigs[nlConfigOffset:].iterrows(), position=0, n
 
         # Circuit synth
         circName        = f"{G.name}_nlC{indx:03}_pC{jndx:03}"
-        currCircuit     = gen_func.synthesizeCircuit(circName, G, paramConfig)
+        currCircuit     = gen_func.synthesizeCircuit(circName, G, paramConfig)    
 
-        settlingTime    = getMaxSettlingTime(currCircuit)
-
+        settlingTime, DC_values, max_time    = getMaxSettlingTime(currCircuit)
+        import ipdb; ipdb.set_trace()
         a = 1
 
 

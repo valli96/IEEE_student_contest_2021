@@ -26,7 +26,13 @@ def getMaxSettlingTime(testCircuit : Circuit, step_time=1e-11, end_time=100e-9) 
     # calculation of the settling_time
     DC_values = get_DC_voltage(analysis)
     settling_time = get_settlingtime(analysis)
-    return settling_time
+
+    # getting the max value of the dic with the settling times off all Nodes
+    max_time = 0
+    for node, time in settling_time.items():
+        if max_time < time:
+            max_time = time
     
+    return settling_time, DC_values, max_time
    
 

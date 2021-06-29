@@ -14,8 +14,14 @@ from ciruit_simulations.simulation_entry import getMaxSettlingTime
 # from ciruit_simulations.analysis_tools import get_DC_voltage 
 
 
+import cProfile
+import pstats
+
+pr = cProfile.Profile()
+pr.enable()
+
 # Settings-------------------------------------------------------------------------------
-G               = graph.graph_P3()  	    # Choose graph type 
+G               = graph.graph_P4()  	    # Choose graph type 
 nlConfigOffset  = 0                         # Offset for nlConfig loop
 
 
@@ -35,7 +41,7 @@ print(nlConfigs)
 # ----------
 for indx, nlConfig in tqdm( nlConfigs[nlConfigOffset:].iterrows(), position=0, ncols=70, 
                             total=nlConfigs.shape[0] - 1 - nlConfigOffset, desc='nlConfig    ') :
-   
+
     node.purge(node)
     nodeLink.configure(nodeLink, nlConfig)
         
@@ -50,9 +56,12 @@ for indx, nlConfig in tqdm( nlConfigs[nlConfigOffset:].iterrows(), position=0, n
         currCircuit     = gen_func.synthesizeCircuit(circName, G, paramConfig)    
 
         settlingTime, DC_values, max_time    = getMaxSettlingTime(currCircuit)
-        import ipdb; ipdb.set_trace()
-        a = 1
 
+        
+
+pr.disable()
+stats = pstats.Stats(pr).sort_stats('tottime')
+stats.print_stats(20)
 
 
 # TODO: Implement more graphs

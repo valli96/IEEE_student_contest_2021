@@ -1,5 +1,3 @@
-import time
-
 import pandas as pd
 from tqdm import tqdm
 from PySpice.Spice.Netlist import Circuit
@@ -22,7 +20,7 @@ pr.enable()
 
 # Settings-------------------------------------------------------------------------------
 G               = graph.graph_P4()  	    # Choose graph type 
-nlConfigOffset  = 0                         # Offset for nlConfig loop
+nlConfig_start  = 0                         # Offset for nlConfig loop
 
 
 # Initialize-----------------------------------------------------------------------------
@@ -35,12 +33,16 @@ allDevices      = device.allDevices
 nlConfigs       = gen_func.getNodeLinkConfigs(allNodeLinks, allNodes)   # type: pd.DataFrame
 paramConfigs    = gen_func.getParameterConfigs(G.TL_count)              # type: pd.DataFrame
 
+pd_results      = pd.DataFrame(columns=['graph','nlConfigID','paramConfigID','maxSettlingTime','nlConfigString','paramConfigString'])
+
 print(nlConfigs)
 
 # Iterate over nlConfigs and paramConfigs--------------------------------------
 # ----------
-for indx, nlConfig in tqdm( nlConfigs[nlConfigOffset:].iterrows(), position=0, ncols=70, 
-                            total=nlConfigs.shape[0] - 1 - nlConfigOffset, desc='nlConfig    ') :
+for indx, nlConfig in tqdm( nlConfigs[nlConfig_start:].iterrows(), 
+                            position=0, ncols=70,
+                            initial=nlConfig_start, 
+                            total=nlConfigs.shape[0] - 1, desc='nlConfig    ') :
 
     node.purge(node)
     nodeLink.configure(nodeLink, nlConfig)
@@ -48,16 +50,27 @@ for indx, nlConfig in tqdm( nlConfigs[nlConfigOffset:].iterrows(), position=0, n
     gen_func.synthesizeTopology(allNodeLinks, allDevices)
     device.check(device)
 
-    for jndx, paramConfig in tqdm(paramConfigs.iterrows(), position=1, ncols=70,
-                                  total=paramConfigs.shape[0] - 1, leave=False, desc='paramConfig ') :
+    for jndx, paramConfig in tqdm(  paramConfigs.iterrows(), 
+                                    position=1, ncols=70,
+                                    total=paramConfigs.shape[0] - 1, leave=False, desc='paramConfig ') :
 
         # Circuit synth
         circName        = f"{G.name}_nlC{indx:03}_pC{jndx:03}"
         currCircuit     = gen_func.synthesizeCircuit(circName, G, paramConfig)    
 
-        settlingTime, DC_values, max_time    = getMaxSettlingTime(currCircuit)
+        # Simulation
+        settlingTime, DC_values, max_time   = getMaxSettlingTime(currCircuit)
 
-        
+        # Save results
+        nlConfigString      = str(nlConfig.to_list()).replace("'","")
+        paramConfigString   = str(paramConfig.to_list()).replace("'","")
+
+        pd_results.loc[len(pd_results)]     = [G.name, indx, jndx, max_time, nlConfigString, paramConfigString]
+
+        a = 1
+
+    pd_results.to_csv('results_' + G.name + '.csv')
+
 
 pr.disable()
 stats = pstats.Stats(pr).sort_stats('tottime')

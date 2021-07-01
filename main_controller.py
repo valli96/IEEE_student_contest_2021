@@ -8,7 +8,7 @@ from generation.device import device
 from generation.node import node
 from generation.nodeLink import nodeLink
 
-from ciruit_simulations.simulation_entry import getMaxSettlingTime
+from ciruit_simulations.simulation_entry import circuit_simulation, getMaxSettlingTime, plot_voltages 
 # from ciruit_simulations.analysis_tools import get_DC_voltage 
 
 
@@ -59,7 +59,10 @@ for indx, nlConfig in tqdm( nlConfigs[nlConfig_start:].iterrows(),
         currCircuit     = gen_func.synthesizeCircuit(circName, G, paramConfig)    
 
         # Simulation
-        settlingTime, DC_values, max_time   = getMaxSettlingTime(currCircuit)
+        currAnalysis = circuit_simulation(currCircuit)
+        settlingTime, DC_values, max_time   = getMaxSettlingTime(currAnalysis)
+        # plot_voltages(currAnalysis)
+
 
         # Save results
         nlConfigString      = str(nlConfig.to_list()).replace("'","")
@@ -67,6 +70,7 @@ for indx, nlConfig in tqdm( nlConfigs[nlConfig_start:].iterrows(),
 
         pd_results.loc[len(pd_results)]     = [G.name, indx, jndx, max_time, nlConfigString, paramConfigString]
 
+        
         a = 1
 
     pd_results.to_csv('results_' + G.name + '.csv')
@@ -87,7 +91,4 @@ stats.print_stats(20)
 # DONE: maybe get device combinations instead of permutations
 # DONE: Fix synth process 
 
-
 a = 1
-
-

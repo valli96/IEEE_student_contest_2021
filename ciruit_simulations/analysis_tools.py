@@ -21,7 +21,6 @@ def get_data_points(analysis):
 def get_DC_voltage(analysis):
     ''' TODO: Docstring
     '''
-    number_simulations = get_data_points(analysis)
     nodes = get_nodes(analysis)
     DC_values = {} 
     for i in nodes:

@@ -10,10 +10,10 @@ from PySpice.Unit import *
 from analysis_tools import *
 
 
-import csv
+# import csv
 
-f = open('./test.csv', 'w')
-writer = csv.writer(f)
+# f = open('./test.csv', 'w')
+# writer = csv.writer(f)
 
 
 
@@ -64,6 +64,8 @@ analysis = simulator.transient(step_time=1e-10, end_time=50e-9)
 figure, ax = plt.subplots(figsize=(20, 6))
 ax.plot(analysis['input'])
 ax.plot(analysis['T1b'])
+import ipdb; ipdb.set_trace()
+
 ax.plot(analysis['T1e'])
 ax.plot(analysis['T2e'])
 ax.plot(analysis['T3e'])
@@ -109,6 +111,6 @@ get_settlingtime(analysis)
 ax.ticklabel_format(axis='x', style='sci', scilimits=(0,0))
 
 writer.writerow(analysis.nodes)
-f.close()
+# f.close()
 
 plt.show()

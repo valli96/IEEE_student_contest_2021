@@ -109,3 +109,8 @@ circuit.PulseVoltageSource('Name','Node_1','Node_2'
 - spice will thrown a error if the time_delay is smaller as 1e21
 
 
+
+
+### Literature transmission line
+
+[transmission line theory](https://www.pspice.com/resources/application-notes/transmission-line-modeling)

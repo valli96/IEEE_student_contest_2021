@@ -34,9 +34,6 @@ class graph :
 
         self.TL_count   = len(transLines)
 
-        
-
-
 
 class graph_P3(graph) : 
     ''' P3 graph '''
@@ -50,7 +47,7 @@ class graph_P3(graph) :
         v1  = vertex_type2('v1', T0.portB, T1.portA)
         v2  = vertex_type1('v2', T1.portB)
 
-        super().__init__('P4', [T0, T1], [v0, v1, v2])
+        super().__init__('P3', [T0, T1], [v0, v1, v2])
 
 class graph_P4(graph) :
     ''' P4 graph '''

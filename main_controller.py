@@ -11,17 +11,16 @@ from generation.nodeLink import nodeLink
 from ciruit_simulations.simulation_entry import circuit_simulation, getMaxSettlingTime, plot_voltages 
 # from ciruit_simulations.analysis_tools import get_DC_voltage 
 
-
 import cProfile
 import pstats
 
 pr = cProfile.Profile()
 pr.enable()
 
-# Settings-------------------------------------------------------------------------------
-G               = graph.graph_P4()  	    # Choose graph type 
-nlConfig_start  = 0                         # Offset for nlConfig loop
 
+# Settings-------------------------------------------------------------------------------
+nlConfig_start  = 0                         # Offset for nlConfig loop
+G               = graph.graph_P3()  	    # Choose graph type 
 
 # Initialize-----------------------------------------------------------------------------
 node.check_link(node)
@@ -44,6 +43,8 @@ for indx, nlConfig in tqdm( nlConfigs[nlConfig_start:].iterrows(),
                             initial=nlConfig_start, 
                             total=nlConfigs.shape[0] - 1, desc='nlConfig    ') :
 
+    start = timeit.default_timer()
+   
     node.purge(node)
     nodeLink.configure(nodeLink, nlConfig)
         
@@ -57,24 +58,28 @@ for indx, nlConfig in tqdm( nlConfigs[nlConfig_start:].iterrows(),
         # Circuit synth
         circName        = f"{G.name}_nlC{indx:03}_pC{jndx:03}"
         currCircuit     = gen_func.synthesizeCircuit(circName, G, paramConfig)    
-
+        
+        # if '1' in circName:
+        #     import ipdb; ipdb.set_trace()
+        
         # Simulation
         currAnalysis = circuit_simulation(currCircuit)
         settlingTime, DC_values, max_time   = getMaxSettlingTime(currAnalysis)
-        # plot_voltages(currAnalysis)
-
+        
+        # TODO: what is strang at the 7th node
+        print(circName)      
+        plot_voltages(currAnalysis, max_time, save=True, plot_name=circName)
+        
 
         # Save results
         nlConfigString      = str(nlConfig.to_list()).replace("'","")
         paramConfigString   = str(paramConfig.to_list()).replace("'","")
 
-        pd_results.loc[len(pd_results)]     = [G.name, indx, jndx, max_time, nlConfigString, paramConfigString]
 
-        
+        pd_results.loc[len(pd_results)]     = [G.name, indx, jndx, max_time, nlConfigString, paramConfigString]
         a = 1
 
     pd_results.to_csv('results_' + G.name + '.csv')
-
 
 pr.disable()
 stats = pstats.Stats(pr).sort_stats('tottime')

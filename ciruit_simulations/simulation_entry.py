@@ -21,7 +21,48 @@ def get_nodes(analysis):
             nodes.append(i)
     return nodes
 
-def circuit_simulation(testCircuit : Circuit, step_time=1e-11, end_time=100e-9) :
+
+def get_DC_voltage(analysis):
+    ''' TODO: Docstring
+    '''
+    nodes = get_nodes(analysis)
+    DC_values = {} 
+    for i in nodes:
+        # print(i)
+        DC_values[i] = analysis[i][-1].value
+    return DC_values
+
+
+def get_data_points(analysis):
+    ''' TODO: Docstring
+    '''
+    return len(analysis.time)
+
+
+def get_settlingtime(analysis):
+    ''' TODO: Docstring
+    '''
+    number_simulations = get_data_points(analysis)
+    nodes = get_nodes(analysis)
+    DC_values = get_DC_voltage(analysis)
+    settling_time = {}
+    for node in nodes:
+        # print(str(DC_values[node])+ 'DC_values of Node' + str(node))   
+        if DC_values[node] == 0:
+            # pass
+            a=1
+        else:
+            for i in range(number_simulations):
+                voltage = analysis[node][number_simulations - 1 - i].value
+                if (abs(voltage) >= abs(DC_values[node])*1.02 or abs(voltage) <= abs(DC_values[node])*0.98):
+                    # print("the Settlingtime of "+ node + " is " )
+                    # print(number_simulations-i)
+                    DC_values[node] = number_simulations-i
+                    settling_time[node] = number_simulations-i
+                    break
+
+    return settling_time
+def circuit_simulation(testCircuit : Circuit, step_time=1e-10, end_time=60e-8) :
     ''' TODO: Docstring
     '''
     end_time=100e-8
@@ -39,6 +80,8 @@ def circuit_simulation(testCircuit : Circuit, step_time=1e-11, end_time=100e-9) 
 
 def getMaxSettlingTime(analysis):
 
+    ''' TODO: Docstring
+    '''
     # calculation of the settling_time
     DC_values = get_DC_voltage(analysis)
     settling_time = get_settlingtime(analysis)
@@ -52,26 +95,31 @@ def getMaxSettlingTime(analysis):
     return settling_time, DC_values, max_time
    
 
-def plot_voltages(analysis):
-    _dont_care_,_dont_care_,max_time = getMaxSettlingTime(analysis)
+def plot_voltages(analysis, max_time=False, save=False, plot_name=False):
+    ''' TODO: Docstring
+    '''
     nodes = get_nodes(analysis)
 
-    # import ipdb; ipdb.set_trace()
-
-    # voltages = [len(node)][len(analysis.time]
-    #     for i in range(len(analysis.time)):
-    #         voltages[nd][i]= analysis[nd][i].value
-            # globals()[f"voltage_{nd}"] = analysis[nd][i].value
-   
+    # make standard plot 
     figure, ax = plt.subplots(figsize=(20, 6))
     for nd in nodes:
         ax.plot(analysis[nd])
-    
+
     ax.set_xlabel('Time [ps]')
     ax.set_ylabel('Voltage (V)')
     ax.grid()
     ax.ticklabel_format(axis='x', style='sci', scilimits=(0,0))
-    plt.show()
+    
+    # add SettlingTime indicator
+    if max_time != False:
+        _dont_care_,_dont_care_,max_time = getMaxSettlingTime(analysis)
+        plt.axvline(max_time, 0, 4, label='max_time',linewidth=4,color='r')
+
+    # save or plot
+    if save == True:
+        plt.savefig("./simulation_plots/"+ plot_name + ".png")
+    else:
+        plt.show()
 
 
 # ax.legend(['input', 'T1b','T1e','T2e','T3e','T4e'], loc='upper right')

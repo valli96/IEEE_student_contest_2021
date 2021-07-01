@@ -52,7 +52,7 @@ circuit.R('2R', 'T4e', circuit.gnd, 120@u_Ohm)
 
 simulator = circuit.simulator(temperature=25, nominal_temperature=25)
 # analysis = simulator.transient(step_time=1e-11, end_time=100e-9)
-analysis = simulator.transient(step_time=1e-10, end_time=50e-9)
+analysis = simulator.transient(step_time=20e-10, end_time=50e-9)
 
 
 
@@ -64,7 +64,7 @@ analysis = simulator.transient(step_time=1e-10, end_time=50e-9)
 figure, ax = plt.subplots(figsize=(20, 6))
 ax.plot(analysis['input'])
 ax.plot(analysis['T1b'])
-import ipdb; ipdb.set_trace()
+# import ipdb; ipdb.set_trace()
 
 ax.plot(analysis['T1e'])
 ax.plot(analysis['T2e'])
@@ -110,7 +110,7 @@ get_settlingtime(analysis)
 
 ax.ticklabel_format(axis='x', style='sci', scilimits=(0,0))
 
-writer.writerow(analysis.nodes)
+# writer.writerow(analysis.nodes)
 # f.close()
 
 plt.show()

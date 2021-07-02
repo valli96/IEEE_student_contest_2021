@@ -20,7 +20,7 @@ pr.enable()
 
 # Settings-------------------------------------------------------------------------------
 nlConfig_start  = 0                         # Offset for nlConfig loop
-G               = graph.graph_P3()  	    # Choose graph type 
+G               = graph.graph_P4()  	    # Choose graph type 
 
 # Initialize-----------------------------------------------------------------------------
 node.check_link(node)
@@ -43,7 +43,6 @@ for indx, nlConfig in tqdm( nlConfigs[nlConfig_start:].iterrows(),
                             initial=nlConfig_start, 
                             total=nlConfigs.shape[0] - 1, desc='nlConfig    ') :
 
-    start = timeit.default_timer()
    
     node.purge(node)
     nodeLink.configure(nodeLink, nlConfig)
@@ -68,7 +67,7 @@ for indx, nlConfig in tqdm( nlConfigs[nlConfig_start:].iterrows(),
         
         # TODO: what is strang at the 7th node
         print(circName)      
-        plot_voltages(currAnalysis, max_time, save=True, plot_name=circName)
+        plot_voltages(currAnalysis, max_time, save=False, plot_name=circName, boundary=True)
         
 
         # Save results

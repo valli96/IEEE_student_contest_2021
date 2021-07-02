@@ -27,9 +27,9 @@ def get_DC_voltage(analysis):
     '''
     nodes = get_nodes(analysis)
     DC_values = {} 
-    for i in nodes:
+    for nd in nodes:
         # print(i)
-        DC_values[i] = analysis[i][-1].value
+        DC_values[nd] = analysis[nd][-1].value
     return DC_values
 
 
@@ -48,7 +48,7 @@ def get_settlingtime(analysis):
     settling_time = {}
     for node in nodes:
         # print(str(DC_values[node])+ 'DC_values of Node' + str(node))   
-        if DC_values[node] == 0:
+        if abs(DC_values[node]) <= 0.1: # 0.1 
             # pass
             a=1
         else:
@@ -62,10 +62,11 @@ def get_settlingtime(analysis):
                     break
 
     return settling_time
-def circuit_simulation(testCircuit : Circuit, step_time=1e-10, end_time=60e-8) :
+
+
+def circuit_simulation(testCircuit : Circuit, step_time=5e-11, end_time=3e-7) :
     ''' TODO: Docstring
     '''
-    end_time=100e-8
     # initialize the simulation
     # Do not run this if in windows environment
     # To fix the error OSError: cannot load library 'libngspice.so'
@@ -95,7 +96,7 @@ def getMaxSettlingTime(analysis):
     return settling_time, DC_values, max_time
    
 
-def plot_voltages(analysis, max_time=False, save=False, plot_name=False):
+def plot_voltages(analysis, max_time=False, save=False, plot_name=False, boundary=True):
     ''' TODO: Docstring
     '''
     nodes = get_nodes(analysis)
@@ -115,9 +116,23 @@ def plot_voltages(analysis, max_time=False, save=False, plot_name=False):
         _dont_care_,_dont_care_,max_time = getMaxSettlingTime(analysis)
         plt.axvline(max_time, 0, 4, label='max_time',linewidth=4,color='r')
 
+    # display lower and upper boarder of the settling time
+    if boundary == True:
+        DC_values = get_DC_voltage(analysis)
+        # print(DC_values)
+        # print(type(DC_values))
+        for nd in nodes:
+            if abs(DC_values[nd]) <= 0.1: # 0.1 
+                # pass
+                a=1
+            else:
+                # print(DC_values)
+                plt.axhline(y=DC_values[nd]*1.02, ls= '--', color= 'grey', linewidth = 0.5)
+                plt.axhline(y=DC_values[nd]*0.98, ls= '--', color= 'grey', linewidth = 0.5)
+
     # save or plot
     if save == True:
-        plt.savefig("./simulation_plots/"+ plot_name + ".png")
+        plt.savefig("./simulation_plots/test/"+ plot_name + ".png")
     else:
         plt.show()
 

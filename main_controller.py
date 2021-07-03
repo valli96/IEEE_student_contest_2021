@@ -19,8 +19,9 @@ pr.enable()
 
 
 # Settings-------------------------------------------------------------------------------
-nlConfig_start  = 0                         # Offset for nlConfig loop
-G               = graph.graph_P4()  	    # Choose graph type 
+nlConfig_start  = 20                         # Offset for nlConfig loop
+G               = graph.graph_P4()  	    # Choose graph type
+DEBUG           = True                      # Enables debug print-outs
 
 # Initialize-----------------------------------------------------------------------------
 node.check_link(node)
@@ -41,7 +42,8 @@ print(nlConfigs)
 for indx, nlConfig in tqdm( nlConfigs[nlConfig_start:].iterrows(), 
                             position=0, ncols=70,
                             initial=nlConfig_start, 
-                            total=nlConfigs.shape[0] - 1, desc='nlConfig    ') :
+                            total=nlConfigs.shape[0] - 1, desc='nlConfig    ',
+                            disable=DEBUG) :
 
    
     node.purge(node)
@@ -52,7 +54,8 @@ for indx, nlConfig in tqdm( nlConfigs[nlConfig_start:].iterrows(),
 
     for jndx, paramConfig in tqdm(  paramConfigs.iterrows(), 
                                     position=1, ncols=70,
-                                    total=paramConfigs.shape[0] - 1, leave=False, desc='paramConfig ') :
+                                    total=paramConfigs.shape[0] - 1, leave=False, desc='paramConfig ',
+                                    disable=DEBUG) :
 
         # Circuit synth
         circName        = f"{G.name}_nlC{indx:03}_pC{jndx:03}"

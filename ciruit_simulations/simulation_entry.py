@@ -112,8 +112,7 @@ def plot_voltages(analysis, max_time=False, save=False, plot_name=False, boundar
     ax.ticklabel_format(axis='x', style='sci', scilimits=(0,0))
     
     # add SettlingTime indicator
-    if max_time != False:
-        _dont_care_,_dont_care_,max_time = getMaxSettlingTime(analysis)
+    if max_time:
         plt.axvline(max_time, 0, 4, label='max_time',linewidth=4,color='r')
 
     # display lower and upper boarder of the settling time

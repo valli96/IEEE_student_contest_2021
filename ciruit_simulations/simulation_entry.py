@@ -7,6 +7,7 @@ from .analysis_tools import get_DC_voltage, get_settlingtime
 from PySpice.Probe.Plot import plot
 import matplotlib.pyplot as plt
 import os
+import PySpice.Probe.WaveForm
 
 
 def get_nodes(analysis):
@@ -46,14 +47,18 @@ def get_settlingtime(analysis):
     nodes = get_nodes(analysis)
     DC_values = get_DC_voltage(analysis)
     settling_time = {}
+    
     for node in nodes:
         # print(str(DC_values[node])+ 'DC_values of Node' + str(node))   
         if abs(DC_values[node]) <= 0.1: # 0.1 
             # pass
             a=1
         else:
+            voltage = [v.value for v in analysis[node]]
+
             for i in range(number_simulations):
                 # voltage = analysis[node][number_simulations 1 - i].value
+
                 voltage = analysis[node][number_simulations - 1 - i].value
                 if (abs(voltage) >= abs(DC_values[node])*1.02 or abs(voltage) <= abs(DC_values[node])*0.98):
 

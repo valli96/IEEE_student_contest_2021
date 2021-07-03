@@ -19,7 +19,7 @@ pr.enable()
 
 
 # Settings-------------------------------------------------------------------------------
-nlConfig_start  = 20                         # Offset for nlConfig loop
+nlConfig_start  = 0                         # Offset for nlConfig loop
 G               = graph.graph_P4()  	    # Choose graph type
 DEBUG           = True                      # Enables debug print-outs
 
@@ -68,7 +68,7 @@ for indx, nlConfig in tqdm( nlConfigs[nlConfig_start:].iterrows(),
         currAnalysis = circuit_simulation(currCircuit)
         settlingTime, DC_values, max_time   = getMaxSettlingTime(currAnalysis)
         
-        # TODO: what is strang at the 7th node
+
         print(circName)      
         plot_voltages(currAnalysis, max_time, save=False, plot_name=circName, boundary=True)
         

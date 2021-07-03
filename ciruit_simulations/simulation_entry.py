@@ -53,14 +53,17 @@ def get_settlingtime(analysis):
             a=1
         else:
             for i in range(number_simulations):
+                # voltage = analysis[node][number_simulations 1 - i].value
                 voltage = analysis[node][number_simulations - 1 - i].value
                 if (abs(voltage) >= abs(DC_values[node])*1.02 or abs(voltage) <= abs(DC_values[node])*0.98):
+
                     # print("the Settlingtime of "+ node + " is " )
                     # print(number_simulations-i)
                     DC_values[node] = number_simulations-i
                     settling_time[node] = number_simulations-i
                     break
 
+    
     return settling_time
 
 
@@ -79,7 +82,7 @@ def circuit_simulation(testCircuit : Circuit, step_time=5e-11, end_time=3e-7) :
     analysis = simulator.transient(step_time, end_time)
     return analysis
 
-def getMaxSettlingTime(analysis):
+def getMaxSettlingTime(analysis, ignore_div=True):
 
     ''' TODO: Docstring
     '''
@@ -92,6 +95,15 @@ def getMaxSettlingTime(analysis):
     for node, time in settling_time.items():
         if max_time < time:
             max_time = time
+    
+    number_simulations = get_data_points(analysis)
+   
+    # Ignores the diverging nodes
+
+    # print("number_simulations =  " + str(number_simulations))
+    # print("max_time =  " + str(max_time))
+    if ignore_div == True and number_simulations == max_time:
+        max_time = 0
     
     return settling_time, DC_values, max_time
    
@@ -114,6 +126,7 @@ def plot_voltages(analysis, max_time=False, save=False, plot_name=False, boundar
     # add SettlingTime indicator
     if max_time:
         plt.axvline(max_time, 0, 4, label='max_time',linewidth=4,color='r')
+        plt.title("Settling time = "+ str(max_time))
 
     # display lower and upper boarder of the settling time
     if boundary == True:

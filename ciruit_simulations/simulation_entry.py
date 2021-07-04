@@ -40,6 +40,15 @@ def get_data_points(analysis):
     '''
     return len(analysis.time)
 
+def detective_divergence(voltage):
+    # if abs(abs(voltagep[-1]) - abs(voltage[-100])) >= 0.0001:
+    #     return True
+    # else:
+    #     return False
+    if abs(voltage[-1])%1 > 0.1:
+        return True
+    else:
+        return False
 
 def get_settlingtime(analysis):
     ''' TODO: Docstring
@@ -51,7 +60,7 @@ def get_settlingtime(analysis):
     
     for node in nodes:
         # print(str(DC_values[node])+ 'DC_values of Node' + str(node))   
-        if abs(DC_values[node]) <= 0.1: # 0.1 
+        if abs(DC_values[node]) <= 0.2: # 0.1 
             # pass
             a=1
         else:
@@ -59,24 +68,28 @@ def get_settlingtime(analysis):
             voltage     = pd.DataFrame(analysis[node])
             high        = abs(voltage) >= abs(DC_values[node]) * 1.02
             low         = abs(voltage) <= abs(DC_values[node]) * 0.98
-            unsettled   = high + low
+            unsettled   = high | low
+            # print(unsettled) 
+            # print((unsettled[unsettled==True].index.tolist()[-1]))
+            # print (unsettled[unsettled==True].index[-1])
+                 
+            settling_time[node] = unsettled[unsettled==True].last_valid_index()
+            divergence = detective_divergence
+            if divergence == True:
+                print(node + " divergence")                       
 
-            a = 1
+            # if settling_time[node]> 1000:
+            #     import ipdb; ipdb.set_trace()
 
-            for i in range(number_simulations):
-                # voltage = analysis[node][number_simulations 1 - i].value
 
-                
-
-                voltage = analysis[node][number_simulations - 1 - i].value
-                if (abs(voltage) >= abs(DC_values[node])*1.02 or abs(voltage) <= abs(DC_values[node])*0.98):
-
-                    # print("the Settlingtime of "+ node + " is " )
-                    # print(number_simulations-i)
-                    DC_values[node] = number_simulations-i
-                    settling_time[node] = number_simulations-i
-                    break
-
+            # old approach
+            # for i in range(number_simulations):
+            #     voltage = analysis[node][number_simulations - 1 - i].value
+            #     if (abs(voltage) >= abs(DC_values[node])*1.02 or abs(voltage) <= abs(DC_values[node])*0.98):
+            #         DC_values[node] = number_simulations-i
+            #         settling_time[node] = number_simulations-i
+            #         break
+            # print(str(settling_time))
     
     return settling_time
 
@@ -148,7 +161,7 @@ def plot_voltages(analysis, max_time=False, save=False, plot_name=False, boundar
         # print(DC_values)
         # print(type(DC_values))
         for nd in nodes:
-            if abs(DC_values[nd]) <= 0.1: # 0.1 
+            if abs(DC_values[nd]) <= 0.2: # 0.1 
                 # pass
                 a=1
             else:

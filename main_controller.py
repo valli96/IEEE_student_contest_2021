@@ -69,7 +69,7 @@ for indx, nlConfig in tqdm( nlConfigs[nlConfig_start:].iterrows(),
         settlingTime, DC_values, max_time   = getMaxSettlingTime(currAnalysis)
         
 
-        print(circName)      
+        # print(circName)      
         plot_voltages(currAnalysis, max_time, save=False, plot_name=circName, boundary=True)
         
 

@@ -34,7 +34,6 @@ def get_DC_voltage(analysis):
         DC_values[nd] = analysis[nd][-1].value
     return DC_values
 
-
 def get_data_points(analysis):
     ''' TODO: Docstring
     '''
@@ -45,7 +44,12 @@ def detective_divergence(voltage):
     #     return True
     # else:
     #     return False
-    if abs(voltage[-1])%1 > 0.1:
+     
+    # print("voltage   "+str(voltage.iloc[-1].item()))
+    # print("rest      "+ str(voltage.iloc[-1].item()%1))
+    # import ipdb; ipdb.set_trace()
+
+    if 0.05 < abs(voltage.iloc[-1].item())%1 < 0.95:
         return True
     else:
         return False
@@ -59,8 +63,8 @@ def get_settlingtime(analysis):
     settling_time = {}
     
     for node in nodes:
-        # print(str(DC_values[node])+ 'DC_values of Node' + str(node))   
-        if abs(DC_values[node]) <= 0.2: # 0.1 
+        # print(str(DC_values[node])+ 'DC_values of Node')   
+        if abs(DC_values[node]) <= 0.05: # 0.1 
             # pass
             a=1
         else:
@@ -74,9 +78,10 @@ def get_settlingtime(analysis):
             # print (unsettled[unsettled==True].index[-1])
                  
             settling_time[node] = unsettled[unsettled==True].last_valid_index()
-            divergence = detective_divergence
+            divergence = detective_divergence(voltage)
             if divergence == True:
                 print(node + " divergence")                       
+                continue 
 
             # if settling_time[node]> 1000:
             #     import ipdb; ipdb.set_trace()
@@ -133,7 +138,14 @@ def getMaxSettlingTime(analysis, ignore_div=True):
         max_time = 0
     
     return settling_time, DC_values, max_time
-   
+
+
+def resize_plot(plt, settling_time, simulation_steps):
+    if settling_time > simulation_steps - 1000:
+        plt.xlim(0, simulation_steps)
+    else: 
+        plt.xlim(0, settling_time+1000)
+
 
 def plot_voltages(analysis, max_time=False, save=False, plot_name=False, boundary=True):
     ''' TODO: Docstring
@@ -153,15 +165,16 @@ def plot_voltages(analysis, max_time=False, save=False, plot_name=False, boundar
     # add SettlingTime indicator
     if max_time:
         plt.axvline(max_time, 0, 4, label='max_time',linewidth=4,color='r')
+        # if max_time > 1000:
+        #     plt.xlim
         plt.title("Settling time = "+ str(max_time))
 
     # display lower and upper boarder of the settling time
     if boundary == True:
         DC_values = get_DC_voltage(analysis)
-        # print(DC_values)
-        # print(type(DC_values))
+        
         for nd in nodes:
-            if abs(DC_values[nd]) <= 0.2: # 0.1 
+            if abs(DC_values[nd]) <= 0.05: # 0.1 
                 # pass
                 a=1
             else:
@@ -169,14 +182,18 @@ def plot_voltages(analysis, max_time=False, save=False, plot_name=False, boundar
                 plt.axhline(y=DC_values[nd]*1.02, ls= '--', color= 'grey', linewidth = 0.5)
                 plt.axhline(y=DC_values[nd]*0.98, ls= '--', color= 'grey', linewidth = 0.5)
 
+    
+    # import ipdb; ipdb.set_trace()
+    resize_plot(plt, max_time, get_data_points(analysis))
+
     # save or plot
     if save == True:
         plt.savefig("./simulation_plots/test/"+ plot_name + ".png")
     else:
         plt.show()
 
-
 # ax.legend(['input', 'T1b','T1e','T2e','T3e','T4e'], loc='upper right')
 
 # how to get the corresponding time to the voltage
 # analysis.time[-1].value
+

@@ -64,4 +64,3 @@ class graph_P4(graph) :
         v3  = vertex_type1('v3', T2.portB)
 
         super().__init__('P4', [T0, T1, T2], [v0, v1, v2, v3])
-

@@ -1,33 +1,36 @@
+import cProfile
+import pstats
+from pathlib import Path
+
 import pandas as pd
-from tqdm import tqdm
 from PySpice.Spice.Netlist import Circuit
+from tqdm import tqdm
 
 import generation.functions as gen_func
 import generation.graph as graph
+from ciruit_simulations.simulation_entry import (circuit_simulation,
+                                                 getMaxSettlingTime,
+                                                 plot_voltages)
 from generation.device import device
 from generation.node import node
 from generation.nodeLink import nodeLink
-from pathlib import Path
 
-from ciruit_simulations.simulation_entry import circuit_simulation, getMaxSettlingTime, plot_voltages 
 # from ciruit_simulations.analysis_tools import get_DC_voltage 
 
-import cProfile
-import pstats
 
 pr = cProfile.Profile()
 pr.enable()
 
 # Settings-------------------------------------------------------------------------------
 nlConfig_start  = 33                        # Offset for nlConfig loop
-G_type          = "P4"
 G               = graph.graph_P4()  	    # Choose graph type
 DEBUG           = True                      # Enables debug print-outs
 
-fig_path        = "./simulation_plots/plt_G_" + G_type + "_nl_" + str(nlConfig_start) + "/"
-Path(fig_path).mkdir(parents=True, exist_ok=True)
 
 # Initialize-----------------------------------------------------------------------------
+fig_path        = "./simulation_plots/plt_G_" + G.name + "_nlCstart_" + str(nlConfig_start) + "/"
+Path(fig_path).mkdir(parents=True, exist_ok=True)
+
 node.check_link(node)
 
 allNodes        = node.allNodes

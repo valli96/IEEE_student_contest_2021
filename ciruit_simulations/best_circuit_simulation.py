@@ -46,9 +46,9 @@ circuit.R('4', '7', circuit.gnd, 120@u_Ohm)
 
 
 currAnalysis = circuit_simulation(circuit)
+
 # simulator = circuit.simulator(temperature=25, nominal_temperature=25)
 # analysis = simulator.transient(step_time=5e-11, end_time=3e-7)
-
 
 settling_Time, DC_values, max_time   = getMaxSettlingTime(currAnalysis)
 

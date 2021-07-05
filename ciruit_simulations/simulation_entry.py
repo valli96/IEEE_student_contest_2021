@@ -133,14 +133,13 @@ def getMaxSettlingTime(analysis, ignore_div=True):
 
 
 def resize_plot(plt, settling_time, simulation_steps):
-    # import ipdb; ipdb.set_trace()
     if settling_time > simulation_steps - 1000:
         plt.xlim(0, simulation_steps)
     else: 
         plt.xlim(0, settling_time+1000)
 
 
-def plot_voltages(analysis, max_time=False, resize=True, save=False, plot_name=False, boundary=True):
+def plot_voltages(analysis, max_time=False, resize=True, path=False, plot_name=False, boundary=True):
     ''' TODO: Docstring
     '''
     nodes = get_nodes(analysis)
@@ -181,8 +180,8 @@ def plot_voltages(analysis, max_time=False, resize=True, save=False, plot_name=F
         resize_plot(plt, max_time, get_data_points(analysis))
 
     # save or plot
-    if save == True:
-        plt.savefig("./simulation_plots/test_P4_5/"+ plot_name +"__" +str(max_time)+".png")
+    if path:
+        plt.savefig(save_path + plot_name +"__" +str(max_time)+".png")
     else:
         plt.show()
 

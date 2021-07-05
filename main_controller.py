@@ -7,6 +7,7 @@ import generation.graph as graph
 from generation.device import device
 from generation.node import node
 from generation.nodeLink import nodeLink
+from pathlib import Path
 
 from ciruit_simulations.simulation_entry import circuit_simulation, getMaxSettlingTime, plot_voltages 
 # from ciruit_simulations.analysis_tools import get_DC_voltage 
@@ -17,11 +18,14 @@ import pstats
 pr = cProfile.Profile()
 pr.enable()
 
-
 # Settings-------------------------------------------------------------------------------
-nlConfig_start  = 33                         # Offset for nlConfig loop
+nlConfig_start  = 33                        # Offset for nlConfig loop
+G_type          = "P4"
 G               = graph.graph_P4()  	    # Choose graph type
 DEBUG           = True                      # Enables debug print-outs
+
+fig_path        = "./simulation_plots/plt_G_" + G_type + "_nl_" + str(nlConfig_start) + "/"
+Path(fig_path).mkdir(parents=True, exist_ok=True)
 
 # Initialize-----------------------------------------------------------------------------
 node.check_link(node)
@@ -70,7 +74,7 @@ for indx, nlConfig in tqdm( nlConfigs[nlConfig_start:].iterrows(),
 
         print(circName)
         # print(circName)      
-        plot_voltages(currAnalysis, max_time, save=False, plot_name=circName, boundary=True)
+        plot_voltages(currAnalysis, max_time, save_path=False, plot_name=circName, boundary=True)
         
 
         # Save results

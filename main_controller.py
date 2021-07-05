@@ -19,7 +19,7 @@ pr.enable()
 
 
 # Settings-------------------------------------------------------------------------------
-nlConfig_start  = 30                         # Offset for nlConfig loop
+nlConfig_start  = 33                         # Offset for nlConfig loop
 G               = graph.graph_P4()  	    # Choose graph type
 DEBUG           = True                      # Enables debug print-outs
 

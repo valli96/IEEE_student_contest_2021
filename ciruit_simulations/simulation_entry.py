@@ -3,13 +3,12 @@ import PySpice.Logging.Logging as Logging
 logger = Logging.setup_logging()
 from PySpice.Probe.Plot import plot
 from PySpice.Spice.Netlist import Circuit
-from .analysis_tools import get_DC_voltage, get_settlingtime
+# from .analysis_tools import get_DC_voltage, get_settlingtime
 from PySpice.Probe.Plot import plot
 import matplotlib.pyplot as plt
 import os
 import PySpice.Probe.WaveForm
 import pandas as pd
-
 
 def get_nodes(analysis):
     ''' TODO: Docstring
@@ -40,15 +39,7 @@ def get_data_points(analysis):
     return len(analysis.time)
 
 def detective_divergence(voltage):
-    # if abs(abs(voltagep[-1]) - abs(voltage[-100])) >= 0.0001:
-    #     return True
-    # else:
-    #     return False
-     
-    # print("voltage   "+str(voltage.iloc[-1].item()))
-    # print("rest      "+ str(voltage.iloc[-1].item()%1))
-    # import ipdb; ipdb.set_trace()
-
+    # print(voltage.iloc[-1].item())
     if 0.05 < abs(voltage.iloc[-1].item())%1 < 0.95:
         return True
     else:
@@ -77,11 +68,12 @@ def get_settlingtime(analysis):
             # print((unsettled[unsettled==True].index.tolist()[-1]))
             # print (unsettled[unsettled==True].index[-1])
                  
-            settling_time[node] = unsettled[unsettled==True].last_valid_index()
             divergence = detective_divergence(voltage)
             if divergence == True:
-                print(node + " divergence")                       
+                # print(node + " divergence")                       
                 continue 
+            settling_time[node] = unsettled[unsettled==True].last_valid_index()
+                # break
 
             # if settling_time[node]> 1000:
             #     import ipdb; ipdb.set_trace()
@@ -141,13 +133,14 @@ def getMaxSettlingTime(analysis, ignore_div=True):
 
 
 def resize_plot(plt, settling_time, simulation_steps):
+    # import ipdb; ipdb.set_trace()
     if settling_time > simulation_steps - 1000:
         plt.xlim(0, simulation_steps)
     else: 
         plt.xlim(0, settling_time+1000)
 
 
-def plot_voltages(analysis, max_time=False, save=False, plot_name=False, boundary=True):
+def plot_voltages(analysis, max_time=False, resize=True, save=False, plot_name=False, boundary=True):
     ''' TODO: Docstring
     '''
     nodes = get_nodes(analysis)
@@ -157,7 +150,7 @@ def plot_voltages(analysis, max_time=False, save=False, plot_name=False, boundar
     for nd in nodes:
         ax.plot(analysis[nd])
 
-    ax.set_xlabel('Time [ps]')
+    ax.set_xlabel('Simulation Steps')
     ax.set_ylabel('Voltage (V)')
     ax.grid()
     ax.ticklabel_format(axis='x', style='sci', scilimits=(0,0))
@@ -184,11 +177,12 @@ def plot_voltages(analysis, max_time=False, save=False, plot_name=False, boundar
 
     
     # import ipdb; ipdb.set_trace()
-    resize_plot(plt, max_time, get_data_points(analysis))
+    if resize == True:
+        resize_plot(plt, max_time, get_data_points(analysis))
 
     # save or plot
     if save == True:
-        plt.savefig("./simulation_plots/test/"+ plot_name + ".png")
+        plt.savefig("./simulation_plots/test_P4_5/"+ plot_name +"__" +str(max_time)+".png")
     else:
         plt.show()
 

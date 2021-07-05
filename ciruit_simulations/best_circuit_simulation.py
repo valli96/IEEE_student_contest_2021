@@ -6,6 +6,7 @@ logger = Logging.setup_logging()
 from PySpice.Probe.Plot import plot
 from PySpice.Spice.Netlist import Circuit
 from PySpice.Unit import *
+from simulation_entry  import *
 
 from analysis_tools import *
 
@@ -43,26 +44,33 @@ circuit.R('2', '3', '2', 1@u_MOhm)
 circuit.R('3', '5', '4', 1@u_MOhm)
 circuit.R('4', '7', circuit.gnd, 120@u_Ohm)
 
-simulator = circuit.simulator(temperature=25, nominal_temperature=25)
-analysis = simulator.transient(step_time=1e-11, end_time=100e-9)
+
+currAnalysis = circuit_simulation(circuit)
+# simulator = circuit.simulator(temperature=25, nominal_temperature=25)
+# analysis = simulator.transient(step_time=5e-11, end_time=3e-7)
 
 
-DC_values = get_DC_voltage(analysis)
-print(DC_values)
-get_settlingtime(analysis)
+settling_Time, DC_values, max_time   = getMaxSettlingTime(currAnalysis)
 
-figure, ax = plt.subplots(figsize=(20, 6))
-ax.plot(analysis['input'])
-ax.plot(analysis['1'])
-ax.plot(analysis['2'])
-ax.plot(analysis['3'])
-ax.plot(analysis['4'])
-ax.plot(analysis['5'])
-ax.plot(analysis['6'])
-ax.plot(analysis['7'])
-ax.set_xlabel('Time [ps]')
-ax.set_ylabel('Voltage (V)')
-ax.grid()
-ax.legend(['input', '1','2','3','4','5','6','7'], loc='upper right')
+plot_voltages(currAnalysis, max_time, save=False, resize=True, boundary=True)
 
-plt.show()
+# DC_values = get_DC_voltage(analysis)
+# print(DC_values)
+# get_settlingtime(analysis)
+
+# figure, ax = plt.subplots(figsize=(20, 6))
+# ax.plot(analysis['input'])
+# ax.plot(analysis['1'])
+# ax.plot(analysis['2'])
+# ax.plot(analysis['3'])
+# ax.plot(analysis['4'])
+# ax.plot(analysis['5'])
+# ax.plot(analysis['6'])
+# ax.plot(analysis['7'])
+# ax.set_xlabel('Simulation Steps')
+# ax.set_ylabel('Voltage (V)')
+# ax.ticklabel_format(axis='x', style='sci', scilimits=(0,0))
+# ax.grid()
+# # ax.legend(['input', '1','2','3','4','5','6','7'], loc='upper right')
+
+# plt.show()

@@ -4,7 +4,7 @@ from pathlib import Path
 
 # import time
 # from itertools import count
-# from multiprocessing import Process
+# import multiprocessing 
 
 import pandas as pd
 from PySpice.Spice.Netlist import Circuit
@@ -19,96 +19,122 @@ from generation.device import device
 from generation.node import node
 from generation.nodeLink import nodeLink
 
+# def analysis_timeout_handler(procnum, return_dict):
+#     time.sleep(2)
+#     currAnalysis = circuit_simulation(currCircuit, end_time=3e-7)
+#     return_dict[procnum] = currAnalysis
+    
 
-pr = cProfile.Profile()
-pr.enable()
+
+if __name__ == "__main__":
+    pr = cProfile.Profile()
+    pr.enable()
 
 # Settings-------------------------------------------------------------------------------
-nlConfig_start  = 5                        # Offset for nlConfig loop
-G               = graph.graph_P4()  	    # Choose graph type
-DEBUG           = True                      # Enables debug print-outs
+    nlConfig_start  = 5                        # Offset for nlConfig loop
+    G               = graph.graph_P4()  	    # Choose graph type
+    DEBUG           = True                      # Enables debug print-outs
 
 
 # Initialize-----------------------------------------------------------------------------
-fig_path        = "./simulation_plots/plt_G_" + G.name + "_nlCstart_" + str(nlConfig_start) + "/"
-Path(fig_path).mkdir(parents=True, exist_ok=True)
+    fig_path        = "./simulation_plots/plt_G_" + G.name + "_nlCstart_" + str(nlConfig_start) + "/"
+    Path(fig_path).mkdir(parents=True, exist_ok=True)
 
-node.check_link(node)
+    node.check_link(node)
 
-allNodes        = node.allNodes
-allNodeLinks    = nodeLink.allNodeLinks
-allDevices      = device.allDevices
+    allNodes        = node.allNodes
+    allNodeLinks    = nodeLink.allNodeLinks
+    allDevices      = device.allDevices
 
-nlConfigs       = gen_func.getNodeLinkConfigs(allNodeLinks, allNodes)   # type: pd.DataFrame
-paramConfigs    = gen_func.getParameterConfigs(G.TL_count)              # type: pd.DataFrame
+    nlConfigs       = gen_func.getNodeLinkConfigs(allNodeLinks, allNodes)   # type: pd.DataFrame
+    paramConfigs    = gen_func.getParameterConfigs(G.TL_count)              # type: pd.DataFrame
 
-pd_results      = pd.DataFrame(columns=['graph','nlConfigID','paramConfigID','maxSettlingTime','nlConfigString','paramConfigString'])
+    pd_results      = pd.DataFrame(columns=['graph','nlConfigID','paramConfigID','maxSettlingTime','nlConfigString','paramConfigString'])
 
-print(nlConfigs)
+    print(nlConfigs)
 
 # Iterate over nlConfigs and paramConfigs--------------------------------------
 # ----------
-for indx, nlConfig in tqdm( nlConfigs[nlConfig_start:].iterrows(), 
-                            position=0, ncols=70,
-                            initial=nlConfig_start, 
-                            total=nlConfigs.shape[0] - 1, desc='nlConfig    ',
-                            disable=DEBUG) :
+    for indx, nlConfig in tqdm( nlConfigs[nlConfig_start:].iterrows(), 
+                                position=0, ncols=70,
+                                initial=nlConfig_start, 
+                                total=nlConfigs.shape[0] - 1, desc='nlConfig    ',
+                                disable=DEBUG) :
 
-   
-    node.purge(node)
-    nodeLink.configure(nodeLink, nlConfig)
-        
-    gen_func.synthesizeTopology(allNodeLinks, allDevices)
-    device.check(device)
+       
+        node.purge(node)
+        nodeLink.configure(nodeLink, nlConfig)
+            
+        gen_func.synthesizeTopology(allNodeLinks, allDevices)
+        device.check(device)
 
 #--------------------------------------------------
 #--------------------------------------------------
 
-    for jndx, paramConfig in tqdm(  paramConfigs.iterrows(), 
-                                    position=1, ncols=70,
-                                    total=paramConfigs.shape[0] - 1, leave=False, desc='paramConfig ',
-                                    disable=DEBUG) :
+        for jndx, paramConfig in tqdm(  paramConfigs.iterrows(), 
+                                        position=1, ncols=70,
+                                        total=paramConfigs.shape[0] - 1, leave=False, desc='paramConfig ',
+                                        disable=DEBUG) :
 
-        # Circuit synth
-        circName        = f"{G.name}_nlC{indx:03}_pC{jndx:03}"
-        currCircuit     = gen_func.synthesizeCircuit(circName, G, paramConfig)    
-        
-        
-        # Simulation
-        
+            # Circuit synth
+            circName        = f"{G.name}_nlC{indx:03}_pC{jndx:03}"
+            currCircuit     = gen_func.synthesizeCircuit(circName, G, paramConfig)    
+            
+            
+            # Simulation
+            
 
-        # p1 = Process(target=circuit_simulation(currCircuit), name="Simulation")
-        # p1.start()
-        # p1.join(timeout=2)
-        # p1.terminate()
+            # p1 = Process(target=circuit_simulation(currCircuit), name="Simulation")
+            # p1.start()
+            # p1.join(timeout=2)
+            # p1.terminate()
 
-        # if p1.exitcode is None:
-        #    print(f'Oops, {p1} timeouts!')
-        #    continue
-          
-        # currAnalysis = circuit_simulation(currCircuit)
-
-        currAnalysis = circuit_simulation(currCircuit, end_time=3e-7)
-        settlingTime, DC_values, max_time   = getMaxSettlingTime(currAnalysis)
-
-        print(circName)
-        # print(circName)      
-        plot_voltages(currAnalysis, max_time, save_path=False, plot_name=circName, boundary=True, set_time_min=2000)
-        
-
-        # Save results
-        nlConfigString      = str(nlConfig.to_list()).replace("'","")
-        paramConfigString   = str(paramConfig.to_list()).replace("'","")
+            # if p1.exitcode is None:
+            #    print(f'Oops, {p1} timeouts!')
+            #    continue
+              
+            # currAnalysis = circuit_simulation(currCircuit)
 
 
-        pd_results.loc[len(pd_results)]     = [G.name, indx, jndx, max_time, nlConfigString, paramConfigString]
-        a = 1
+            # manager = multiprocessing.Manager()
+            # return_dict = manager.dict()
+            # jobs = []
+            # p = multiprocessing.Process(target=analysis_timeout_handler, args=(1, return_dict))
+            # jobs.append(p)
+            # import ipdb; ipdb.set_trace()
+            # p.start()
+            # p.join(2)
+             
+            # if p.is_alive():
+            #     print ("running... let's kill it...")
+            #     p.terminate()
+            #     p.join()
+            
+            # for proc in jobs:
+            #     proc.join()
+            # currAnalysis = return_dict.values()
 
-    pd_results.to_csv('results_' + G.name + '.csv')
+            currAnalysis = circuit_simulation(currCircuit, end_time=3e-7)
+            settlingTime, DC_values, max_time   = getMaxSettlingTime(currAnalysis)
 
-pr.disable()
-stats = pstats.Stats(pr).sort_stats('tottime')
-stats.print_stats(20)
+            print(circName)
+            # print(circName)      
+            plot_voltages(currAnalysis, max_time, save_path=False, plot_name=circName, boundary=True, set_time_min=2000)
+            
+
+            # Save results
+            nlConfigString      = str(nlConfig.to_list()).replace("'","")
+            paramConfigString   = str(paramConfig.to_list()).replace("'","")
+
+
+            pd_results.loc[len(pd_results)]     = [G.name, indx, jndx, max_time, nlConfigString, paramConfigString]
+            a = 1
+
+        pd_results.to_csv('results_' + G.name + '.csv')
+
+    pr.disable()
+    stats = pstats.Stats(pr).sort_stats('tottime')
+    stats.print_stats(20)
 
 
 # TODO: Implement more graphs
@@ -121,4 +147,4 @@ stats.print_stats(20)
 # DONE: maybe get device combinations instead of permutations
 # DONE: Fix synth process 
 
-a = 1
+    a = 1

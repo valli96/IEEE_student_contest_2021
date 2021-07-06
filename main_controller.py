@@ -36,7 +36,7 @@ if __name__ == "__main__":
     pr.enable()
 
 # Settings-------------------------------------------------------------------------------
-    nlConfig_start  = 0                        # Offset for nlConfig loop
+    nlConfig_start  = 27                         # Offset for nlConfig loop
     G               = graph.graph_P4()  	    # Choose graph type
     DEBUG           = True                      # Enables debug print-outs
 
@@ -90,7 +90,7 @@ if __name__ == "__main__":
             # Simulation
 
             # time out handler------------------------------------------------------ 
-            # # # import ipdb; ipdb.set_trace()
+            # import ipdb; ipdb.set_trace()
             # Circuit = Queue() 
             # Circuit.put(currCircuit)
 
@@ -104,12 +104,18 @@ if __name__ == "__main__":
             #     p.terminate()
             #     p.join()
             
-
-            currAnalysis = circuit_simulation(currCircuit, end_time=3e-7)
-            settlingTime, DC_values, max_time   = getMaxSettlingTime(currAnalysis)
+            # if jndx == 5 or jndx == 7 or jndx == 10:
+            #     continue
 
             print(circName)
-            print(fig_path)
+            try:
+                currAnalysis = circuit_simulation(currCircuit, step_time=5e-11, end_time=3.5e-7)
+            except NameError:
+                print("___ Error Timestemp top small ___" )
+                max_time = -1
+                continue
+            settlingTime, DC_values, max_time   = getMaxSettlingTime(currAnalysis)
+
 
             # print(circName)      
             plot_voltages(currAnalysis, max_time, save_path=fig_path, plot_name=circName, boundary=True, set_time_min=4000)

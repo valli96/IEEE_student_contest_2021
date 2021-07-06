@@ -1,4 +1,4 @@
-amport cProfile
+import cProfile
 import pstats
 from pathlib import Path
 

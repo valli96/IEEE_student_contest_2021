@@ -11,7 +11,14 @@ from ciruit_simulations.simulation_entry import circuit_simulation, getMaxSettli
 # from ciruit_simulations.analysis_tools import get_DC_voltage 
 
 graph_dict      = { 'P3' : graph.graph_P3,
-                    'P4' : graph.graph_P4 }
+                    'P4' : graph.graph_P4,
+                    'P5' : graph.graph_P5,
+                    'K3' : graph.graph_K3,
+                    'K2,2'  : graph.graph_K2x2,
+                    'K1,3a' : graph.graph_K1x3a,
+                    '3-PANa': graph.graph_3PANa,
+                    'CHAIRa': graph.graph_CHAIRa,
+                    'K1,4a' : graph.graph_K1x4a} 
 
 # Settings-------------------------------------------------------------------------------
 inputCircName   = 'P4_nlC020_pC002'         # Input circuit name

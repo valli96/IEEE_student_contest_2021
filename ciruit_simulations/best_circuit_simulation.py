@@ -52,7 +52,7 @@ currAnalysis = circuit_simulation(circuit)
 
 settling_Time, DC_values, max_time   = getMaxSettlingTime(currAnalysis)
 
-plot_voltages(currAnalysis, max_time, save=False, resize=True, boundary=True)
+plot_voltages(currAnalysis, max_time, save_path=False, resize=True, boundary=True)
 
 # DC_values = get_DC_voltage(analysis)
 # print(DC_values)

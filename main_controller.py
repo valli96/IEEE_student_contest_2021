@@ -2,9 +2,10 @@ import cProfile
 import pstats
 from pathlib import Path
 
+# For Time Out hander----------------------------------------
 # import time
-# from itertools import count
-# import multiprocessing 
+# from multiprocessing import Process, Queue
+#------------------------------------------------------------
 
 import pandas as pd
 from PySpice.Spice.Netlist import Circuit
@@ -19,11 +20,15 @@ from generation.device import device
 from generation.node import node
 from generation.nodeLink import nodeLink
 
-# def analysis_timeout_handler(procnum, return_dict):
-#     time.sleep(2)
-#     currAnalysis = circuit_simulation(currCircuit, end_time=3e-7)
-#     return_dict[procnum] = currAnalysis
-    
+
+
+# Def Time Out hander-------------------------------------------------
+# def analysis_timeout_handler(Circuit):
+
+#     Analysis = circuit_simulation(Circuit.get(), end_time=3e-7)
+#     Circuit.put(Analysis) 
+
+
 
 
 if __name__ == "__main__":
@@ -31,13 +36,14 @@ if __name__ == "__main__":
     pr.enable()
 
 # Settings-------------------------------------------------------------------------------
-    nlConfig_start  = 5                        # Offset for nlConfig loop
+    nlConfig_start  = 0                        # Offset for nlConfig loop
     G               = graph.graph_P4()  	    # Choose graph type
     DEBUG           = True                      # Enables debug print-outs
 
 
 # Initialize-----------------------------------------------------------------------------
     fig_path        = "./simulation_plots/plt_G_" + G.name + "_nlCstart_" + str(nlConfig_start) + "/"
+
     Path(fig_path).mkdir(parents=True, exist_ok=True)
 
     node.check_link(node)
@@ -82,44 +88,31 @@ if __name__ == "__main__":
             
             
             # Simulation
-            
 
-            # p1 = Process(target=circuit_simulation(currCircuit), name="Simulation")
-            # p1.start()
-            # p1.join(timeout=2)
-            # p1.terminate()
+            # time out handler------------------------------------------------------ 
+            # # # import ipdb; ipdb.set_trace()
+            # Circuit = Queue() 
+            # Circuit.put(currCircuit)
 
-            # if p1.exitcode is None:
-            #    print(f'Oops, {p1} timeouts!')
-            #    continue
-              
-            # currAnalysis = circuit_simulation(currCircuit)
-
-
-            # manager = multiprocessing.Manager()
-            # return_dict = manager.dict()
-            # jobs = []
-            # p = multiprocessing.Process(target=analysis_timeout_handler, args=(1, return_dict))
-            # jobs.append(p)
-            # import ipdb; ipdb.set_trace()
+            # # import ipdb; ipdb.set_trace()
+            # p = Process(target=analysis_timeout_handler, args=(Circuit,))
             # p.start()
-            # p.join(2)
-             
+            # currAnalysis = Circuit.get() 
+            # p.join()
             # if p.is_alive():
             #     print ("running... let's kill it...")
             #     p.terminate()
             #     p.join()
             
-            # for proc in jobs:
-            #     proc.join()
-            # currAnalysis = return_dict.values()
 
             currAnalysis = circuit_simulation(currCircuit, end_time=3e-7)
             settlingTime, DC_values, max_time   = getMaxSettlingTime(currAnalysis)
 
             print(circName)
+            print(fig_path)
+
             # print(circName)      
-            plot_voltages(currAnalysis, max_time, save_path=False, plot_name=circName, boundary=True, set_time_min=2000)
+            plot_voltages(currAnalysis, max_time, save_path=fig_path, plot_name=circName, boundary=True, set_time_min=4000)
             
 
             # Save results
@@ -139,7 +132,6 @@ if __name__ == "__main__":
 
 # TODO: Implement more graphs
 # TODO: investigate and fix possible problems for type 3 and 4 vertices in synthesizeNodes
-
 # DONE: Synthesize circuit
 # DONE: implement TL permutations
 # DONE: ->first make combinations -> config -> set values as permutations for TL and Devices

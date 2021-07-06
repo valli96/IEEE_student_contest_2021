@@ -45,7 +45,7 @@ circuit.LosslessTransmissionLine('4', 'T4e', circuit.gnd, 'T3e', circuit.gnd,
                                  impedance=120, time_delay=8.25e-9)
 
 circuit.R('1M', 'T1b', circuit.gnd, 1@u_MOhm)
-circuit.R('2M', 'T3e', circuit.gnd, 1@u_MOhm)
+circuit.R('2M', 'T3e', 'T4e', 1@u_MOhm)
 circuit.R('1R', 'T1e', 'input', 120@u_Ohm)
 circuit.R('2R', 'T4e', circuit.gnd, 120@u_Ohm)
 
@@ -55,7 +55,7 @@ circuit.R('2R', 'T4e', circuit.gnd, 120@u_Ohm)
 
 currAnalysis = circuit_simulation(circuit, step_time=5e-11)
 settling_Time, DC_values, max_time   = getMaxSettlingTime(currAnalysis)
-plot_voltages(currAnalysis, max_time, save=False, resize=True, boundary=True)
+plot_voltages(currAnalysis, max_time, save_path=False, resize=True, boundary=True)
 
 
 # # stop = timeit.default_timer()

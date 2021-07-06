@@ -31,15 +31,13 @@ from generation.nodeLink import nodeLink
 #     Circuit.put(Analysis) 
 
 
-
-
 if __name__ == "__main__":
     pr = cProfile.Profile()
     pr.enable()
 
 # Settings-------------------------------------------------------------------------------
     Nr_of_simulations   = 50
-    G                   = graph.graph_K1x4a()  	    # Choose graph type
+    G                   = graph.graph_P3()  	    # Choose graph type
     DEBUG               = True                      # Enables debug print-outs
     stepTime            = 5e-11
 
@@ -89,10 +87,10 @@ if __name__ == "__main__":
      
 
         if DEBUG :
-            print(circName)
+            print(circName + ': ', end='')
             
         try:
-            currAnalysis = circuit_simulation(currCircuit, step_time=stepTime, end_time=3.5e-7)
+            currAnalysis = circuit_simulation(currCircuit, step_time=stepTime, end_time=5e-7)
 
         except NameError:
             print("___ Error Timestep too small ___" )
@@ -102,12 +100,16 @@ if __name__ == "__main__":
         settlingTime, DC_values, max_time   = getMaxSettlingTime(currAnalysis)   
         plot_voltages(currAnalysis, max_time, save_path=fig_path, plot_name=circName, boundary=True, set_time_min=4000)
         
+        if DEBUG :
+            print(str(max_time))
+
+
         # Save results
         nlConfigString      = str(nlConfig.to_list()).replace("'","")
         paramConfigString   = str(paramConfig.to_list()).replace("'","")
 
 
-        with open('resultsMC_' + G.name + '.csv', 'a', newline='') as csvfile:
+        with open('./results/resultsMC_' + G.name + '.csv', 'a', newline='') as csvfile:
             writer  = csv.writer(csvfile)
             row     = [G.name, nlC_indx, pC_indx, max_time, nlConfigString, paramConfigString]
             writer.writerow(row)

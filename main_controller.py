@@ -112,7 +112,7 @@ if __name__ == "__main__":
                 print(circName)
                 
             try:
-                currAnalysis = circuit_simulation(currCircuit, step_time=stepTime, end_time=3.5e-7)
+                currAnalysis = circuit_simulation(currCircuit, step_time=stepTime, end_time=5e-7)
 
             except NameError:
                 print("___ Error Timestemp top small ___" )
@@ -122,6 +122,9 @@ if __name__ == "__main__":
             settlingTime, DC_values, max_time   = getMaxSettlingTime(currAnalysis)   
             plot_voltages(currAnalysis, max_time, save_path=fig_path, plot_name=circName, boundary=True, set_time_min=4000)
             
+            if DEBUG :
+                print(str(max_time))
+
             # Save results
             nlConfigString      = str(nlConfig.to_list()).replace("'","")
             paramConfigString   = str(paramConfig.to_list()).replace("'","")

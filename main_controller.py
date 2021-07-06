@@ -40,6 +40,7 @@ if __name__ == "__main__":
     paramConfig_start   = 9
     G                   = graph.graph_P4()  	    # Choose graph type
     DEBUG               = False                      # Enables debug print-outs
+    stepTime            = 5e-11
 
 
 # Initialize-----------------------------------------------------------------------------
@@ -111,7 +112,7 @@ if __name__ == "__main__":
                 print(circName)
                 
             try:
-                currAnalysis = circuit_simulation(currCircuit, step_time=5e-11, end_time=3.5e-7)
+                currAnalysis = circuit_simulation(currCircuit, step_time=stepTime, end_time=3.5e-7)
 
             except NameError:
                 print("___ Error Timestemp top small ___" )

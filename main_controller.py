@@ -2,6 +2,10 @@ import cProfile
 import pstats
 from pathlib import Path
 
+# import time
+# from itertools import count
+# from multiprocessing import Process
+
 import pandas as pd
 from PySpice.Spice.Netlist import Circuit
 from tqdm import tqdm
@@ -15,14 +19,12 @@ from generation.device import device
 from generation.node import node
 from generation.nodeLink import nodeLink
 
-# from ciruit_simulations.analysis_tools import get_DC_voltage 
-
 
 pr = cProfile.Profile()
 pr.enable()
 
 # Settings-------------------------------------------------------------------------------
-nlConfig_start  = 33                        # Offset for nlConfig loop
+nlConfig_start  = 5                        # Offset for nlConfig loop
 G               = graph.graph_P4()  	    # Choose graph type
 DEBUG           = True                      # Enables debug print-outs
 
@@ -59,6 +61,9 @@ for indx, nlConfig in tqdm( nlConfigs[nlConfig_start:].iterrows(),
     gen_func.synthesizeTopology(allNodeLinks, allDevices)
     device.check(device)
 
+#--------------------------------------------------
+#--------------------------------------------------
+
     for jndx, paramConfig in tqdm(  paramConfigs.iterrows(), 
                                     position=1, ncols=70,
                                     total=paramConfigs.shape[0] - 1, leave=False, desc='paramConfig ',
@@ -68,16 +73,27 @@ for indx, nlConfig in tqdm( nlConfigs[nlConfig_start:].iterrows(),
         circName        = f"{G.name}_nlC{indx:03}_pC{jndx:03}"
         currCircuit     = gen_func.synthesizeCircuit(circName, G, paramConfig)    
         
-        # if '1' in circName:
-        #     import ipdb; ipdb.set_trace()
         
         # Simulation
-        currAnalysis = circuit_simulation(currCircuit)
+        
+
+        # p1 = Process(target=circuit_simulation(currCircuit), name="Simulation")
+        # p1.start()
+        # p1.join(timeout=2)
+        # p1.terminate()
+
+        # if p1.exitcode is None:
+        #    print(f'Oops, {p1} timeouts!')
+        #    continue
+          
+        # currAnalysis = circuit_simulation(currCircuit)
+
+        currAnalysis = circuit_simulation(currCircuit, end_time=3e-7)
         settlingTime, DC_values, max_time   = getMaxSettlingTime(currAnalysis)
 
         print(circName)
         # print(circName)      
-        plot_voltages(currAnalysis, max_time, save_path=False, plot_name=circName, boundary=True)
+        plot_voltages(currAnalysis, max_time, save_path=False, plot_name=circName, boundary=True, set_time_min=2000)
         
 
         # Save results

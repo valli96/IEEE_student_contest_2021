@@ -139,51 +139,55 @@ def resize_plot(plt, settling_time, simulation_steps):
         plt.xlim(0, settling_time+1000)
 
 
-def plot_voltages(analysis, max_time=False, resize=True, path=False, plot_name=False, boundary=True):
+def plot_voltages(analysis, max_time=False, resize=True, save_path=False, plot_name=False, boundary=True, set_time_min=False):
     ''' TODO: Docstring
     '''
-    nodes = get_nodes(analysis)
-
-    # make standard plot 
-    figure, ax = plt.subplots(figsize=(20, 6))
-    for nd in nodes:
-        ax.plot(analysis[nd])
-
-    ax.set_xlabel('Simulation Steps')
-    ax.set_ylabel('Voltage (V)')
-    ax.grid()
-    ax.ticklabel_format(axis='x', style='sci', scilimits=(0,0))
-    
-    # add SettlingTime indicator
-    if max_time:
-        plt.axvline(max_time, 0, 4, label='max_time',linewidth=4,color='r')
-        # if max_time > 1000:
-        #     plt.xlim
-        plt.title("Settling time = "+ str(max_time))
-
-    # display lower and upper boarder of the settling time
-    if boundary == True:
-        DC_values = get_DC_voltage(analysis)
-        
-        for nd in nodes:
-            if abs(DC_values[nd]) <= 0.05: # 0.1 
-                # pass
-                a=1
-            else:
-                # print(DC_values)
-                plt.axhline(y=DC_values[nd]*1.02, ls= '--', color= 'grey', linewidth = 0.5)
-                plt.axhline(y=DC_values[nd]*0.98, ls= '--', color= 'grey', linewidth = 0.5)
-
-    
-    # import ipdb; ipdb.set_trace()
-    if resize == True:
-        resize_plot(plt, max_time, get_data_points(analysis))
-
-    # save or plot
-    if path:
-        plt.savefig(save_path + plot_name +"__" +str(max_time)+".png")
+    if max_time < set_time_min:
+        pass
     else:
-        plt.show()
+        nodes = get_nodes(analysis)
+
+        # make standard plot 
+        figure, ax = plt.subplots(figsize=(20, 6))
+        for nd in nodes:
+            ax.plot(analysis[nd])
+
+        ax.set_xlabel('Simulation Steps')
+        ax.set_ylabel('Voltage (V)')
+        ax.grid()
+        ax.ticklabel_format(axis='x', style='sci', scilimits=(0,0))
+        
+        # add SettlingTime indicator
+        if max_time:
+            plt.axvline(max_time, 0, 4, label='max_time',linewidth=4,color='r')
+            # if max_time > 1000:
+            #     plt.xlim
+            plt.title("Settling time = "+ str(max_time))
+
+        # display lower and upper boarder of the settling time
+        if boundary == True:
+            DC_values = get_DC_voltage(analysis)
+            
+            for nd in nodes:
+                if abs(DC_values[nd]) <= 0.05: # 0.1 
+                    # pass
+                    a=1
+                else:
+                    # print(DC_values)
+                    plt.axhline(y=DC_values[nd]*1.02, ls= '--', color= 'grey', linewidth = 0.5)
+                    plt.axhline(y=DC_values[nd]*0.98, ls= '--', color= 'grey', linewidth = 0.5)
+        
+        
+
+        # import ipdb; ipdb.set_trace()
+        if resize == True:
+            resize_plot(plt, max_time, get_data_points(analysis))
+
+        # save or plot
+        if save_path:
+            plt.savefig(save_save_path + plot_name +"__" +str(max_time)+".png")
+        else:
+            plt.show()
 
 # ax.legend(['input', 'T1b','T1e','T2e','T3e','T4e'], loc='upper right')
 

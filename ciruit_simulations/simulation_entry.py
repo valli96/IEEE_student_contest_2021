@@ -186,6 +186,7 @@ def plot_voltages(analysis, max_time=False, resize=True, save_path=False, plot_n
         # save or plot
         if save_path:
             plt.savefig(save_path + plot_name +"__" +str(max_time)+".png")
+            plt.close()
         else:
             plt.show()
 

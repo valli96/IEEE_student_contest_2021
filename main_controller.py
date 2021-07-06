@@ -36,9 +36,10 @@ if __name__ == "__main__":
     pr.enable()
 
 # Settings-------------------------------------------------------------------------------
-    nlConfig_start  = 27                         # Offset for nlConfig loop
-    G               = graph.graph_P4()  	    # Choose graph type
-    DEBUG           = True                      # Enables debug print-outs
+    nlConfig_start      = 30                         # Offset for nlConfig loop
+    paramConfig_start   = 9
+    G                   = graph.graph_P4()  	    # Choose graph type
+    DEBUG               = False                      # Enables debug print-outs
 
 
 # Initialize-----------------------------------------------------------------------------
@@ -60,7 +61,6 @@ if __name__ == "__main__":
     print(nlConfigs)
 
 # Iterate over nlConfigs and paramConfigs--------------------------------------
-# ----------
     for indx, nlConfig in tqdm( nlConfigs[nlConfig_start:].iterrows(), 
                                 position=0, ncols=70,
                                 initial=nlConfig_start, 
@@ -74,66 +74,66 @@ if __name__ == "__main__":
         gen_func.synthesizeTopology(allNodeLinks, allDevices)
         device.check(device)
 
-#--------------------------------------------------
-#--------------------------------------------------
-
-        for jndx, paramConfig in tqdm(  paramConfigs.iterrows(), 
+        for jndx, paramConfig in tqdm(  paramConfigs[paramConfig_start:].iterrows(), 
                                         position=1, ncols=70,
+                                        initial=paramConfig_start,
                                         total=paramConfigs.shape[0] - 1, leave=False, desc='paramConfig ',
                                         disable=DEBUG) :
+
+            paramConfig_start = 0
 
             # Circuit synth
             circName        = f"{G.name}_nlC{indx:03}_pC{jndx:03}"
             currCircuit     = gen_func.synthesizeCircuit(circName, G, paramConfig)    
             
-            
-            # Simulation
+            # Timeout subprocess handling
+                # Simulation
 
-            # time out handler------------------------------------------------------ 
-            # import ipdb; ipdb.set_trace()
-            # Circuit = Queue() 
-            # Circuit.put(currCircuit)
+                # time out handler------------------------------------------------------ 
+                # import ipdb; ipdb.set_trace()
+                # Circuit = Queue() 
+                # Circuit.put(currCircuit)
 
-            # # import ipdb; ipdb.set_trace()
-            # p = Process(target=analysis_timeout_handler, args=(Circuit,))
-            # p.start()
-            # currAnalysis = Circuit.get() 
-            # p.join()
-            # if p.is_alive():
-            #     print ("running... let's kill it...")
-            #     p.terminate()
-            #     p.join()
-            
-            # if jndx == 5 or jndx == 7 or jndx == 10:
-            #     continue
+                # # import ipdb; ipdb.set_trace()
+                # p = Process(target=analysis_timeout_handler, args=(Circuit,))
+                # p.start()
+                # currAnalysis = Circuit.get() 
+                # p.join()
+                # if p.is_alive():
+                #     print ("running... let's kill it...")
+                #     p.terminate()
+                #     p.join()
+                
+                # if jndx == 5 or jndx == 7 or jndx == 10:
+                #     continue
 
-            print(circName)
+            if DEBUG :
+                print(circName)
+                
             try:
                 currAnalysis = circuit_simulation(currCircuit, step_time=5e-11, end_time=3.5e-7)
+
             except NameError:
                 print("___ Error Timestemp top small ___" )
-                max_time = -1
                 continue
-            settlingTime, DC_values, max_time   = getMaxSettlingTime(currAnalysis)
 
-
-            # print(circName)      
+            # Get max settling time and plot if useful
+            settlingTime, DC_values, max_time   = getMaxSettlingTime(currAnalysis)   
             plot_voltages(currAnalysis, max_time, save_path=fig_path, plot_name=circName, boundary=True, set_time_min=4000)
             
-
             # Save results
             nlConfigString      = str(nlConfig.to_list()).replace("'","")
             paramConfigString   = str(paramConfig.to_list()).replace("'","")
 
-
             pd_results.loc[len(pd_results)]     = [G.name, indx, jndx, max_time, nlConfigString, paramConfigString]
-            a = 1
 
-        pd_results.to_csv('results_' + G.name + '.csv')
+            pd_results.to_csv('results_' + G.name + '.csv')
+
 
     pr.disable()
-    stats = pstats.Stats(pr).sort_stats('tottime')
-    stats.print_stats(20)
+    if DEBUG :
+        stats = pstats.Stats(pr).sort_stats('tottime')
+        stats.print_stats(20)
 
 
 # TODO: Implement more graphs

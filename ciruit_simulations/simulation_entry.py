@@ -64,29 +64,13 @@ def get_settlingtime(analysis):
             high        = abs(voltage) >= abs(DC_values[node]) * 1.02
             low         = abs(voltage) <= abs(DC_values[node]) * 0.98
             unsettled   = high | low
-            # print(unsettled) 
-            # print((unsettled[unsettled==True].index.tolist()[-1]))
-            # print (unsettled[unsettled==True].index[-1])
                  
             divergence = detective_divergence(voltage)
             if divergence == True:
                 # print(node + " divergence")                       
                 continue 
             settling_time[node] = unsettled[unsettled==True].last_valid_index()
-                # break
 
-            # if settling_time[node]> 1000:
-            #     import ipdb; ipdb.set_trace()
-
-
-            # old approach
-            # for i in range(number_simulations):
-            #     voltage = analysis[node][number_simulations - 1 - i].value
-            #     if (abs(voltage) >= abs(DC_values[node])*1.02 or abs(voltage) <= abs(DC_values[node])*0.98):
-            #         DC_values[node] = number_simulations-i
-            #         settling_time[node] = number_simulations-i
-            #         break
-            # print(str(settling_time))
     
     
     return settling_time
@@ -155,7 +139,7 @@ def plot_voltages(analysis, max_time=False, resize=True, save_path=False, plot_n
 
         ax.set_xlabel('Simulation Steps')
         ax.set_ylabel('Voltage (V)')
-        ax.grid()
+        # ax.grid()
         ax.ticklabel_format(axis='x', style='sci', scilimits=(0,0))
         
         # add SettlingTime indicator
@@ -175,8 +159,9 @@ def plot_voltages(analysis, max_time=False, resize=True, save_path=False, plot_n
                     a=1
                 else:
                     # print(DC_values)
-                    plt.axhline(y=DC_values[nd]*1.02, ls= '--', color= 'grey', linewidth = 0.5)
-                    plt.axhline(y=DC_values[nd]*0.98, ls= '--', color= 'grey', linewidth = 0.5)
+                    plt.axhline(y=DC_values[nd]*1.02, ls= '--', color= 'grey', linewidth = 2)
+                    plt.axhline(y=DC_values[nd]*0.98, ls= '--', color= 'grey', linewidth = 2)
+                    a = 1
         
         
 

@@ -21,7 +21,7 @@ graph_dict      = { 'P3' : graph.graph_P3,
                     'K1,4a' : graph.graph_K1x4a} 
 
 # Settings-------------------------------------------------------------------------------
-inputCircName   = 'P4_nlC020_pC002'         # Input circuit name
+inputCircName   = '3-PANa_nlC275_pC243'         # Input circuit name
 reRunSimulation = False                     
 
 #----------------------------------------------------------------------------------------

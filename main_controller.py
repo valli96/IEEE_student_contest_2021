@@ -37,7 +37,7 @@ if __name__ == "__main__":
 
 # Settings-------------------------------------------------------------------------------
     nlConfig_start      = 30                         # Offset for nlConfig loop
-    paramConfig_start   = 9
+    paramConfig_start   = 1
     G                   = graph.graph_P4()  	    # Choose graph type
     DEBUG               = False                      # Enables debug print-outs
     stepTime            = 5e-11
@@ -120,7 +120,7 @@ if __name__ == "__main__":
 
             # Get max settling time and plot if useful
             settlingTime, DC_values, max_time   = getMaxSettlingTime(currAnalysis)   
-            plot_voltages(currAnalysis, max_time, save_path=fig_path, plot_name=circName, boundary=True, set_time_min=4000)
+            plot_voltages(currAnalysis, max_time, save_path=False, plot_name=circName, boundary=True, set_time_min=10)
             
             if DEBUG :
                 print(str(max_time))

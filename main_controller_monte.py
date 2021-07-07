@@ -37,7 +37,7 @@ if __name__ == "__main__":
 
 # Settings-------------------------------------------------------------------------------
     Nr_of_simulations   = 50
-    G                   = graph.graph_P3()  	    # Choose graph type
+    G                   = graph.graph_K2x2()  	    # Choose graph type
     DEBUG               = True                      # Enables debug print-outs
     stepTime            = 5e-11
 

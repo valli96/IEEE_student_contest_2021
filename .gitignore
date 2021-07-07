@@ -11,5 +11,5 @@ LTspiceModels/linearDraft01.log
 LTspiceModels/linearDraft01.op.raw
 LTspiceModels/linearDraft01.raw
 results_P4.csv
-simulation_plots/*
+/* simulation_plots/* */
 topology_tester.py

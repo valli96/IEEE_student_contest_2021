@@ -38,7 +38,7 @@ if __name__ == "__main__":
 # Settings-------------------------------------------------------------------------------
     nlConfig_start      = 30                         # Offset for nlConfig loop
     paramConfig_start   = 1
-    G                   = graph.graph_P4()  	    # Choose graph type
+    G                   = graph.graph_K1x4a()  	    # Choose graph type
     DEBUG               = False                      # Enables debug print-outs
     stepTime            = 5e-11
 

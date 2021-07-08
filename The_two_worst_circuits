@@ -70,3 +70,41 @@ R_ECU3 T0_nB1__T1_nB1 T2_nB2__T0_nB2 1000000.0
 R_ECU4 T0_nB1__T1_nB1 T1_nB2__T2_nB1 120
 R_ECU2 T1_nB2__T2_nB1 T2_nB2__T0_nB2 1000000.0
 
+
+    P5_nlC001_pC177__127544
+
+
+330 nodeLink configurations generated
+576 parameter configurations generated
+
+graph: P5
+
+node link config: 1
+[D0, D1, D2, O, D3, S, O, S, S, O, S]
+
+param config: 177
+[L2, L1, L4, L3, ECU2, ECU3, ECU4, ECU1]
+
+Netlist:
+.title P5_nlC001_pC177
+T_L2 T0_nB1__D1_nA T0_nB2__D2_nA T0_nA1__D0_nA T0_nA2__D0_nB Z0=120 TD=1.
+5e-09
+R_psgnd_L2_in T0_nA2__D0_nB 0 10000000000.0
+R_psgnd_L2_out T0_nB2__D2_nA 0 10000000000.0
+T_L1 T1_nB1__D3_nA T1_nB2__T2_nA2 T1_nA1__D1_nB T1_nA2__D2_nB Z0=120 TD=1
+e-09
+R_psgnd_L1_in T1_nA2__D2_nB 0 10000000000.0
+R_psgnd_L1_out T1_nB2__T2_nA2 0 10000000000.0
+T_L4 T2_nB1__T3_nA1 T2_nB2__T3_nA2 0 T1_nB2__T2_nA2 Z0=120 TD=3.5e-09
+R_psgnd_L4_in T1_nB2__T2_nA2 0 10000000000.0
+R_psgnd_L4_out T2_nB2__T3_nA2 0 10000000000.0
+T_L3 T3_nB1__T3_nB2 T3_nB1__T3_nB2 T2_nB1__T3_nA1 T2_nB2__T3_nA2 Z0=120 T
+D=2.5e-09
+R_psgnd_L3_in T2_nB2__T3_nA2 0 10000000000.0
+R_psgnd_L3_out T3_nB1__T3_nB2 0 10000000000.0
+R_ECU2 T0_nA1__D0_nA T0_nA2__D0_nB 1000000.0
+R_ECU3 T0_nB1__D1_nA T1_nA1__D1_nB 1000000.0
+R_ECU4 T0_nB2__D2_nA T1_nA2__D2_nB 120
+V_pulse v_out 0 DC 0V PULSE(0V 4V 0us 2ns 2us 30us 60us)
+R_ECU1 v_out T1_nB1__D3_nA 120
+

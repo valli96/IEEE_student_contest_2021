@@ -13,14 +13,4 @@ This is a part of the lecture "Electromagnetic compatibility". The task is to re
 6. Any beginning and end of a line may be connected to any number of other lines.
 
 
-## transmission line 
-
-##### propagation time
-$v=s/t$
-$t=s_i/(2*10^8)$
-$ts_1 (2m) = 1ns$
-$ts_2 (3m) = 1.5ns$
-$ts_3 (5m) = 2.5ns$
-$ts_4 (7m) = 3.5ns$ 
-
 

@@ -15,7 +15,10 @@
    version="1.1"
    id="svg8"
    inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
-   sodipodi:docname="best_possible_citcuit.svg">
+   sodipodi:docname="best_possible_citcuit.svg"
+   inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/submission/winner_circuit_inkscape.png"
+   inkscape:export-xdpi="400"
+   inkscape:export-ydpi="400">
   <defs
      id="defs2">
     <marker
@@ -277,6 +280,22 @@
          style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
          transform="matrix(0.8,0,0,0.8,10,0)" />
     </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lstart-3-1-7"
+       style="overflow:visible"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         inkscape:connector-curvature="0"
+         id="path964-6-8-2"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,10,0)" />
+    </marker>
   </defs>
   <sodipodi:namedview
      id="base"
@@ -285,9 +304,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="1"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.3535534"
-     inkscape:cx="-536.41698"
-     inkscape:cy="695.41417"
+     inkscape:zoom="1.4753278"
+     inkscape:cx="-584.95174"
+     inkscape:cy="657.68109"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -3693,10 +3712,1085 @@
          x="-49.641068"
          y="72.309502"
          style="stroke-width:0.26458332">TL 4</tspan></text>
+    <circle
+       style="opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.40000001;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       id="path877-20-3-8-5"
+       cx="-242.05885"
+       cy="126.83787"
+       r="0.38035047"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <circle
+       style="opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.40000001;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       id="path877-23-6-97-4"
+       cx="-242.1743"
+       cy="133.6003"
+       r="0.38035047"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
     <path
        style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m -112.97708,136.6625 v 20.90209"
-       id="path537"
+       d="m -240.84432,125.55048 h 19.19257"
+       id="path1160-61-7"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m -240.85659,128.02562 h 19.19257"
+       id="path1160-6-29-4"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.26499999;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       id="path1179-3-4"
+       sodipodi:type="arc"
+       sodipodi:cx="126.78673"
+       sodipodi:cy="240.85817"
+       sodipodi:rx="1.2363482"
+       sodipodi:ry="1.2920574"
+       sodipodi:start="0"
+       sodipodi:end="3.1522984"
+       sodipodi:open="true"
+       d="m 128.02308,240.85817 a 1.2363482,1.2920574 0 0 1 -0.622,1.12125 1.2363482,1.2920574 0 0 1 -1.24015,-0.007 1.2363482,1.2920574 0 0 1 -0.61048,-1.12814"
+       transform="rotate(90)"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.26499999;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       id="path1179-2-1-3"
+       sodipodi:type="arc"
+       sodipodi:cx="-126.78934"
+       sodipodi:cy="-221.65022"
+       sodipodi:rx="1.2363482"
+       sodipodi:ry="1.2920574"
+       sodipodi:start="0"
+       sodipodi:end="3.1522984"
+       sodipodi:open="true"
+       d="m -125.55299,-221.65022 a 1.2363482,1.2920574 0 0 1 -0.622,1.12125 1.2363482,1.2920574 0 0 1 -1.24015,-0.007 1.2363482,1.2920574 0 0 1 -0.61047,-1.12814"
+       transform="rotate(-90)"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.26499999;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:0.26499999, 0.26499999;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       id="path1179-6-9-0"
+       sodipodi:type="arc"
+       sodipodi:cx="126.78673"
+       sodipodi:cy="221.66559"
+       sodipodi:rx="1.2363482"
+       sodipodi:ry="1.2920574"
+       sodipodi:start="0"
+       sodipodi:end="3.1522984"
+       sodipodi:open="true"
+       d="m 128.02308,221.66559 a 1.2363482,1.2920574 0 0 1 -0.622,1.12125 1.2363482,1.2920574 0 0 1 -1.24015,-0.007 1.2363482,1.2920574 0 0 1 -0.61048,-1.12814"
+       transform="rotate(90)"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m -240.90405,132.19234 h 19.19257"
+       id="path1160-1-47-7"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m -240.91632,134.66748 h 19.19257"
+       id="path1160-6-8-8-8"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.26499999;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       id="path1179-7-4-6"
+       sodipodi:type="arc"
+       sodipodi:cx="133.42871"
+       sodipodi:cy="240.91789"
+       sodipodi:rx="1.2363482"
+       sodipodi:ry="1.2920574"
+       sodipodi:start="0"
+       sodipodi:end="3.1522984"
+       sodipodi:open="true"
+       d="m 134.66506,240.91789 a 1.2363482,1.2920574 0 0 1 -0.622,1.12126 1.2363482,1.2920574 0 0 1 -1.24015,-0.007 1.2363482,1.2920574 0 0 1 -0.61048,-1.12815"
+       transform="rotate(90)"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.26499999;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       id="path1179-2-9-5-8"
+       sodipodi:type="arc"
+       sodipodi:cx="-133.4313"
+       sodipodi:cy="-221.70993"
+       sodipodi:rx="1.2363482"
+       sodipodi:ry="1.2920574"
+       sodipodi:start="0"
+       sodipodi:end="3.1522984"
+       sodipodi:open="true"
+       d="m -132.19496,-221.70993 a 1.2363482,1.2920574 0 0 1 -0.622,1.12125 1.2363482,1.2920574 0 0 1 -1.24015,-0.007 1.2363482,1.2920574 0 0 1 -0.61047,-1.12814"
+       transform="rotate(-90)"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.26499999;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:0.26499998, 0.26499998;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       id="path1179-6-2-0-8"
+       sodipodi:type="arc"
+       sodipodi:cx="133.42871"
+       sodipodi:cy="221.72534"
+       sodipodi:rx="1.2363482"
+       sodipodi:ry="1.2920574"
+       sodipodi:start="0"
+       sodipodi:end="3.1522984"
+       sodipodi:open="true"
+       d="m 134.66506,221.72534 a 1.2363482,1.2920574 0 0 1 -0.622,1.12125 1.2363482,1.2920574 0 0 1 -1.24015,-0.007 1.2363482,1.2920574 0 0 1 -0.61048,-1.12815"
+       transform="rotate(90)"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <circle
+       cy="126.87897"
+       cx="-220.40869"
+       id="path877-20-3-0-3-4"
+       style="opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.40000001;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       r="0.38035047"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:5.64444447px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="-237.5782"
+       y="141.59868"
+       id="text2116-8-4-3"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300"><tspan
+         sodipodi:role="line"
+         id="tspan2114-4-4-1"
+         x="-237.5782"
+         y="141.59868"
+         style="stroke-width:0.26458332">TL 1</tspan></text>
+    <text
+       transform="scale(1.0003272,0.99967291)"
+       id="text924-1-5-9-0"
+       y="123.28185"
+       x="-211.16592"
+       style="font-style:normal;font-weight:normal;font-size:4.40914011px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       xml:space="preserve"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300"><tspan
+         style="font-size:2.75571203px;stroke-width:0.26458332"
+         y="123.28185"
+         x="-211.16592"
+         id="tspan922-2-4-2-6"
+         sodipodi:role="line">1 MΩ</tspan></text>
+    <rect
+       y="124.99757"
+       x="-211.68083"
+       height="3.4236121"
+       width="7.6532283"
+       id="rect12-6-3-2-8"
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.39999998;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <circle
+       cy="133.24684"
+       cx="-193.07912"
+       id="path877-23-6-2-6-9"
+       style="opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.40000001;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       r="0.38035047"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m -191.68574,125.53604 h 19.19257"
+       id="path1160-3-1-2"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m -191.69801,128.01118 h 19.19257"
+       id="path1160-6-7-0-6"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.26499999;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       id="path1179-5-6-6"
+       sodipodi:type="arc"
+       sodipodi:cx="126.77232"
+       sodipodi:cy="191.69957"
+       sodipodi:rx="1.2363482"
+       sodipodi:ry="1.2920574"
+       sodipodi:start="0"
+       sodipodi:end="3.1522984"
+       sodipodi:open="true"
+       d="m 128.00867,191.69957 a 1.2363482,1.2920574 0 0 1 -0.622,1.12125 1.2363482,1.2920574 0 0 1 -1.24015,-0.007 1.2363482,1.2920574 0 0 1 -0.61047,-1.12814"
+       transform="rotate(90)"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.26499999;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       id="path1179-2-92-3-4"
+       sodipodi:type="arc"
+       sodipodi:cx="-126.7749"
+       sodipodi:cy="-172.49159"
+       sodipodi:rx="1.2363482"
+       sodipodi:ry="1.2920574"
+       sodipodi:start="0"
+       sodipodi:end="3.1522984"
+       sodipodi:open="true"
+       d="m -125.53855,-172.49159 a 1.2363482,1.2920574 0 0 1 -0.622,1.12125 1.2363482,1.2920574 0 0 1 -1.24015,-0.007 1.2363482,1.2920574 0 0 1 -0.61048,-1.12814"
+       transform="rotate(-90)"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.26499999;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:0.26499998, 0.26499998;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       id="path1179-6-28-2-9"
+       sodipodi:type="arc"
+       sodipodi:cx="126.77232"
+       sodipodi:cy="172.507"
+       sodipodi:rx="1.2363482"
+       sodipodi:ry="1.2920574"
+       sodipodi:start="0"
+       sodipodi:end="3.1522984"
+       sodipodi:open="true"
+       d="m 128.00867,172.507 a 1.2363482,1.2920574 0 0 1 -0.622,1.12126 1.2363482,1.2920574 0 0 1 -1.24015,-0.007 1.2363482,1.2920574 0 0 1 -0.61047,-1.12815"
+       transform="rotate(90)"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m -191.80888,131.83898 h 19.19257"
+       id="path1160-1-9-0-5"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m -191.82115,134.31412 h 19.19257"
+       id="path1160-6-8-7-6-0"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.26499999;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       id="path1179-7-3-1-4"
+       sodipodi:type="arc"
+       sodipodi:cx="133.07527"
+       sodipodi:cy="191.82271"
+       sodipodi:rx="1.2363482"
+       sodipodi:ry="1.2920574"
+       sodipodi:start="0"
+       sodipodi:end="3.1522984"
+       sodipodi:open="true"
+       d="m 134.31162,191.82271 a 1.2363482,1.2920574 0 0 1 -0.622,1.12125 1.2363482,1.2920574 0 0 1 -1.24015,-0.007 1.2363482,1.2920574 0 0 1 -0.61048,-1.12814"
+       transform="rotate(90)"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.26499999;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       id="path1179-2-9-6-5-8"
+       sodipodi:type="arc"
+       sodipodi:cx="-133.07787"
+       sodipodi:cy="-172.61475"
+       sodipodi:rx="1.2363482"
+       sodipodi:ry="1.2920574"
+       sodipodi:start="0"
+       sodipodi:end="3.1522984"
+       sodipodi:open="true"
+       d="m -131.84152,-172.61475 a 1.2363482,1.2920574 0 0 1 -0.622,1.12126 1.2363482,1.2920574 0 0 1 -1.24015,-0.007 1.2363482,1.2920574 0 0 1 -0.61047,-1.12815"
+       transform="rotate(-90)"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.26499999;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:0.26499998, 0.26499998;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       id="path1179-6-2-1-5-7"
+       sodipodi:type="arc"
+       sodipodi:cx="133.07527"
+       sodipodi:cy="172.63014"
+       sodipodi:rx="1.2363482"
+       sodipodi:ry="1.2920574"
+       sodipodi:start="0"
+       sodipodi:end="3.1522984"
+       sodipodi:open="true"
+       d="m 134.31162,172.63014 a 1.2363482,1.2920574 0 0 1 -0.622,1.12126 1.2363482,1.2920574 0 0 1 -1.24015,-0.007 1.2363482,1.2920574 0 0 1 -0.61048,-1.12815"
+       transform="rotate(90)"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <circle
+       cy="126.7758"
+       cx="-171.34595"
+       id="path877-20-3-0-7-0-1"
+       style="opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.40000001;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       r="0.38035047"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:5.64444447px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="-188.25661"
+       y="141.53484"
+       id="text2116-8-4-4-7"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300"><tspan
+         sodipodi:role="line"
+         id="tspan2114-4-4-7-2"
+         x="-188.25661"
+         y="141.53484"
+         style="stroke-width:0.26458332">TL 2</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:5.64444447px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="-126.29361"
+       y="-143.9043"
+       id="text924-3-9-2"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300"
+       transform="rotate(-90)"><tspan
+         sodipodi:role="line"
+         id="tspan922-5-2-6"
+         x="-126.29361"
+         y="-143.9043"
+         style="font-size:3.52777767px;stroke-width:0.26458332">120 Ω</tspan></text>
+    <circle
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.40000001;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       id="path960-6-0-1"
+       cx="-139.57928"
+       cy="137.74536"
+       r="5.8131123"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26499999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#Arrow1Lstart-3-1-7)"
+       d="M -146.45909,144.33526 V 132.52351"
+       id="path962-2-2-0"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m -154.95665,139.38057 h 3.48895 v -3.29865 h 3.48896"
+       id="path1326-9-3-6"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:3.78921056px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="-155.65434"
+       y="142.23515"
+       id="text1380-1-7-1"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300"><tspan
+         sodipodi:role="line"
+         id="tspan1378-2-5-5"
+         x="-155.65434"
+         y="142.23515"
+         style="font-size:2.60508227px;stroke-width:0.26458332">0 V</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:3.78921056px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="-152.21744"
+       y="135.44432"
+       id="text1380-6-7-9-9"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300"><tspan
+         sodipodi:role="line"
+         id="tspan1378-0-0-2-4"
+         x="-152.21744"
+         y="135.44432"
+         style="font-size:2.60508227px;stroke-width:0.26458332">4 V</tspan></text>
+    <rect
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.40000001;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       id="rect12-75-7-9"
+       width="9.7942209"
+       height="4.3842373"
+       x="-125.98552"
+       y="-141.77141"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300"
+       transform="rotate(-90)" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:5.64444447px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="-135.66594"
+       y="-257.94025"
+       id="text924-3-9-2-6"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300"
+       transform="rotate(-90)"><tspan
+         sodipodi:role="line"
+         id="tspan922-5-2-6-3"
+         x="-135.66594"
+         y="-257.94025"
+         style="font-size:3.52777767px;stroke-width:0.26458332">120 Ω</tspan></text>
+    <rect
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.40000001;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       id="rect12-75-7-9-9"
+       width="9.7942209"
+       height="4.3842373"
+       x="-135.35785"
+       y="-255.80737"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300"
+       transform="rotate(-90)" />
+    <circle
+       cy="134.19005"
+       cx="-112.58031"
+       id="path877-23-6-9-4-4"
+       style="opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.40000001;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       r="0.38035047"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m -111.18695,126.47927 h 19.192566"
+       id="path1160-31-7-8"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m -111.19922,128.95441 h 19.192566"
+       id="path1160-6-9-6-1"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.26499999;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       id="path1179-4-5-2"
+       sodipodi:type="arc"
+       sodipodi:cx="127.71555"
+       sodipodi:cy="111.20076"
+       sodipodi:rx="1.2363482"
+       sodipodi:ry="1.2920574"
+       sodipodi:start="0"
+       sodipodi:end="3.1522984"
+       sodipodi:open="true"
+       d="m 128.9519,111.20076 a 1.2363482,1.2920574 0 0 1 -0.622,1.12125 1.2363482,1.2920574 0 0 1 -1.24015,-0.007 1.2363482,1.2920574 0 0 1 -0.61047,-1.12815"
+       transform="rotate(90)"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.26499999;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       id="path1179-2-7-6-9"
+       sodipodi:type="arc"
+       sodipodi:cx="-127.71812"
+       sodipodi:cy="-91.992828"
+       sodipodi:rx="1.2363482"
+       sodipodi:ry="1.2920574"
+       sodipodi:start="0"
+       sodipodi:end="3.1522984"
+       sodipodi:open="true"
+       d="m -126.48177,-91.992828 a 1.2363482,1.2920574 0 0 1 -0.622,1.121252 1.2363482,1.2920574 0 0 1 -1.24015,-0.0069 1.2363482,1.2920574 0 0 1 -0.61047,-1.128148"
+       transform="rotate(-90)"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.26499999;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:0.26499998, 0.26499998;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       id="path1179-6-8-9-3"
+       sodipodi:type="arc"
+       sodipodi:cx="127.71555"
+       sodipodi:cy="92.008224"
+       sodipodi:rx="1.2363482"
+       sodipodi:ry="1.2920574"
+       sodipodi:start="0"
+       sodipodi:end="3.1522984"
+       sodipodi:open="true"
+       d="m 128.9519,92.008224 a 1.2363482,1.2920574 0 0 1 -0.622,1.121253 1.2363482,1.2920574 0 0 1 -1.24015,-0.0069 1.2363482,1.2920574 0 0 1 -0.61047,-1.128148"
+       transform="rotate(90)"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m -111.31008,132.78221 h 19.192566"
+       id="path1160-1-4-3-9"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m -111.32236,135.25735 h 19.192566"
+       id="path1160-6-8-5-7-0"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.26499999;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       id="path1179-7-0-4-8"
+       sodipodi:type="arc"
+       sodipodi:cx="134.01849"
+       sodipodi:cy="111.32391"
+       sodipodi:rx="1.2363482"
+       sodipodi:ry="1.2920574"
+       sodipodi:start="0"
+       sodipodi:end="3.1522984"
+       sodipodi:open="true"
+       d="m 135.25484,111.32391 a 1.2363482,1.2920574 0 0 1 -0.622,1.12126 1.2363482,1.2920574 0 0 1 -1.24015,-0.007 1.2363482,1.2920574 0 0 1 -0.61047,-1.12815"
+       transform="rotate(90)"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.26499999;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       id="path1179-2-9-3-5-8"
+       sodipodi:type="arc"
+       sodipodi:cx="-134.02107"
+       sodipodi:cy="-92.115967"
+       sodipodi:rx="1.2363482"
+       sodipodi:ry="1.2920574"
+       sodipodi:start="0"
+       sodipodi:end="3.1522984"
+       sodipodi:open="true"
+       d="m -132.78472,-92.115967 a 1.2363482,1.2920574 0 0 1 -0.622,1.121253 1.2363482,1.2920574 0 0 1 -1.24015,-0.0069 1.2363482,1.2920574 0 0 1 -0.61048,-1.128147"
+       transform="rotate(-90)"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.26499999;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:0.26499998, 0.26499998;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       id="path1179-6-2-6-2-5"
+       sodipodi:type="arc"
+       sodipodi:cx="134.01848"
+       sodipodi:cy="92.131332"
+       sodipodi:rx="1.2363482"
+       sodipodi:ry="1.2920574"
+       sodipodi:start="0"
+       sodipodi:end="3.1522984"
+       sodipodi:open="true"
+       d="m 135.25483,92.131332 a 1.2363482,1.2920574 0 0 1 -0.622,1.121253 1.2363482,1.2920574 0 0 1 -1.24015,-0.0069 1.2363482,1.2920574 0 0 1 -0.61048,-1.128148"
+       transform="rotate(90)"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <circle
+       cy="134.3237"
+       cx="-86.521545"
+       id="path877-23-6-0-54-09"
+       style="opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.40000001;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       r="0.38035047"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m -85.128174,126.6129 h 19.19257"
+       id="path1160-63-7-6"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m -85.140443,129.08804 h 19.192571"
+       id="path1160-6-2-4-3"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.26499999;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       id="path1179-0-4-8"
+       sodipodi:type="arc"
+       sodipodi:cx="127.84917"
+       sodipodi:cy="85.141998"
+       sodipodi:rx="1.2363482"
+       sodipodi:ry="1.2920574"
+       sodipodi:start="0"
+       sodipodi:end="3.1522984"
+       sodipodi:open="true"
+       d="m 129.08552,85.141998 a 1.2363482,1.2920574 0 0 1 -0.622,1.121253 1.2363482,1.2920574 0 0 1 -1.24015,-0.0069 1.2363482,1.2920574 0 0 1 -0.61048,-1.128148"
+       transform="rotate(90)"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.26499999;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       id="path1179-2-6-30-5"
+       sodipodi:type="arc"
+       sodipodi:cx="-127.85177"
+       sodipodi:cy="-65.934067"
+       sodipodi:rx="1.2363482"
+       sodipodi:ry="1.2920574"
+       sodipodi:start="0"
+       sodipodi:end="3.1522984"
+       sodipodi:open="true"
+       d="m -126.61542,-65.934067 a 1.2363482,1.2920574 0 0 1 -0.622,1.121253 1.2363482,1.2920574 0 0 1 -1.24015,-0.0069 1.2363482,1.2920574 0 0 1 -0.61048,-1.128147"
+       transform="rotate(-90)"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.26499999;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:0.26499998, 0.26499998;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       id="path1179-6-1-78-6"
+       sodipodi:type="arc"
+       sodipodi:cx="127.84917"
+       sodipodi:cy="65.949448"
+       sodipodi:rx="1.2363482"
+       sodipodi:ry="1.2920574"
+       sodipodi:start="0"
+       sodipodi:end="3.1522984"
+       sodipodi:open="true"
+       d="m 129.08552,65.949448 a 1.2363482,1.2920574 0 0 1 -0.622,1.121252 1.2363482,1.2920574 0 0 1 -1.24015,-0.0069 1.2363482,1.2920574 0 0 1 -0.61048,-1.128148"
+       transform="rotate(90)"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m -85.251314,132.91584 h 19.192571"
+       id="path1160-1-5-68-11"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m -85.263583,135.39098 h 19.192568"
+       id="path1160-6-8-54-8-59"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.26499999;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       id="path1179-7-7-4-8"
+       sodipodi:type="arc"
+       sodipodi:cx="134.15211"
+       sodipodi:cy="85.265137"
+       sodipodi:rx="1.2363482"
+       sodipodi:ry="1.2920574"
+       sodipodi:start="0"
+       sodipodi:end="3.1522984"
+       sodipodi:open="true"
+       d="m 135.38846,85.265137 a 1.2363482,1.2920574 0 0 1 -0.622,1.121253 1.2363482,1.2920574 0 0 1 -1.24015,-0.0069 1.2363482,1.2920574 0 0 1 -0.61047,-1.128147"
+       transform="rotate(90)"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.26499999;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       id="path1179-2-9-65-31-4"
+       sodipodi:type="arc"
+       sodipodi:cx="-134.15471"
+       sodipodi:cy="-66.05719"
+       sodipodi:rx="1.2363482"
+       sodipodi:ry="1.2920574"
+       sodipodi:start="0"
+       sodipodi:end="3.1522984"
+       sodipodi:open="true"
+       d="m -132.91836,-66.05719 a 1.2363482,1.2920574 0 0 1 -0.622,1.121253 1.2363482,1.2920574 0 0 1 -1.24015,-0.0069 1.2363482,1.2920574 0 0 1 -0.61048,-1.128147"
+       transform="rotate(-90)"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.26499999;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:0.26499998, 0.26499998;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       id="path1179-6-2-69-4-8"
+       sodipodi:type="arc"
+       sodipodi:cx="134.15211"
+       sodipodi:cy="66.072571"
+       sodipodi:rx="1.2363482"
+       sodipodi:ry="1.2920574"
+       sodipodi:start="0"
+       sodipodi:end="3.1522984"
+       sodipodi:open="true"
+       d="m 135.38846,66.072571 a 1.2363482,1.2920574 0 0 1 -0.622,1.121253 1.2363482,1.2920574 0 0 1 -1.24015,-0.0069 1.2363482,1.2920574 0 0 1 -0.61047,-1.128147"
+       transform="rotate(90)"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <circle
+       cy="127.7942"
+       cx="-90.795792"
+       id="path877-20-3-0-4-6-1"
+       style="opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.40000001;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       r="0.38035047"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path1448-7-0"
+       d="m -86.283705,127.81782 h -4.393979"
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path1452-1-3"
+       d="m -86.425445,134.17254 h -4.441219"
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path1454-4-72-0"
+       d="m -64.682484,134.39754 h 4.766591"
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <circle
+       cy="134.40132"
+       cx="-64.762337"
+       id="path877-20-3-0-4-9-2-4"
+       style="opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.40000001;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       r="0.38035047"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <circle
+       cy="127.91232"
+       cx="-64.59729"
+       id="path877-20-3-0-4-2-6-4"
+       style="opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.40000001;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       r="0.38035047"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:5.64444447px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="-107.49458"
+       y="142.61169"
+       id="text2116-8-4-6-4"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300"><tspan
+         sodipodi:role="line"
+         id="tspan2114-4-4-3-4"
+         x="-107.49458"
+         y="142.61169"
+         style="stroke-width:0.26458332">TL 3</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:5.64444447px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="-82.888321"
+       y="142.61169"
+       id="text2116-8-4-1-7"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300"><tspan
+         sodipodi:role="line"
+         id="tspan2114-4-4-75-6"
+         x="-82.888321"
+         y="142.61169"
+         style="stroke-width:0.26458332">TL 4</tspan></text>
+    <text
+       transform="matrix(0,1.0003272,-0.99967291,0,0,0)"
+       id="text924-1-5-9-0-3"
+       y="46.711433"
+       x="127.23459"
+       style="font-style:normal;font-weight:normal;font-size:4.40914011px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       xml:space="preserve"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300"><tspan
+         style="font-size:2.75571203px;stroke-width:0.26458332"
+         y="46.711433"
+         x="127.23459"
+         id="tspan922-2-4-2-6-1"
+         sodipodi:role="line">1 MΩ</tspan></text>
+    <rect
+       y="48.278847"
+       x="127.1963"
+       height="3.4236121"
+       width="7.6532283"
+       id="rect12-6-3-2-8-7"
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.39999998;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300"
+       transform="rotate(90)" />
+    <circle
+       cy="134.17392"
+       cx="-90.860504"
+       id="path877-20-3-0-4-9-2-4-5"
+       style="opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.40000001;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       r="0.38035047"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <circle
+       cy="127.92845"
+       cx="-86.453804"
+       id="path877-20-3-0-4-9-2-4-9"
+       style="opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.40000001;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       r="0.38035047"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <circle
+       cy="127.81872"
+       cx="-112.44138"
+       id="path877-20-3-0-4-9-2-4-6"
+       style="opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.40000001;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       r="0.38035047"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <circle
+       cy="133.16417"
+       cx="-171.53404"
+       id="path877-20-3-0-4-9-2-4-2"
+       style="opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.40000001;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       r="0.38035047"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <circle
+       cy="126.78713"
+       cx="-192.88043"
+       id="path877-20-3-0-4-9-2-4-1"
+       style="opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.40000001;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       r="0.38035047"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <circle
+       cy="133.42346"
+       cx="-220.52318"
+       id="path877-20-3-0-4-9-2-4-7"
+       style="opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.40000001;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       r="0.38035047"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path1454-4-72-0-8"
+       d="m -64.434478,127.9733 h 4.766591"
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m -59.667885,127.9733 h 2.77269 v -5.11116 h 7.039044 c 0,0 0,5.87862 0,3.54194"
+       id="path3141"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m -59.915893,134.39754 h 2.77269 v 5.11116 h 7.039044 l 0,-4.57314"
+       id="path3141-5"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m -171.19565,126.75543 12.55435,0 v -14.83695 l 37.2192,0 v 15.66123 h 9.13043"
+       id="path3158"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m -171.29009,133.15815 13.63038,-0.0272 v 15.31249 l 36.55889,0 -0.0512,-6.62945 -0.0176,-7.6074 8.59147,-0.003"
+       id="path3158-7"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m -139.57938,111.91848 v 4.12137"
+       id="path3175"
        inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m -139.57938,125.99456 v 6.02355"
+       id="path3177"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m -139.57938,143.49456 v 4.94565"
+       id="path3179"
+       inkscape:connector-curvature="0" />
+    <circle
+       cy="111.94491"
+       cx="-139.52548"
+       id="path877-20-3-0-7-0-1-4"
+       style="opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.40000001;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       r="0.38035047"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <circle
+       cy="148.42769"
+       cx="-139.55695"
+       id="path877-20-3-0-7-0-1-1"
+       style="opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.40000001;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       r="0.38035047"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m -220.27273,126.89726 h 8.38409"
+       id="path3202"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m -204.04258,126.76276 h 11.25351"
+       id="path3204"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M -193.10292,133.35346 H -220.6314"
+       id="path3206"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m -242.05435,126.89083 -4.67817,-0.0224 0.0224,-5.69401 h -7.03904 v 4.30413"
+       id="path3141-1"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m -242.09777,133.60649 h -4.36432 v 4.21447 h -7.03904 v -2.46591"
+       id="path3141-5-8"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccc" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:5.64444447px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="-147.91833"
+       y="106.88161"
+       id="text2116-9"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300"><tspan
+         sodipodi:role="line"
+         id="tspan2114-6"
+         x="-147.91833"
+         y="106.88161"
+         style="stroke-width:0.26458332">ECU 1</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:5.64444447px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="-215.64281"
+       y="115.94987"
+       id="text2116-8-43"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300"><tspan
+         sodipodi:role="line"
+         id="tspan2114-4-3"
+         x="-215.64281"
+         y="115.94987"
+         style="stroke-width:0.26458332">ECU 2</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:5.64444447px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="-59.853989"
+       y="115.94987"
+       id="text2116-81-3"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300"><tspan
+         sodipodi:role="line"
+         id="tspan2114-0-8"
+         x="-59.853989"
+         y="115.94987"
+         style="stroke-width:0.26458332">ECU 3</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:5.64444447px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="-259.16678"
+       y="115.94987"
+       id="text2116-3-6"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300"><tspan
+         sodipodi:role="line"
+         id="tspan2114-04-0"
+         x="-259.16678"
+         y="115.94987"
+         style="stroke-width:0.26458332">ECU 4</tspan></text>
+    <rect
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#ff0000;stroke-width:0.26499999;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:1.59000002, 1.59000002;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       id="rect1454-9-2-1-4"
+       width="24.228279"
+       height="24.419834"
+       x="-263.36765"
+       y="117.28775"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <rect
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#ff0000;stroke-width:0.26499999;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:1.59000003, 1.59000003;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       id="rect1454-9-2-1-8"
+       width="18.668779"
+       height="17.963642"
+       x="-216.38089"
+       y="119.08115"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <rect
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#ff0000;stroke-width:0.26499999;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:1.59000005, 1.59000005;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       id="rect1454-9-2-1-88"
+       width="43.238178"
+       height="42.000301"
+       x="-161.14458"
+       y="109.75553"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <rect
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#ff0000;stroke-width:0.26499999;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:1.59000008, 1.59000008;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       id="rect1454-9-2-1-8-9"
+       width="18.668779"
+       height="20.499874"
+       x="-61.453957"
+       y="120.62688"
+       inkscape:export-filename="/home/valenitn/00_Nextcloud/01_education/Master_03/EMC_project/IEEE_student_contest_2021/presentaion/best_circuit.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
   </g>
 </svg>

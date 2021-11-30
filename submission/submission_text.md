@@ -1,3 +1,4 @@
+
 We originally tried to find a network which maximizes reflection coefficients and signal runtime in between components. We quickly realised that this approach was rather unsystematic. After estimating the number of all possible circuits with the given components and constraints, we decided to simply try all arrangements. This approach led to two main challenges:
 1. Generation of all possible circuits
 2. Simulation and determination of the settling time
